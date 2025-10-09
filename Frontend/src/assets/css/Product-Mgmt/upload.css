@@ -1,0 +1,218 @@
+.product-upload-section {
+    position: fixed;
+    top: 20px;
+    bottom: 0px;
+    left: 345px;
+    right: 20px;
+
+    background-color: #d5cfb5;
+    border-radius: 10px;
+    padding: 30px 60px;
+    overflow-y: auto;
+
+    font-family: "Courier New", Courier, monospace;
+    color: #5e4c0a;
+}
+
+    .btnSubmit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: #f8f5ee;
+        border: 2px solid #9e841e;
+        color: #9e841e;
+        border-radius: 8px;
+        padding: 5px 15px;
+        font-weight: bold;
+        font-size: 16px;
+
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .btnSubmit:hover {
+        background-color: #ebe3c4;
+    }
+
+    .btnSubmit img {
+        width: 18px;
+        margin-right: 7px;
+    }
+
+    
+    .label {
+        display: block;
+        font-weight: bold;
+        color: #5e4c0a;
+        margin: 15px 0 5px 0;
+    }
+    
+    .upload-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 30px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+        .upload-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 110px;
+            height: 110px;
+
+            background-color: #f8f5ee;
+            border: 2px solid #9e841e;
+            border-radius: 10px;
+
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+        }
+
+        .upload-box:hover {
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .upload-box:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        /* hide input file */
+        .upload-box input[type="file"] {
+            display: none;
+        }
+
+        .upload-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .upload-box img.preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+        }
+
+    
+    .product-input-text,
+    .input-textarea{
+        width: 100%;
+        font-size: 14px;
+        color: #333;
+        font-family: "Courier New", Courier, monospace;
+
+        border: 2px solid #9e841e;
+        border-radius: 8px;
+        background-color: #f8f5ee;
+        padding: 8px 10px;
+    }
+
+    .input-textarea {
+        height: 90px;
+        resize: none;
+    }
+
+    .input-text{
+        font-size: 14px;
+        color: #333;
+        font-family: "Courier New", Courier, monospace;
+
+        width: 200px;
+        border: 2px solid #9e841e;
+        border-radius: 8px;
+        background-color: #f8f5ee;
+        padding: 8px 10px;
+    }
+
+    .select-input {
+        appearance: none;
+        background-size: 14px;
+        padding-right: 35px;
+        cursor: pointer;
+    }
+
+    .select-input:focus,
+    .input-text:focus,
+    .product-input-text:focus,
+    .input-textarea:focus,
+    .product-upload-section .dropdown-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #c9b76b;
+    }
+
+
+    .product-upload-section .dropdown-section {
+        position: relative;
+        
+        width: 100%;
+        font-weight: bold;
+        font-size: 16px;
+        color: rgb(23, 63, 39);
+    }
+
+        .product-upload-section .dropdown-button {
+            width: 222px;
+            padding: 10px;
+            
+            background: #f8f5ee url("../../../../public/img/Product-Mgmt/create-product/arrow.png") no-repeat right 0.6rem center;
+            background-size: 18px 18px;
+            
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(23, 63, 39);
+            font-family: 'Courier New', Courier, monospace;
+            text-align: left;
+
+            border: 2px solid #9E841E;
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+
+        .product-upload-section .dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 222px;
+
+            background: #f8f5ee;
+            border: 2px solid #9e841e;
+            border-radius: 10px;
+
+            margin-top: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+
+        .product-upload-section .dropdown-item {
+            padding: 10px;
+            border-radius: 10px;
+            color: rgb(23, 63, 39);
+
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            text-wrap: nowrap;
+        }
+
+        .product-upload-section .dropdown-item:hover {
+            background: #ebe3c4;
+        }    

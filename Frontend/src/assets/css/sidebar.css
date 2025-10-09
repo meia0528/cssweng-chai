@@ -1,0 +1,197 @@
+.sidebar{
+    position: fixed;
+    top: 20px;
+    bottom: 0px;
+    left: 20px;
+    width: 305px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 25px;
+
+    background-color: rgb(33, 80, 39, 0.4);
+    border-radius: 10px;
+    border: none
+    
+}
+
+    .upper-section{
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+        .chai-logo{
+            width: 250px;
+
+            object-fit: contain;
+            object-position: center;
+
+            margin-bottom: 46px;
+        }
+
+        .dropdown-section {
+            position: relative;
+            
+            width: 275px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgb(23, 63, 39);
+        }
+
+        .dropdown-button {
+            width: 100%;
+            padding: 10px;
+            
+            background: white url("../../../public/img/sidebar/arrow.png") no-repeat right 0.75rem center;
+            background-size: 18px 18px;
+
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 18px;
+            color: rgb(23, 63, 39);
+            text-align: left;
+
+            border: 2px solid rgb(23, 63, 39);
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+
+            background: white;
+            border: 2px solid rgb(23, 63, 39);
+            border-radius: 10px;
+
+            margin-top: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+
+        .dropdown-item {
+            padding: 10px;
+            border-radius: 10px;
+            color: rgb(23, 63, 39);
+
+            cursor: pointer;
+            text-wrap: nowrap;
+        }
+
+        .dropdown-item:hover {
+            background: rgb(200, 200, 200);
+        }
+
+
+        .option-section{
+            width: 100%;
+
+            margin-top: 50px;
+        }
+
+        .option-button{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+            width: 100%;
+            height: 40px;
+
+            align-items: center;
+
+            background-color: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+
+            margin-bottom: 20px;
+
+            border: none;
+
+            cursor: pointer;
+        }
+
+        .option-button.active{
+            background-color: rgb(33, 80, 39, 0.3);
+        }
+
+        .option-button.active::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px; 
+            height: 100%;  
+            background-color: rgb(33, 80, 39);
+            pointer-events: none;
+        }
+
+        .option-section img{
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .display-image{
+            width: 40px;
+        
+            margin-right: 25px;
+            margin-left: 30px;
+        }
+
+        .add-image{
+            width: 25px;
+
+            margin-right: 35px;
+            margin-left: 37px;
+        }
+
+
+    .lower-section{
+        display: flex;
+        flex: row;
+
+        justify-content: right;
+        align-items: end;
+    }
+
+        .logout-button{
+            display: flex;
+            flex: row;
+            justify-content: center;
+            align-items: center;
+
+            padding: 3px 9px 4px 9px;
+            border: none;
+            border-radius: 10px;
+
+            color: rgb(23, 63, 39);
+            background-color: white;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+
+            margin-bottom: 35px;
+            margin-left: 140px;
+
+            cursor: pointer;
+        }
+
+        .logout-image{
+            margin-left: 5px;
+            width: 23px;
+        }
