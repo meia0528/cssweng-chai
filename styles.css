@@ -362,5 +362,60 @@ body{
     background-color: #E8E8E8;
     height: 550px;
     margin: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+.sdgs-header{
+    text-align: center;
+}
+
+.sdgs-header h1{
+    color: #7E6B59;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sdgs-header h4{
+    color: #A69687;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.sdgs-portion{
+    display: flex;
+    gap: 80px;
+    margin-bottom: 60px;
+}
+
+.sdg-2, .sdg-4{
+    height: 160px;
+    width: 400px;
+    border-radius: 20px;
+    display: flex;
+    gap: 20px;
+    color:white;
+    font-size: 15px;
+    text-align: center;
+    padding-right: 20px;
+}
+
+.sdg-2{
+    background-color: #E5D7BB;
+}
+
+.sdg-2 img, .sdg-4 img{
+    height: 160px;
+}
+
+.sdg-4{
+    background-color: #DC9DA2;
+}
+
+.sdgs-ending{
+    width: 600px;
+    text-align: center;
+}
