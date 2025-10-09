@@ -7,6 +7,7 @@ const createProductHook = () => {
     const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);
     const [productTypes, setProductTypes] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [alert, setAlert] = useState({ message: '', type: '' });
     const dropdownRef = useRef(null);
 
 
@@ -69,6 +70,8 @@ const createProductHook = () => {
 
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const formData = new FormData();
         imageFiles.forEach((file) => {
             if(file) formData.append('images', file);
@@ -86,10 +89,16 @@ const createProductHook = () => {
                 headers: { "Content-Type": "multipart/form-data" }
             });
 
-            console.log(res.data);
-
-        } catch (error) {
-            
+            setAlert({message: res.data.message, type: 'success'});
+        } catch (err) {
+            const errorMsg = err.response?.data?.message || 'Something went wrong!';
+            setAlert({message: errorMsg, type: 'error'});
+        } finally {
+            // wait 2 seconds before hiding the alert and reloading
+            setTimeout(() => {
+                setAlert({ message: '', type: '' });    // hide the alert
+                window.location.reload();               // reload the page after hiding
+            }, 2000);
         }
     }
 
@@ -113,7 +122,8 @@ const createProductHook = () => {
         selectedPrice, 
         seSelectedtPrice,
         selectedQty, 
-        setSelectedQty
+        setSelectedQty,
+        alert
     };
 }
 

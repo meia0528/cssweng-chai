@@ -6,11 +6,17 @@ const CreateProduct = () => {
         imagePreviews, handleImageChange, handleSubmit, productTypes, displayDropDownList,
         isOpen, dropdownRef, handleDropdownSelect, selectedType, setSelectedTitle, 
         selectedTitle, selectedDescription, setSelectedDescription, selectedPrice, 
-        seSelectedtPrice, selectedQty, setSelectedQty} = createProductHook();
+        seSelectedtPrice, selectedQty, setSelectedQty, alert} = createProductHook();
     
     return (
         <main> 
             <div className="product-upload-section">
+                {alert.message && (
+                    <div className={`alert-section alert-${alert.type}`}>
+                        {alert.message}
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <button className="btnSubmit" type="submit"> <img src="img/Product-Mgmt/create-product/save.png" /> Save</button>
 
