@@ -24,6 +24,7 @@ const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productT
 
                             <label className="upload-box">
                                 <input  
+                                    key={index}
                                     type="file" 
                                     accept="image/*" 
                                     onChange={(e) => handleImageChange(e, index)} 

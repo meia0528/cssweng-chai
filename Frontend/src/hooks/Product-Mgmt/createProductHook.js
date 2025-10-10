@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import useClickOutside from "../useClickOutside.js";
-import useFetchProductType from "../useFetchProductType.js";
+import useFetchProductType from "../Product-Mgmt/useFetchProductType.js";
 import axios from "axios";
 
 const createProductHook = () => {

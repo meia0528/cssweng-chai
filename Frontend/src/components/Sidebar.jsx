@@ -36,8 +36,9 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
                 
                     <div className="option-section">
 
-                        {subPageOptions.map((option, i) => (
+                        {subPageOptions.map((option, index) => (
                             <button 
+                                key={index}
                                 className={`option-button ${subPage === option ? 'active' : ''}`}
                                 onClick={() => renderSubPage(option)}>
 

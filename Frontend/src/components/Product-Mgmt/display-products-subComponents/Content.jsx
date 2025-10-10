@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useFetchProducts from "../../../hooks/useFetchProducts.js";
+import useFetchProducts from "../../../hooks/Product-Mgmt/useFetchProducts.js";
 
 const Content = ({setSearch, search, sortOption, productFilter}) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +14,7 @@ const Content = ({setSearch, search, sortOption, productFilter}) => {
         <main>
             <div className="product-main-area">
                 
-                <form classNameName="searchForm" onSubmit={(e) => e.preventDefault()}>
+                <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
                     <div className="search-bar-section">
                         <input 
                             className="search-bar" 
@@ -29,7 +29,7 @@ const Content = ({setSearch, search, sortOption, productFilter}) => {
 
                 <div className="product-display-grid">
                     {products.map((product, index) => (
-                        <div className="product-overview">
+                        <div className="product-overview" key={index}>
                             <div className="image-section">
                                 <img className="product-image" src={`http://localhost:5000/${product.images[0]}`} />
                                 <p className="product-type">{product.type.name}</p>

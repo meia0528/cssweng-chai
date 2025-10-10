@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import useFetchProductType from '../../hooks/useFetchProductType.js';
+import useFetchProductType from '../Product-Mgmt/useFetchProductType.js';
 import useClickOutside from '../../hooks/useClickOutside.js';
 
 const displayProductsHook = () => {

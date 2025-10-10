@@ -20,8 +20,8 @@ const Filtering = ({sortOption, displayDropDownList, handleDropDownSelect, isOpe
                             <div className="dropdown-list">
                                 {sortOptionList.map((option, index) => (
                                     <div 
-                                        className="dropdown-item"
                                         key={index}
+                                        className="dropdown-item"
                                         onClick={(e) => handleDropDownSelect(option)}>
 
                                         {option}
@@ -38,7 +38,7 @@ const Filtering = ({sortOption, displayDropDownList, handleDropDownSelect, isOpe
                     <p>Products</p>
                     
                     {productTypes.map((type, index) => (
-                        <label className="checkbox-section">
+                        <label className="checkbox-section" key={index}>
                             <input 
                                 type="checkbox" 
                                 onChange={(e) => handleSelectedProductFilter(e, type.name)}
