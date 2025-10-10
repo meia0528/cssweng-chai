@@ -93,10 +93,14 @@ const displayProducts = async (req, res) => {
 };
 
 
+const renderSingleProduct = async (req, res) => {
+    
+};
 
 
 module.exports = {
     getProductTypes,
     createProduct,
-    displayProducts
+    displayProducts,
+    renderSingleProduct
 }

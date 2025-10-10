@@ -1,6 +1,8 @@
 import '../assets/css/sidebar.css'
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList, renderSubPage, handleDropdownSelect}) => {
+    const navigate = useNavigate();
     const mgmtOptions = ['Product Management', 'Post Management', 'Sales Management', 'Membership Management'];
     const subPageOptions = ['Display', 'Add'];
 
@@ -8,7 +10,7 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
         <nav>
             <div className="sidebar">
                 <div className="sidebar-upper-section">
-                    <img className="sidebar-chai-logo" src='img/sidebar/logo.png' />
+                    <img className="sidebar-chai-logo" src='/img/sidebar/logo.png' />
 
                     <div className="sidebar-dropdown-section" ref={dropdownRef}>
                         <button 
@@ -24,7 +26,14 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
                                     <div 
                                         key={i} 
                                         className="sidebar-dropdown-item" 
-                                        onClick={() => handleDropdownSelect(option)}>
+                                        onClick={() => {handleDropdownSelect(option)
+
+                                            if (option === mgmtOptions[0]) navigate('/product-mgmt/display');  
+                                            if (option === mgmtOptions[1]) navigate('/post-mgmt/display');
+                                            if (option === mgmtOptions[2]) navigate('/sales-mgmt/display');
+                                            if (option === mgmtOptions[3]) navigate('/membership-mgmt/display');
+
+                                        }}>
                                         
                                         {option}
                                     </div>
@@ -40,9 +49,14 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
                             <button 
                                 key={index}
                                 className={`sidebar-option-button ${subPage === option ? 'active' : ''}`}
-                                onClick={() => renderSubPage(option)}>
+                                onClick={() => { renderSubPage(option);
+                                    
+                                    if(option === subPageOptions[0]) navigate('/product-mgmt/display');
+                                    if(option === subPageOptions[1]) navigate('/product-mgmt/create');
 
-                                <img className={`${(option.charAt(0).toLowerCase() + option.slice(1))}-image`} src={`img/sidebar/${(option.charAt(0).toLowerCase() + option.slice(1))}.png`}/>
+                                }}>
+
+                                <img className={`${(option.charAt(0).toLowerCase() + option.slice(1))}-image`} src={`/img/sidebar/${(option.charAt(0).toLowerCase() + option.slice(1))}.png`}/>
 
                                 {option}
                             </button>
@@ -55,7 +69,7 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
                 <div className="sidebar-lower-section">
                     <button className="logout-button">
                         LOGOUT
-                        <img className="logout-image" src="img/sidebar/logout.png" />
+                        <img className="logout-image" src="/img/sidebar/logout.png" />
                     </button>
                 </div>
             </div>

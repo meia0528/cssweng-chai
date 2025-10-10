@@ -6,7 +6,7 @@ const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productT
                         setSelectedtPrice, selectedQty, setSelectedQty, alert}) => {
     
     return (
-        <main> 
+        <main className='create-product-body'> 
             <div className="product-upload-section">
                 {alert.message && (
                     <div className={`alert-section alert-${alert.type}`}>
@@ -15,14 +15,14 @@ const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productT
                 )}
 
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <button className="btnSubmit" type="submit"> <img src="img/Product-Mgmt/create-product/save.png" /> Save</button>
+                    <button className="btnSubmit" type="submit"> <img src="/img/Product-Mgmt/create-product/save.png" /> Save</button>
 
                     
                     <label className="label">Upload Image</label>
                     <div className="upload-container">    
                         {imagePreviews.map((preview, index) => (
 
-                            <label className="upload-box">
+                            <label className="upload-box" key={index}>
                                 <input  
                                     key={index}
                                     type="file" 
@@ -33,7 +33,7 @@ const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productT
                                 {preview ? (
                                     <img className="preview" src={preview} />
                                 ) : (
-                                    <img className="upload-icon" src="img/Product-Mgmt/create-product/upload.png" />
+                                    <img className="upload-icon" src="/img/Product-Mgmt/create-product/upload.png" />
                                 )}
 
                             </label>

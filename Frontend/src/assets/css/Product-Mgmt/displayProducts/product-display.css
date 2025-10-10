@@ -2,6 +2,12 @@
     margin: 0px;
 }
 
+.display-body{
+    background-color: white;
+    padding-left: 340px;
+    padding-top: 10px;
+}
+
 
 .product-main-area{
     margin-left: 274px;

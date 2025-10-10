@@ -88,8 +88,8 @@ const createProductHook = () => {
             
             setAlert({message: res.data.message, type: 'success'});
             setTimeout(() => {
-                setAlert({ message: '', type: '' });    // hide the alert
-                window.location.reload();               // reload the page after hiding
+                setAlert({ message: '', type: '' });                // hide the alert
+                window.location.href = '/product-mgmt/display';     // navigate to display page
             }, 2000);
             
         } catch (err) {
@@ -97,7 +97,7 @@ const createProductHook = () => {
             const errorMsg = err.response?.data?.message || 'Something went wrong!';
             setAlert({message: errorMsg, type: 'error'});
             setTimeout(() => {
-                setAlert({ message: '', type: '' });    // hide the alert
+                setAlert({ message: '', type: '' });                // hide the alert
             }, 2000);
 
         }

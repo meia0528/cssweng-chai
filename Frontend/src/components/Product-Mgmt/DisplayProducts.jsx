@@ -7,7 +7,7 @@ const DisplayProducts = () => {
     const hook = displayProductsHook();
 
     return (
-        <main>
+        <main className='display-body'>
             <Filtering
                 sortOption={hook.sortOption}
                 displayDropDownList={hook.displayDropDownList}
