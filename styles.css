@@ -391,6 +391,10 @@ body{
     margin-bottom: 60px;
 }
 
+.sdgs-portion p{
+    margin-top: 15px;
+}
+
 .sdg-2, .sdg-4{
     height: 160px;
     width: 400px;
@@ -401,6 +405,7 @@ body{
     font-size: 15px;
     text-align: center;
     padding-right: 20px;
+    align-items: center;
 }
 
 .sdg-2{
@@ -418,4 +423,32 @@ body{
 .sdgs-ending{
     width: 600px;
     text-align: center;
+}
+
+.container-officers{
+    height: 500px;
+    background-color: #BEC7C1;
+    margin: 70px;
+    border-radius: 30px;
+}
+
+.container-other{
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 50px;
+}
+
+.info-portion{
+    width: 500px;
+    text-align: center;
+}
+
+.info-portion h2{
+    background-color: #BCC9D8;
+    padding: 20px 70px;
+    color: #5B6E83;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
