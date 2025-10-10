@@ -42,7 +42,15 @@ const createProduct = async (req, res) => {
 
 
 const displayProducts = async (req, res) => {
+    try {
+        // populate 'type' field in Product model with its referenced document and return the 'name' field under it
+        const products = await Product.find().populate('type', 'name');
+        res.json(products);
 
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({message: 'Server error'});
+    }
 };
 
 

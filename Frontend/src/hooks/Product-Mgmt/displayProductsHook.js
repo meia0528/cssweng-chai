@@ -1,18 +1,26 @@
 import { useState, useRef } from "react";
-import axios from "axios";
 import useFetchProductType from '../../hooks/useFetchProductType.js';
 import useClickOutside from '../../hooks/useClickOutside.js';
+import useFetchProducts from "../useFetchProducts.js";
 
 const displayProductsHook = () => {
     const [sortOption, setSortOption] = useState('Alphabetical');
-    const [productTypes, setProductType] = useState([]);
-    const [productFilter, setProductFilter] = useState([]);
     const dropdownRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
 
+    // retrieved info from backend
+    const [productTypes, setProductType] = useState([]);
+    const [products, setProducts] = useState([]);
+
+    
+    const [productFilter, setProductFilter] = useState([]);
+    const [search, setSearch] = useState();
+
 
     useFetchProductType(setProductType);
+    useFetchProducts(setProducts);
     useClickOutside(dropdownRef, setIsOpen);
+
 
     const displayDropDownList = () => {
         setIsOpen(!isOpen);
@@ -31,8 +39,6 @@ const displayProductsHook = () => {
             setProductFilter((prevFilters) => prevFilters.filter((product) => product.name !== selectedProduct));
     };
 
-
-    
     return {
         sortOption, 
         displayDropDownList,
@@ -40,7 +46,11 @@ const displayProductsHook = () => {
         isOpen,
         dropdownRef,
         productTypes,
-        handleSelectedProductFilter
+        handleSelectedProductFilter,
+        products,
+        productFilter,
+        setSearch,
+        search
     };
 }
 
