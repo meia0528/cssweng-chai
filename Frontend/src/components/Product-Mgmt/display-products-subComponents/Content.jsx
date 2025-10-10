@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useFetchProducts from "../../../hooks/Product-Mgmt/useFetchProducts.js";
 
 const Content = ({setSearch, search, sortOption, productFilter}) => {
+
     const [currentPage, setCurrentPage] = useState(1);
     const { products, totalPages } = useFetchProducts(currentPage, search, sortOption, productFilter);
 
@@ -31,12 +33,21 @@ const Content = ({setSearch, search, sortOption, productFilter}) => {
                     {products.map((product, index) => (
                         <div className="product-overview" key={index}>
                             <div className="image-section">
-                                <img className="product-image" src={`http://localhost:5000/${product.images[0]}`} />
+
+                                <Link to={`/admin/product-mgmt/display/${product._id}`} className="product-link">
+                                    <img className="product-image" src={`http://localhost:5000/${product.images[0]}`} />
+                                </Link>
+
                                 <p className="product-type">{product.type.name}</p>
                             </div>
 
+
                             <div className="product-title-section">
-                                <p className="product-name">{product.title}</p>
+
+                                <Link to={`/admin/product-mgmt/display/${product._id}`} className="product-link">
+                                    <p className="product-name">{product.title}</p>
+                                </Link>                                
+                                
                                 <p className="product-price">&#8369; {product.price}</p>
                             </div>
 

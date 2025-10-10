@@ -2,6 +2,12 @@
     margin: 0px;
 }
 
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 .display-body{
     background-color: white;
     padding-left: 340px;

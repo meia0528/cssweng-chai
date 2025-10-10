@@ -4,19 +4,22 @@ import createProductHook from './hooks/Product-Mgmt/createProductHook.js';
 import Sidebar from "./components/Sidebar.jsx";
 import DisplayProducts from  './components/Product-Mgmt/DisplayProducts.jsx';
 import CreateProduct from './components/Product-Mgmt/CreateProduct.jsx'
+import DisplaySingleProduct from "./components/Product-Mgmt/DisplaySingleProduct.jsx";
+
 
 const Layout = ({ children }) => {
-    const location = useLocation();
     const sidebarHooks = useSidebarHook();
     const createProductHooks = createProductHook();
+    const location = useLocation();
 
     // only show sidebar on these paths
-    const showSidebar = ["/product-mgmt/display", "/product-mgmt/create"].includes(location.pathname);
+    const showSidebar = ["/admin/product-mgmt/display", "/admin/product-mgmt/create"].includes(location.pathname);
 
     return (
         <>
             {showSidebar && (
                 <Sidebar
+                    mgmtPath={sidebarHooks.mgmtPath}
                     management={sidebarHooks.management}
                     isOpen={sidebarHooks.isOpen}
                     subPage={sidebarHooks.subPage}
@@ -36,22 +39,21 @@ const Layout = ({ children }) => {
 
 const App = () => {
     const createProductHooks = createProductHook();
-
+    
     return (
         <Router>
 
             {/* PRODUCT MANAGEMENT */}
             <Routes>
 
-                {/* default page */}
+                {/* default route */}
                 <Route 
                     path="/" 
-                    element={<Navigate to="/product-mgmt/display" replace />} />
-
+                    element={<Navigate to="/admin/product-mgmt/display" replace />} />                
 
                 {/* product display page */}
                 <Route 
-                    path="/product-mgmt/display" 
+                    path="/admin/product-mgmt/display" 
                     element={
                         <Layout>
                             <DisplayProducts />
@@ -61,7 +63,7 @@ const App = () => {
 
                 {/* product create page */}
                 <Route 
-                    path="/product-mgmt/create"
+                    path="/admin/product-mgmt/create"
                     element={
                         <Layout>
                             <CreateProduct
@@ -85,7 +87,13 @@ const App = () => {
                                 alert={createProductHooks.alert} />
                         </Layout>
                     }/>
-            
+
+                
+                <Route 
+                    path="/admin/product-mgmt/display/:id"
+                    element={<DisplaySingleProduct />}/>
+
+        
 
             </Routes>
         </Router>

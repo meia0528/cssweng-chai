@@ -94,7 +94,23 @@ const displayProducts = async (req, res) => {
 
 
 const renderSingleProduct = async (req, res) => {
-    
+    try {
+        const {id} = req.params;
+        const product = await Product.findById(id).populate('type', 'name');
+
+        if (!product) 
+            return res.status(404).json({ message: 'Product not found' });
+
+        res.json({
+            ...product.toObject(),
+            images: product.images.map(img => img.replace(/\\/g, '/'))
+        });
+
+
+    } catch (err) {
+        console.error('Error fetching product:', err);
+        res.status(500).json({ message: 'Server error' });
+    }
 };
 
 

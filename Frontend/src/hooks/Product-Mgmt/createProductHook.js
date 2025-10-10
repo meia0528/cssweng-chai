@@ -89,7 +89,7 @@ const createProductHook = () => {
             setAlert({message: res.data.message, type: 'success'});
             setTimeout(() => {
                 setAlert({ message: '', type: '' });                // hide the alert
-                window.location.href = '/product-mgmt/display';     // navigate to display page
+                window.location.href = '/admin/product-mgmt/display';     // navigate to display page
             }, 2000);
             
         } catch (err) {

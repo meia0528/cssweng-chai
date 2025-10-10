@@ -1,0 +1,58 @@
+.header-section{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0px;
+}
+
+    .chai-logo{
+        width: 250px;
+
+        object-fit: cover;
+        object-position: center;
+
+        margin-left: 70px;
+    }
+
+    .option-section{
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+        align-items: center;
+
+        width: 500px;
+        padding: 0px 70px 0px 60px;
+    }
+
+        .option-section button{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #9E841E;
+            background-color: white;
+
+            border: 2px solid #9E841E;
+            border-radius: 10px;
+
+            padding: 5px 10px 5px 10px;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+
+        .option-section button:hover {
+            background-color: #ebe3c4;
+        }
+
+        .option-section img{
+            width: 22px;
+            margin-right: 8px;
+        }

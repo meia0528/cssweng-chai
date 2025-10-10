@@ -1,10 +1,11 @@
 import '../assets/css/sidebar.css'
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList, renderSubPage, handleDropdownSelect}) => {
+const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDropDownList, renderSubPage, handleDropdownSelect}) => {
     const navigate = useNavigate();
     const mgmtOptions = ['Product Management', 'Post Management', 'Sales Management', 'Membership Management'];
     const subPageOptions = ['Display', 'Add'];
+
 
     return (
         <nav>
@@ -28,10 +29,10 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
                                         className="sidebar-dropdown-item" 
                                         onClick={() => {handleDropdownSelect(option)
 
-                                            if (option === mgmtOptions[0]) navigate('/product-mgmt/display');  
-                                            if (option === mgmtOptions[1]) navigate('/post-mgmt/display');
-                                            if (option === mgmtOptions[2]) navigate('/sales-mgmt/display');
-                                            if (option === mgmtOptions[3]) navigate('/membership-mgmt/display');
+                                            if (option === mgmtOptions[0]) navigate('/admin/product-mgmt/display');  
+                                            if (option === mgmtOptions[1]) navigate('/admin/post-mgmt/display');
+                                            if (option === mgmtOptions[2]) navigate('/admin/sales-mgmt/display');
+                                            if (option === mgmtOptions[3]) navigate('/admin/membership-mgmt/display');
 
                                         }}>
                                         
@@ -51,8 +52,8 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
                                 className={`sidebar-option-button ${subPage === option ? 'active' : ''}`}
                                 onClick={() => { renderSubPage(option);
                                     
-                                    if(option === subPageOptions[0]) navigate('/product-mgmt/display');
-                                    if(option === subPageOptions[1]) navigate('/product-mgmt/create');
+                                    if(option === subPageOptions[0]) navigate(`/admin/${mgmtPath}/display`);
+                                    if(option === subPageOptions[1]) navigate(`/admin/${mgmtPath}/create`);
 
                                 }}>
 
