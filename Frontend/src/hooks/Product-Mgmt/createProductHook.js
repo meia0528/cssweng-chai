@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import useClickOutside from "../useClickOutside.js";
+import useFetchProductType from "../useFetchProductType.js";
 import axios from "axios";
 
 const createProductHook = () => {
@@ -19,23 +20,8 @@ const createProductHook = () => {
     const [selectedType, setSelectedType] = useState('Select an option');    
 
 
-    // useEffect
-    useEffect(() => {
-        const fetchProductTypes = async () => {
-            try {
-                const res = await axios.get("http://localhost:5000/product-mgmt/product-types")
-                setProductTypes(res.data);
-            } catch (err) {
-                console.error("Error fetching product types:", err);
-            }
-        };
-
-        fetchProductTypes();
-    }, []);
-
+    useFetchProductType(setProductTypes);
     useClickOutside(dropdownRef, setIsOpen);
-
-
 
     // functions
     const displayDropDownList = () => {

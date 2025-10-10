@@ -1,0 +1,189 @@
+.product-title-section p{
+    margin: 0px;
+}
+
+.product-main-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 675px;
+    margin-left: 270px;
+    margin-right: 10px;
+}
+
+    .search-bar-section{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        position: relative;
+    }
+
+        .search-bar{
+            padding: 6px 0px 6px 15px;
+            width: 550px;
+            height: 30px;
+
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgb(23, 63, 39);
+
+            border: 2px solid #9E841E;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .searchBtn{
+            position: absolute;
+            right: 13px;
+
+            border: none;
+            background-color: white;
+
+            cursor: pointer;
+        }
+
+            .searchBtn img{
+                width: 20px;
+
+                object-fit: contain;
+                object-position: center;
+            }
+
+    .product-display-grid{
+        display: grid;
+
+        column-gap: 20px;
+        row-gap: 20px;
+
+        margin-top: 10px;
+    }
+
+    @media (max-width: 770px){
+        .product-main-area{
+            display: none;
+        }
+    }
+
+    @media (min-width: 775px){
+        .product-display-grid{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (min-width: 970px) and (max-width: 1250px){
+        .product-display-grid{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (min-width: 1250px){
+        .product-display-grid{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+        .image-section{
+            position: relative;
+        }
+
+            .product-image{
+                width: 100%;
+                height: 170px;
+
+                object-fit: cover;
+                object-position: center;
+
+                background-color: #D5CFB5;
+                border-radius: 10px;
+            }
+
+            .product-type{
+                position: absolute;
+                top: -5px;
+                right: 15px;
+
+                background-color: white;
+                color: #173F27;
+                font-size: 14px;
+                font-family: 'Courier New', Courier, monospace;
+
+                border: 1px solid #9E841E;
+                border-radius: 10px;
+                
+                padding: 3px 5px 3px 5px;
+                
+            }
+
+        .product-title-section{
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 10px;
+        }
+
+            .product-name{
+                font-size: 18.5px;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+                color: #9E841E;
+            }
+
+            .product-price{
+                font-size: 14px;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+                color: #9E841E;                
+            }
+
+        .product-description{
+            font-size: 12px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: justify;
+            color: #9E841E;            
+        }
+    
+    .navigation-area{
+        display: flex;
+        flex-direction: row;
+
+        column-gap: 13px;
+    }
+    
+    .nav-button{
+        background-color: #9E841E;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 14px;
+
+        border: none;
+        border-radius: 5px;
+
+        padding: 8px 10px 8px 10px;
+        cursor: pointer;
+    }
+
+    .round-button{
+        background-color: #E1CD82;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 14px;
+
+        border: none;
+        border-radius: 20px;     
+        padding: 8px 12px 8px 12px;
+
+        cursor: pointer;
+    }
+
+    .round-button.active{
+        background-color: #9E841E;
+    }

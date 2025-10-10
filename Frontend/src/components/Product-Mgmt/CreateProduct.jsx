@@ -1,4 +1,4 @@
-import '../../assets/css/Product-Mgmt/upload.css'
+import '../../assets/css/Product-Mgmt/createProduct/upload.css'
 import createProductHook from '../../hooks/Product-Mgmt/createProductHook.js';
 
 const CreateProduct = () => {
