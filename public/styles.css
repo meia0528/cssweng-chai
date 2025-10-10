@@ -425,6 +425,65 @@ body{
     text-align: center;
 }
 
+.container-challenges-goals{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 120px;
+}
+
+.goals{
+    background-color: #CCE3BA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #173F27;
+    height: 200px;
+    padding-left: 50px;
+    min-width: 1000px;
+}
+
+.goals-header{
+    background-color: #E8EFE3;
+    height: 200px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.goals h2{
+    font-weight: bold;
+}
+
+.goals ul, .challenges ul{
+    padding-top: 18px;
+}
+
+.challenges-header{
+    background-color: #EFE5E3;
+    height: 200px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+.challenges h2{
+    font-weight: bold;
+}
+
+.challenges{
+    background-color: #ECDBD7;
+    display: flex;
+    align-items: center;
+    color: #6C1F1F;
+    height: 200px;
+    min-width: 1000px;
+}
+
 .container-officers{
     height: 500px;
     background-color: #BEC7C1;
