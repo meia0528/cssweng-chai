@@ -1,12 +1,9 @@
 import '../../assets/css/Product-Mgmt/createProduct/upload.css'
-import createProductHook from '../../hooks/Product-Mgmt/createProductHook.js';
 
-const CreateProduct = () => {
-    const {
-        imagePreviews, handleImageChange, handleSubmit, productTypes, displayDropDownList,
-        isOpen, dropdownRef, handleDropdownSelect, selectedType, setSelectedTitle, 
-        selectedTitle, selectedDescription, setSelectedDescription, selectedPrice, 
-        seSelectedtPrice, selectedQty, setSelectedQty, alert} = createProductHook();
+const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productTypes, displayDropDownList, 
+                        isOpen, dropdownRef, handleDropdownSelect, selectedType, setSelectedTitle, 
+                        selectedTitle, selectedDescription, setSelectedDescription, selectedPrice, 
+                        setSelectedtPrice, selectedQty, setSelectedQty, alert}) => {
     
     return (
         <main> 
@@ -90,7 +87,7 @@ const CreateProduct = () => {
                         required
                         className="input-text"
                         value={selectedPrice}
-                        onChange={(e) => seSelectedtPrice(e.target.value)} />
+                        onChange={(e) => setSelectedtPrice(e.target.value)} />
 
                     <label className="label">Quantity</label>
                     <input 

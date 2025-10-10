@@ -1,10 +1,7 @@
 import '../../../assets/css/Product-Mgmt/displayProducts/product-filtering.css'
-import displayProductsHook from '../../../hooks/Product-Mgmt/displayProductsHook.js';
 
-const Filtering = () => {
+const Filtering = ({sortOption, displayDropDownList, handleDropDownSelect, isOpen, dropdownRef, productTypes, handleSelectedProductFilter}) => {
     const sortOptionList = ['Alphabetical', 'Price: High to Low', 'Price: Low to High'];
-    const {sortOption, displayDropDownList, handleDropDownSelect, isOpen, dropdownRef, 
-            productTypes, handleSelectedProductFilter} = displayProductsHook();
 
     return (
         <nav>

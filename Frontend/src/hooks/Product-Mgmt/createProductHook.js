@@ -15,7 +15,7 @@ const createProductHook = () => {
     const [selectedTitle, setSelectedTitle] = useState('');
     const [imageFiles, setImageFiles] = useState([null, null, null, null]);
     const [selectedDescription, setSelectedDescription] = useState('');
-    const [selectedPrice, seSelectedtPrice] = useState();
+    const [selectedPrice, setSelectedtPrice] = useState();
     const [selectedQty, setSelectedQty] = useState();
     const [selectedType, setSelectedType] = useState('Select an option');    
 
@@ -121,7 +121,7 @@ const createProductHook = () => {
         selectedDescription, 
         setSelectedDescription,
         selectedPrice, 
-        seSelectedtPrice,
+        setSelectedtPrice,
         selectedQty, 
         setSelectedQty,
         alert

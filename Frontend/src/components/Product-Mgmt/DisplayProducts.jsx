@@ -4,20 +4,25 @@ import Filtering from './display-products-subComponents/Filtering.jsx';
 import Content from './display-products-subComponents/Content.jsx';
 
 const DisplayProducts = () => {
-    const {products, setSearch, search} = displayProductsHook();
+    const hook = displayProductsHook();
 
     return (
         <main>
-            <Filtering/>
-            <Content 
-                products={
-                    (search ? (
-                        products.filter((product, item) => ((product.title).toLowerCase()).includes(search.toLowerCase()))
-                    ) : products)
-                }
-                setSearch={setSearch}
-                search={search}/>
-
+            <Filtering
+                sortOption={hook.sortOption}
+                displayDropDownList={hook.displayDropDownList}
+                handleDropDownSelect={hook.handleDropDownSelect}
+                isOpen={hook.isOpen}
+                dropdownRef={hook.dropdownRef}
+                productTypes={hook.productTypes}
+                handleSelectedProductFilter={hook.handleSelectedProductFilter}
+            />
+            <Content
+                setSearch={hook.setSearch}
+                search={hook.search}
+                productFilter={hook.productFilter}
+                sortOption={hook.sortOption}
+            />
         </main>
     );
 }

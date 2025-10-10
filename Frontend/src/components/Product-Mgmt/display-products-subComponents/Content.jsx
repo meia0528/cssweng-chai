@@ -1,4 +1,15 @@
-const Content = ({products, setSearch, search}) => {
+import { useState } from "react";
+import useFetchProducts from "../../../hooks/useFetchProducts.js";
+
+const Content = ({setSearch, search, sortOption, productFilter}) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const { products, totalPages } = useFetchProducts(currentPage, search, sortOption, productFilter);
+
+    const goToPage = (page) => {
+        if (page < 1 || page > totalPages) return;
+        setCurrentPage(page);
+    };
+    
     return (
         <main>
             <div className="product-main-area">
@@ -36,11 +47,23 @@ const Content = ({products, setSearch, search}) => {
                 </div>
 
                 <div className="navigation-area">
-                    <button className="nav-button">Previous</button>
-                    <button className="round-button active">1</button>
-                    <button className="round-button">2</button>
-                    <button className="round-button">3</button>
-                    <button className="nav-button">Next</button>
+                    <button 
+                        className="nav-button"
+                        onClick={() => goToPage(currentPage - 1)}>
+                        
+                        &lt;
+                    </button>
+
+                    <button
+                        className={`round-button`}>
+                        {currentPage}
+                    </button>
+
+                    <button 
+                        className="nav-button"
+                        onClick={() => goToPage(currentPage + 1)}>
+                        &gt;
+                    </button>
                 </div>
             </div>
         

@@ -42,16 +42,57 @@ const createProduct = async (req, res) => {
 
 
 const displayProducts = async (req, res) => {
-    try {
-        // populate 'type' field in Product model with its referenced document and return the 'name' field under it
-        const products = await Product.find().populate('type', 'name');
-        res.json(products);
+    try {        
+        let { page = 1, limit = 6, search = '', sort, types } = req.query;
+        page = parseInt(page);
+        limit = parseInt(limit);
 
+
+        // search filter
+        const query = {};
+        if (search) query.title = { $regex: search, $options: 'i' };
+
+        // product type filter
+        if (types) {
+            const typeNames = types.split(',');
+            const typeDocs = await ProductType.find({ name: { $in: typeNames } });
+            const typeIds = typeDocs.map(t => t._id);
+            query.type = { $in: typeIds };
+        }
+
+        // sorting
+        let sortQuery = {};
+        switch (sort) {
+            case 'Alphabetical':
+                sortQuery = { title: 1 };
+                break;
+            case 'Price: Low to High':
+                sortQuery = { price: 1 };
+                break;
+            case 'Price: High to Low':
+                sortQuery = { price: -1 };
+                break;
+            default:
+                sortQuery = { title: 1 };
+        }
+
+
+        const totalProducts = await Product.countDocuments(query);
+
+        const products = await Product.find(query)
+            .populate('type', 'name')
+            .sort(sortQuery)
+            .skip((page - 1) * limit)
+            .limit(limit);
+
+        res.json({ products, totalPages: Math.ceil(totalProducts / limit), currentPage: page});
     } catch (error) {
-        console.error(error)
-        res.status(500).json({message: 'Server error'});
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
     }
 };
+
+
 
 
 module.exports = {

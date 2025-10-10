@@ -1,24 +1,19 @@
 import { useState, useRef } from "react";
 import useFetchProductType from '../../hooks/useFetchProductType.js';
 import useClickOutside from '../../hooks/useClickOutside.js';
-import useFetchProducts from "../useFetchProducts.js";
 
 const displayProductsHook = () => {
     const dropdownRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
 
-    // retrieved info from backend
-    const [productTypes, setProductType] = useState([]);
-    const [products, setProducts] = useState([]);
 
-    
+    const [productTypes, setProductType] = useState([]);
     const [sortOption, setSortOption] = useState('Alphabetical');
     const [productFilter, setProductFilter] = useState([]);
     const [search, setSearch] = useState();
 
 
     useFetchProductType(setProductType);
-    useFetchProducts(setProducts);
     useClickOutside(dropdownRef, setIsOpen);
 
 
@@ -47,11 +42,10 @@ const displayProductsHook = () => {
         dropdownRef,
         productTypes,
         handleSelectedProductFilter,
-        products,
         productFilter,
         setSearch,
         search
     };
-}
+};
 
 export default displayProductsHook;
