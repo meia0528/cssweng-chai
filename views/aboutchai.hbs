@@ -1,0 +1,120 @@
+<!--Navigation Bar-->
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src= "images/logo.png" alt = "CHAI-Taguig Logo" id = "logo-pic">
+        </a>
+        
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about-us">About Us</a>
+
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Our Beneficiaries
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/batang-gift-of-love">Batang Gift of Love</a>
+                <a class="dropdown-item" href="#">Likhang Maharlika</a>
+                <a class="dropdown-item" href="#">Gift Global</a>
+            </div>
+        </li>
+
+        <a class="nav-link">Donate Now</a>
+
+        <li class="nav-item dropdown">
+            <img src="images/EN.png" alt="EN" id= "EN">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                EN
+            </a>
+        </li>
+    </div>
+</nav>
+<!--Our History-->
+<div class="container-history">
+    <iframe width="100%" height="100%"
+        src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+    </iframe>
+
+    <div class="history-text">
+        <h2>Our History</h2>
+        <p>(CHAI) is a non-stock, non-profit organization that assists poor Filipinos by bringing various opportunities that can help them improve their living conditions. Established in January 2008, it has targeted poverty issues including access to good quality education, livelihood, improved health and nutrition, and responsible harnessing and utilization of natural resources.  CHAI greatly believes in empowering the people through capacity building for a more sustainable development and values the ideas and concerns of all stakeholders. It believes in character development as a significant tool in bringing forth justice, equality, and transparency among communities effecting improvement of the quality of life.</p>
+    </div>
+</div>
+    
+<!--SDGs-->
+<div class="container-sdgs">
+    <div class="sdgs-header">
+        <h1>CHAI-TAGUIG IN ACTION</h1>
+        <h4>"Turning vision into action through sustainable development."</h4>
+    </div>
+
+    <div class="sdgs-portion">
+        <div class="sdg-2">
+            <img src="images/sdg_2.png" alt="SDG 2">
+            <p>Through our livelihood initiatives, we envision empowered communities capable of sustaining their own needs and improving the quality of life.</p>
+        </div>
+
+        <div class="sdg-4">
+            <img src="images/sdg_4.png" alt="SDG 4">
+            <p>Believing in education as the foundation of growth, we aim to cultivate learners who are equipped with the skills, values, and confidence to shape a better future.</p>
+        </div>
+    </div>
+
+    <div class="sdgs-ending">
+        <p>At CHAI-Taguig, we work towards a world wherein no individual gets left behind. Together, we are guided by our commitment to serve and build communities of hope, learning, and opportunity for all women and children.</p>
+    </div>
+    
+</div>
+
+<!-- Officers -->
+<div class="container-officers">
+  <div class="officer-title">Our Officers</div>
+  <div class="officer-scroll">
+    {{#each officers}}
+      <div class="officer-card">
+        <img src="{{this.image}}" alt="{{this.image_alt}}">
+        <h3>{{this.name}}</h3>
+        <h4>{{this.position}}</h4>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<!--Location & Other Info-->
+<div class="container-other">
+    <div class="info-portion">
+        <h2>About Us</h2>
+        <p>At CHAI, we believe that Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+    </div>
+    <div class="location-portion">
+        <div class="embed-map-responsive">
+            <div class="embed-map-container">
+                <iframe class="embed-map-frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&height=400&hl=en&q=barangay%20maharlika&t=&z=17&ie=UTF8&iwloc=B&output=embed">
+                </iframe><a href="https://sprunkiretake.net" style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">sprunki retake</a>
+            </div>
+        </div>
+        <h4>Maharlika Village, Taguig, Metro Manila</h4>
+    </div>
+</div>
+
+
+<!--Footer-->
+<div class="footer">
+    <div class="footer-left">
+        <p>Taguig Community Hope <br> Alternative Incorporated</p>
+        <a href="/about-us"> About Us</a>
+        <a href="#"> INSERT LINK</a>
+        <a href="#"> Back to Top</a>
+    </div>
+
+    <img src="images/chai_footerlogo.png" alt="CHAI-Taguig Footer Logo">
+
+    <div class="footer-right">
+        <div class="footer-fb">
+            <i class="bi bi-facebook"></i>
+            <p>FOLLOW CHAI TAGUIG<br>ON FACEBOOK</p>
+        </div>
+        <button class="btn btn-success">DONATE NOW!</button>
+    </div>
+</div>
