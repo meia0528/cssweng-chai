@@ -7,23 +7,23 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
     return (
         <nav>
             <div className="sidebar">
-                <div className="upper-section">
-                    <img className="chai-logo" src='img/sidebar/logo.png' />
+                <div className="sidebar-upper-section">
+                    <img className="sidebar-chai-logo" src='img/sidebar/logo.png' />
 
-                    <div className="dropdown-section" ref={dropdownRef}>
+                    <div className="sidebar-dropdown-section" ref={dropdownRef}>
                         <button 
-                            className="dropdown-button" 
+                            className="sidebar-dropdown-button" 
                             onClick={displayDropDownList}>
                                 
                             {management}
                         </button>
 
                         {isOpen && (
-                            <div className="dropdown-list">
+                            <div className="sidebar-dropdown-list">
                                 {mgmtOptions.map((option, i) => (
                                     <div 
                                         key={i} 
-                                        className="dropdown-item" 
+                                        className="sidebar-dropdown-item" 
                                         onClick={() => handleDropdownSelect(option)}>
                                         
                                         {option}
@@ -34,12 +34,12 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
 
                     </div>
                 
-                    <div className="option-section">
+                    <div className="sidebar-option-section">
 
                         {subPageOptions.map((option, index) => (
                             <button 
                                 key={index}
-                                className={`option-button ${subPage === option ? 'active' : ''}`}
+                                className={`sidebar-option-button ${subPage === option ? 'active' : ''}`}
                                 onClick={() => renderSubPage(option)}>
 
                                 <img className={`${(option.charAt(0).toLowerCase() + option.slice(1))}-image`} src={`img/sidebar/${(option.charAt(0).toLowerCase() + option.slice(1))}.png`}/>
@@ -52,7 +52,7 @@ const Sidebar = ({management, isOpen, subPage, dropdownRef, displayDropDownList,
 
                 </div>
 
-                <div className="lower-section">
+                <div className="sidebar-lower-section">
                     <button className="logout-button">
                         LOGOUT
                         <img className="logout-image" src="img/sidebar/logout.png" />

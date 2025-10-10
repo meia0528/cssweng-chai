@@ -18,7 +18,7 @@
     
 }
 
-    .upper-section{
+    .sidebar-upper-section{
         display: flex;
         flex-direction: column;
 
@@ -28,7 +28,7 @@
         align-items: center;
     }
 
-        .chai-logo{
+        .sidebar-chai-logo{
             width: 250px;
 
             object-fit: contain;
@@ -37,7 +37,7 @@
             margin-bottom: 46px;
         }
 
-        .dropdown-section {
+        .sidebar-dropdown-section {
             position: relative;
             
             width: 275px;
@@ -47,7 +47,7 @@
             color: rgb(23, 63, 39);
         }
 
-        .dropdown-button {
+        .sidebar-dropdown-button {
             width: 100%;
             padding: 10px;
             
@@ -66,12 +66,12 @@
             cursor: pointer;
         }
 
-        .dropdown-button:focus{
+        .sidebar-dropdown-button:focus{
             outline: none;
             box-shadow: 0 0 0 2px rgb(23, 63, 39);          
         }
 
-        .dropdown-list {
+        .sidebar-dropdown-list {
             position: absolute;
             top: 100%;
             left: 0;
@@ -87,7 +87,7 @@
         }
 
 
-        .dropdown-item {
+        .sidebar-dropdown-item {
             padding: 10px;
             border-radius: 10px;
             color: rgb(23, 63, 39);
@@ -96,18 +96,18 @@
             text-wrap: nowrap;
         }
 
-        .dropdown-item:hover {
+        .sidebar-dropdown-item:hover {
             background: rgb(200, 200, 200);
         }
 
 
-        .option-section{
+        .sidebar-option-section{
             width: 100%;
 
             margin-top: 50px;
         }
 
-        .option-button{
+        .sidebar-option-button{
             position: relative;
             display: flex;
             flex-direction: row;
@@ -131,11 +131,11 @@
             cursor: pointer;
         }
 
-        .option-button.active{
+        .sidebar-option-button.active{
             background-color: rgb(33, 80, 39, 0.3);
         }
 
-        .option-button.active::after{
+        .sidebar-option-button.active::after{
             content: '';
             position: absolute;
             top: 0;
@@ -146,7 +146,7 @@
             pointer-events: none;
         }
 
-        .option-section img{
+        .sidebar-option-section img{
             object-fit: cover;
             object-position: center;
         }
@@ -166,7 +166,7 @@
         }
 
 
-    .lower-section{
+    .sidebar-lower-section{
         display: flex;
         flex: row;
 
