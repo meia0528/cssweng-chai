@@ -27,7 +27,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
-// Serve static files from uploads/
+// anything inside the uploads folder can be accessed through a public URL; useful for frontend task
 app.use("/uploads", express.static("uploads"));
 
 // Routes

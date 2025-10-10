@@ -26,7 +26,11 @@ const CreateProduct = () => {
                         {imagePreviews.map((preview, index) => (
 
                             <label className="upload-box">
-                                <input name='images' type="file" accept="image/*" onChange={(e) => handleImageChange(e, index)} />
+                                <input  
+                                    type="file" 
+                                    accept="image/*" 
+                                    onChange={(e) => handleImageChange(e, index)} 
+                                />
 
                                 {preview ? (
                                     <img className="preview" src={preview} />
@@ -42,6 +46,7 @@ const CreateProduct = () => {
                     <label className="label">Product Name</label>
                     <input 
                         type="text" 
+                        required
                         className="product-input-text"
                         value={selectedTitle}
                         onChange={(e) => setSelectedTitle(e.target.value)} />
@@ -49,6 +54,7 @@ const CreateProduct = () => {
                     <label className="label">Product Description</label>
                     <textarea 
                         className="input-textarea"
+                        required
                         value={selectedDescription}
                         onChange={(e) => setSelectedDescription(e.target.value)}></textarea>
 
@@ -81,6 +87,7 @@ const CreateProduct = () => {
                     <label className="label">Php Price</label>
                     <input 
                         type="text" 
+                        required
                         className="input-text"
                         value={selectedPrice}
                         onChange={(e) => seSelectedtPrice(e.target.value)} />
@@ -88,6 +95,7 @@ const CreateProduct = () => {
                     <label className="label">Quantity</label>
                     <input 
                         type="text" 
+                        required
                         className="input-text" 
                         value={selectedQty}
                         onChange={(e) => setSelectedQty(e.target.value)}/>

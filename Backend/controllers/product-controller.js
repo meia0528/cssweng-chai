@@ -14,9 +14,6 @@ const getProductTypes = async (req, res) => {
 
 const createProduct = async (req, res) => {
     try {
-        console.log("Files received:", req.files);
-        console.log("Body received:", req.body);
-
         const { title, description, price, quantity, type } = req.body;
         const imagePaths = req.files.map((file) => file.path);
 

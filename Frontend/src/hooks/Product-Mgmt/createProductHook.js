@@ -72,11 +72,20 @@ const createProductHook = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // return true if imageFiles do have content
+        const hasImage = imageFiles.some((file) => file !== null);
+        if(!hasImage){
+            setAlert({message: 'Please upload at least one image.', type: 'error'});
+            setTimeout(() => setAlert({message: '', type: ''}), 2000);
+            return;     // stop submission
+        }
+
         const formData = new FormData();
         imageFiles.forEach((file) => {
             if(file) formData.append('images', file);
         });
 
+        // same name when using req.body in backend
         formData.append('title', selectedTitle);
         formData.append('description', selectedDescription);
         formData.append('price', selectedPrice);
@@ -85,20 +94,26 @@ const createProductHook = () => {
 
 
         try {
+            // pass the formData to backend
             const res = await axios.post('http://localhost:5000/product-mgmt/create', formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
 
+            
             setAlert({message: res.data.message, type: 'success'});
-        } catch (err) {
-            const errorMsg = err.response?.data?.message || 'Something went wrong!';
-            setAlert({message: errorMsg, type: 'error'});
-        } finally {
-            // wait 2 seconds before hiding the alert and reloading
             setTimeout(() => {
                 setAlert({ message: '', type: '' });    // hide the alert
                 window.location.reload();               // reload the page after hiding
             }, 2000);
+            
+        } catch (err) {
+
+            const errorMsg = err.response?.data?.message || 'Something went wrong!';
+            setAlert({message: errorMsg, type: 'error'});
+            setTimeout(() => {
+                setAlert({ message: '', type: '' });    // hide the alert
+            }, 2000);
+
         }
     }
 
