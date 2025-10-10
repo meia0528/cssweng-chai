@@ -32,22 +32,10 @@
             background-color: white;
         }
 
-        .searchBtn{
-            position: absolute;
-            right: 13px;
-
-            border: none;
-            background-color: white;
-
-            cursor: pointer;
+        .search-bar:focus{
+            outline: none;
+            box-shadow: 0 0 0 2px #c9b76b;
         }
-
-            .searchBtn img{
-                width: 20px;
-
-                object-fit: contain;
-                object-position: center;
-            }
 
 
     .product-display-grid {

@@ -4,7 +4,6 @@ import useClickOutside from '../../hooks/useClickOutside.js';
 import useFetchProducts from "../useFetchProducts.js";
 
 const displayProductsHook = () => {
-    const [sortOption, setSortOption] = useState('Alphabetical');
     const dropdownRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -13,6 +12,7 @@ const displayProductsHook = () => {
     const [products, setProducts] = useState([]);
 
     
+    const [sortOption, setSortOption] = useState('Alphabetical');
     const [productFilter, setProductFilter] = useState([]);
     const [search, setSearch] = useState();
 

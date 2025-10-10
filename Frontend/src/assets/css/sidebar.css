@@ -66,6 +66,11 @@
             cursor: pointer;
         }
 
+        .dropdown-button:focus{
+            outline: none;
+            box-shadow: 0 0 0 2px rgb(23, 63, 39);          
+        }
+
         .dropdown-list {
             position: absolute;
             top: 100%;
