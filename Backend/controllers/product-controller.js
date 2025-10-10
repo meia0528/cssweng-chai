@@ -50,7 +50,7 @@ const displayProducts = async (req, res) => {
 
         // search filter
         const query = {};
-        if (search) query.title = { $regex: search, $options: 'i' };
+        if (search) query.title = { $regex: search, $options: 'i' };    // case-insensitive
 
         // product type filter
         if (types) {
