@@ -92,7 +92,11 @@ const UpdateProduct = () => {
                                 </label>
 
                                 <label className="stats-input">
-                                    Qty: <input type="text" value={hook.product?.quantity} />
+                                    Qty: <input 
+                                            required
+                                            type="text" 
+                                            value={hook.selectedQty || ''}
+                                            onChange={(e) => hook.setSelectedQty(e.target.value)} />
                                 </label>
                             </div>
 
