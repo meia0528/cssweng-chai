@@ -4,7 +4,7 @@ import displaySingleProductHook from '../../hooks/Product-Mgmt/displaySingleProd
 
 const DisplaySingleProduct = () => {
 
-    const {product} = displaySingleProductHook();
+    const {product, lSizePhoto, handleLargeDisplayPhoto} = displaySingleProductHook();
 
     return (
         <>
@@ -23,13 +23,14 @@ const DisplaySingleProduct = () => {
             <main>
                 <div className="product-overview-grid">
                     <div className="product-image-section">
-                        <img className="main-display-img" src="./img/product/product-1.jpg" />
+                        <img className="main-display-img" src={`http://localhost:5000/${lSizePhoto}`} />
 
                         <div className="product-images-section">
                             {product.images?.map((image, index) => (
                                 <img
                                     key={index} 
                                     src={`http://localhost:5000/${image}`} 
+                                    onClick={(e) => handleLargeDisplayPhoto(image)}
                                 />
                             ))}
                         </div>

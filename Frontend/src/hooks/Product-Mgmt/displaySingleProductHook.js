@@ -6,12 +6,19 @@ import useFetchSingleProduct from "./useFetchSingleProduct.js";
 const displaySingleProductHook = () => {
     const {id} = useParams();
     const [product, setProduct] = useState([]);
+    const [lSizePhoto, setLSizePhoto] = useState(null);
     
-    useFetchSingleProduct(id, setProduct);
+    useFetchSingleProduct(id, setProduct, setLSizePhoto);
+
+    const handleLargeDisplayPhoto = (photoPath) => {
+        setLSizePhoto(photoPath)
+    };
 
 
     return {
-        product
+        product,
+        lSizePhoto,
+        handleLargeDisplayPhoto
     };
 };
 
