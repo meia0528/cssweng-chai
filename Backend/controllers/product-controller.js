@@ -152,10 +152,10 @@ const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, price, quantity, type } = req.body;
-        const newImagePaths = req.files.map((file) => file.path);
+        const newImagePaths = req.files?.map((file) => file.path) || [];
         
         // check if previous images are in an array, otherwise make it to array
-        const existingImages = Array.isArray(req.body.existingImages) ? (req.body.existingImages) : (req.body.existingImages ? [req.body.existingImages] : []);
+        const prevImagesToKeep = Array.isArray(req.body.prevImagesToKeep) ? (req.body.prevImagesToKeep) : (req.body.prevImagesToKeep ? [req.body.prevImagesToKeep] : []);
 
 
         // request from database
@@ -166,12 +166,13 @@ const updateProduct = async (req, res) => {
         if (!productType) return res.status(400).json({ message: `Invalid product type: ${type}` });
 
 
-
         // determine which previous images are no longer kept
-        const imagesToDelete = prevProduct.images.filter(
-            (oldPath) => !existingImages.includes(oldPath)
-        );
+        const imagesToDelete = prevProduct.images.filter((path) => (
+            !prevImagesToKeep.includes(path)
+        ))        
 
+
+        /*
         // delete old images not kept
         for (const imagePath of imagesToDelete) {
             const fullPath = path.join(process.cwd(), imagePath);
@@ -180,10 +181,12 @@ const updateProduct = async (req, res) => {
                 if (err) console.error(`Failed to delete image: ${err.message}`);
                 else console.log(`Deleted old image`);
             });
-        }
+        }        
+        
+        */
         
         
-        const updatedImages = [...existingImages, ...newImagePaths];
+        const updatedImages = [...prevImagesToKeep, ...newImagePaths];
 
         const updatedProduct = await Product.findByIdAndUpdate(
             id,

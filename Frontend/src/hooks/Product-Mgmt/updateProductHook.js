@@ -17,7 +17,7 @@ const updateProductHook = () => {
     const [productTypes, setProductTypes] = useState([]);
 
     const [selectedTitle, setSelectedTitle] = useState(product?.title);
-    const [prevImageFiles, setPrevImageFiles] = useState([product?.images]);
+    const [prevImageFiles, setPrevImageFiles] = useState([]);
     const [selectedDescription, setSelectedDescription] = useState(product?.description);
     const [selectedPrice, setSelectedtPrice] = useState(product?.price);
     const [selectedQty, setSelectedQty] = useState(product?.quantity);
@@ -32,7 +32,7 @@ const updateProductHook = () => {
         if (product?.price) setSelectedtPrice(product.price)
         if (product?.quantity) setSelectedQty(product.quantity)
         if (product?.type?.name) setSelectedType(product.type.name)
-        if (product?.images) setPrevImageFiles(product.images)
+        if (Array.isArray(product?.images)) setPrevImageFiles(product.images);
     }, [product]);
 
 
@@ -81,14 +81,18 @@ const updateProductHook = () => {
         formData.append("type", selectedType);
 
 
-        if (prevImageFiles && prevImageFiles.length > 0) {
-            prevImageFiles.forEach((imgPath) => {
-                if (imgPath) formData.append("existingImages", imgPath);
+        const imagesNotDeleted = prevImageFiles.filter((path, index) => (
+            newImageFiles[index] === null
+        ));
+
+        if (imagesNotDeleted.length > 0) {
+            imagesNotDeleted.forEach((imgPath) => {
+                if (imgPath) formData.append("prevImagesToKeep", imgPath);
             });
         }
 
 
-        // new image uploaded
+        // new uploaded images
         if (newImageFiles && newImageFiles.length > 0) {
             newImageFiles.forEach((file) => {
                 if (file) formData.append("images", file);

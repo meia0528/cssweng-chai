@@ -91,7 +91,7 @@
 
 
 .displaySingleProduct .alert-section {
-    position: fixed; /* stays visible even if user scrolls */
+    position: fixed; 
     top: 20px;
     right: 55px;
 
