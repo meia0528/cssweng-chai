@@ -12,11 +12,13 @@ const DisplaySingleProduct = () => {
     return (
         <>
             <nav>
-                {alert.message && (
-                    <div className={`alert-section alert-${alert.type}`}>
-                        {alert.message}
-                    </div>
-                )}
+                <div className='displaySingleProduct'>
+                    {alert.message && (
+                        <div className={`alert-section alert-${alert.type}`}>
+                            {alert.message}
+                        </div>
+                    )}                    
+                </div>
 
                 <div className="header-section">
                     <img className="chai-logo" src="/img/Product-Mgmt/product-overview/logo.png" />

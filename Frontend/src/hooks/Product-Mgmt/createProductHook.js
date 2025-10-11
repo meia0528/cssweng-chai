@@ -92,7 +92,6 @@ const createProductHook = () => {
             setTimeout(() => {
                 setAlert({ message: '', type: '' });                // hide the alert
                 navigate('/admin/product-mgmt/display');
-                
             }, 2000);
             
         } catch (err) {

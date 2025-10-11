@@ -6,7 +6,6 @@ const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDro
     const mgmtOptions = ['Product Management', 'Post Management', 'Sales Management', 'Membership Management'];
     const subPageOptions = ['Display', 'Add'];
 
-
     return (
         <nav>
             <div className="sidebar">

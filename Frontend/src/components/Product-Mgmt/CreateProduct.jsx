@@ -8,11 +8,13 @@ const CreateProduct = () => {
     return (
         <main className='create-product-body'> 
             <div className="product-upload-section">
-                {hook.alert.message && (
-                    <div className={`alert-section alert-${hook.alert.type}`}>
-                        {hook.alert.message}
-                    </div>
-                )}
+                <div className='createProduct'>
+                    {hook.alert.message && (
+                        <div className={`alert-section alert-${hook.alert.type}`}>
+                            {hook.alert.message}
+                        </div>
+                    )}                    
+                </div>
 
                 <form onSubmit={hook.handleSubmit} encType="multipart/form-data">
                     <button className="btnSubmit" type="submit"> <img src="/img/Product-Mgmt/create-product/save.png" /> Save</button>

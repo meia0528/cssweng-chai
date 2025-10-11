@@ -58,15 +58,15 @@
         }
 
 
-.alert-section {
+.displaySingleProduct .alert-section {
     position: fixed; /* stays visible even if user scrolls */
     top: 20px;
     right: 55px;
 
-    width: 210px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     
     padding: 20px 20px;
@@ -76,20 +76,20 @@
     color: #fff;
 }
 
-.alert-success {
+.displaySingleProduct .alert-success {
     background-color: rgb(33, 80, 39);
 }
 
-.alert-error {
+.displaySingleProduct .alert-error {
     background-color: #dc3545;
 }
 
-.alert-warning {
+.displaySingleProduct .alert-warning {
     background-color: #ffc107;
     color: #333;
 }
 
-.alert-info {
+.displaySingleProduct .alert-info {
     background-color: #17a2b8;
 }
 

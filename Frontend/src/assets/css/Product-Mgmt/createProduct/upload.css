@@ -224,7 +224,7 @@
         }    
 
 
-.alert-section {
+.createProduct .alert-section {
     position: fixed; /* stays visible even if user scrolls */
     top: 20px;
     right: 20px;
@@ -238,20 +238,20 @@
     color: #fff;
 }
 
-.alert-success {
+.createProduct .alert-success {
       background-color: rgb(33, 80, 39);
 }
 
-.alert-error {
+.createProduct .alert-error {
     background-color: #dc3545;
 }
 
-.alert-warning {
+.createProduct .alert-warning {
     background-color: #ffc107;
     color: #333;
 }
 
-.alert-info {
+.createProduct .alert-info {
     background-color: #17a2b8;
 }
 

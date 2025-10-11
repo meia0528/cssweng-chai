@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import useClickOutside from "./useClickOutside.js";
+import useSubPageLocation from "./useSubpageLocation.js";
 
 const useSidebar = () => {
     let mgmtPath = '';
@@ -8,6 +9,7 @@ const useSidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
     
+
     switch(management){
         case 'Product Management':
             mgmtPath = 'product-mgmt';
@@ -24,6 +26,7 @@ const useSidebar = () => {
     }
 
     useClickOutside(dropdownRef, setIsOpen);
+    useSubPageLocation(setSubPage);
 
     const displayDropDownList = () => {
         setIsOpen(!isOpen);
