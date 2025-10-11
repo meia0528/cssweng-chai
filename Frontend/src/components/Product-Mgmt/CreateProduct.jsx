@@ -1,33 +1,33 @@
 import '../../assets/css/Product-Mgmt/createProduct/upload.css'
+import createProductHook from '../../hooks/Product-Mgmt/createProductHook.js';
 
-const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productTypes, displayDropDownList, 
-                        isOpen, dropdownRef, handleDropdownSelect, selectedType, setSelectedTitle, 
-                        selectedTitle, selectedDescription, setSelectedDescription, selectedPrice, 
-                        setSelectedtPrice, selectedQty, setSelectedQty, alert}) => {
-    
+const CreateProduct = () => {
+                            
+    const hook = createProductHook();
+
     return (
         <main className='create-product-body'> 
             <div className="product-upload-section">
-                {alert.message && (
-                    <div className={`alert-section alert-${alert.type}`}>
-                        {alert.message}
+                {hook.alert.message && (
+                    <div className={`alert-section alert-${hook.alert.type}`}>
+                        {hook.alert.message}
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <form onSubmit={hook.handleSubmit} encType="multipart/form-data">
                     <button className="btnSubmit" type="submit"> <img src="/img/Product-Mgmt/create-product/save.png" /> Save</button>
 
                     
                     <label className="label">Upload Image</label>
                     <div className="upload-container">    
-                        {imagePreviews.map((preview, index) => (
+                        {hook.imagePreviews.map((preview, index) => (
 
                             <label className="upload-box" key={index}>
                                 <input  
                                     key={index}
                                     type="file" 
                                     accept="image/*" 
-                                    onChange={(e) => handleImageChange(e, index)} 
+                                    onChange={(e) => hook.handleImageChange(e, index)} 
                                 />
 
                                 {preview ? (
@@ -46,32 +46,32 @@ const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productT
                         type="text" 
                         required
                         className="product-input-text"
-                        value={selectedTitle}
-                        onChange={(e) => setSelectedTitle(e.target.value)} />
+                        value={hook.selectedTitle}
+                        onChange={(e) => hook.setSelectedTitle(e.target.value)} />
 
                     <label className="label">Product Description</label>
                     <textarea 
                         className="input-textarea"
                         required
-                        value={selectedDescription}
-                        onChange={(e) => setSelectedDescription(e.target.value)}></textarea>
+                        value={hook.selectedDescription}
+                        onChange={(e) => hook.setSelectedDescription(e.target.value)}></textarea>
 
                     <label className="label">Product Type</label>
-                    <div className="dropdown-section" ref={dropdownRef}>
+                    <div className="dropdown-section" ref={hook.dropdownRef}>
                         <button 
                             type="button" 
                             className="dropdown-button"
-                            onClick={displayDropDownList}>
-                            {selectedType}
+                            onClick={hook.displayDropDownList}>
+                            {hook.selectedType}
                         </button>
                         
-                        {isOpen && (
+                        {hook.isOpen && (
                             <div className="dropdown-list">
-                                {productTypes.map((type, index) => (
+                                {hook.productTypes.map((type, index) => (
                                     <div 
                                         key={index} 
                                         className="dropdown-item"
-                                        onClick={(e) => handleDropdownSelect(type.name)}>
+                                        onClick={(e) => hook.handleDropdownSelect(type.name)}>
                                             
                                         {type.name}
                                     </div>
@@ -87,16 +87,16 @@ const CreateProduct = ({imagePreviews, handleImageChange, handleSubmit, productT
                         type="text" 
                         required
                         className="input-text"
-                        value={selectedPrice}
-                        onChange={(e) => setSelectedtPrice(e.target.value)} />
+                        value={hook.selectedPrice}
+                        onChange={(e) => hook.setSelectedtPrice(e.target.value)} />
 
                     <label className="label">Quantity</label>
                     <input 
                         type="text" 
                         required
                         className="input-text" 
-                        value={selectedQty}
-                        onChange={(e) => setSelectedQty(e.target.value)}/>
+                        value={hook.selectedQty}
+                        onChange={(e) => hook.setSelectedQty(e.target.value)}/>
 
                 </form>
             </div>

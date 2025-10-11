@@ -1,21 +1,38 @@
 import '../../assets/css/Product-Mgmt/displaySingleProduct/header.css'
 import '../../assets/css/Product-Mgmt/displaySingleProduct/content.css'
 import displaySingleProductHook from '../../hooks/Product-Mgmt/displaySingleProductHook.js';
+import deleteProductHook from '../../hooks/Product-Mgmt/deleteProductHook.js';
+import { useNavigate } from 'react-router-dom';
 
 const DisplaySingleProduct = () => {
-
+    const navigate = useNavigate();
     const {product, lSizePhoto, handleLargeDisplayPhoto} = displaySingleProductHook();
+    const {alert, deleteProduct} = deleteProductHook();
 
     return (
         <>
             <nav>
+                {alert.message && (
+                    <div className={`alert-section alert-${alert.type}`}>
+                        {alert.message}
+                    </div>
+                )}
+
                 <div className="header-section">
                     <img className="chai-logo" src="/img/Product-Mgmt/product-overview/logo.png" />
 
                     <div className="option-section">
-                        <button> <img src="/img/Product-Mgmt/product-overview/return.png" /> Return</button>
-                        <button> <img src="/img/Product-Mgmt/product-overview/update.png" /> Update</button>
-                        <button> <img src="/img/Product-Mgmt/product-overview/delete.png" /> Delete</button>
+                        <button onClick={() => navigate(-1)}> 
+                            <img src="/img/Product-Mgmt/product-overview/return.png"/> Return
+                        </button>
+                        
+                        <button> 
+                            <img src="/img/Product-Mgmt/product-overview/update.png" /> Update
+                        </button>
+                        
+                        <button onClick={deleteProduct}> 
+                            <img src="/img/Product-Mgmt/product-overview/delete.png" /> Delete
+                        </button>
                     </div>
                 </div>
             </nav>

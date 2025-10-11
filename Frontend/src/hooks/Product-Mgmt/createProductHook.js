@@ -1,9 +1,11 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import useClickOutside from "../useClickOutside.js";
 import useFetchProductType from "../Product-Mgmt/useFetchProductType.js";
 import axios from "axios";
 
 const createProductHook = () => {
+    const navigate = useNavigate();
 
     const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);
     const [productTypes, setProductTypes] = useState([]);
@@ -89,7 +91,8 @@ const createProductHook = () => {
             setAlert({message: res.data.message, type: 'success'});
             setTimeout(() => {
                 setAlert({ message: '', type: '' });                // hide the alert
-                window.location.href = '/admin/product-mgmt/display';     // navigate to display page
+                navigate('/admin/product-mgmt/display');
+                
             }, 2000);
             
         } catch (err) {

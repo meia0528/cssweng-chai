@@ -95,28 +95,29 @@
             font-size: 16px;
         }
 
-.product-overview-grid .product-description-section {
-    height: 310px; 
 
-    color: #9E841E;
-    font-size: 16px;
-    background-color: white;
-    text-align: justify;
-    line-height: 23px;
+        .product-overview-grid .product-description-section {
+            height: 310px; 
 
-    border: 3px solid #9E841E;
-    border-radius: 10px;
+            color: #9E841E;
+            font-size: 16px;
+            background-color: white;
+            text-align: justify;
+            line-height: 23px;
 
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 0px 15px 11px 15px;
+            border: 3px solid #9E841E;
+            border-radius: 10px;
 
-    display: -webkit-box;           /* ✅ required for line clamp */
-    -webkit-line-clamp: 13;         /* ✅ number of visible lines */
-    -webkit-box-orient: vertical;   /* ✅ required orientation */
-    overflow: hidden;               /* ✅ hides extra text */
-    text-overflow: ellipsis;        /* ✅ adds ellipsis */
-}
+            margin-top: 10px;
+            margin-bottom: 30px;
+            padding: 0px 15px 11px 15px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 13; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
 
 
         .product-overview-grid .product-type-section{

@@ -1,5 +1,7 @@
 const Product = require('../models/product-model.js');
 const ProductType = require('../models/productType-model.js')
+const path = require('path')
+const fs = require('fs')
 
 const getProductTypes = async (req, res) => {
     try {
@@ -114,9 +116,42 @@ const renderSingleProduct = async (req, res) => {
 };
 
 
+const deleteSingleProduct = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const product = await Product.findById(id);
+        if (!product) 
+            return res.status(404).json({ message: "Product not found." });
+        
+        await Product.findByIdAndDelete(id);
+
+        // delete the images saved in uploads folder
+        if (product.images && product.images.length > 0) {
+            for (const imagePath of product.images) {
+                const fullPath = path.join(process.cwd(), imagePath);
+
+                fs.unlink(fullPath, (err) => {
+                    if (err) console.error("Failed to delete image:", imagePath, err.message);
+                    else console.log("Deleted image:", imagePath);
+                });
+            }
+        }
+
+        
+        res.status(200).json({ message: "Product deleted successfully!" });
+
+    } catch (err) {
+        console.error("Error deleting product:", err);
+        res.status(500).json({ message: "Failed to delete product." });
+    }
+};
+
+
 module.exports = {
     getProductTypes,
     createProduct,
     displayProducts,
-    renderSingleProduct
+    renderSingleProduct,
+    deleteSingleProduct
 }
