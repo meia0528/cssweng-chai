@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import DisplayProducts from  './components/Product-Mgmt/DisplayProducts.jsx';
 import CreateProduct from './components/Product-Mgmt/CreateProduct.jsx'
 import DisplaySingleProduct from "./components/Product-Mgmt/DisplaySingleProduct.jsx";
+import UpdateProduct from "./components/Product-Mgmt/UpdateProduct.jsx";
 
 
 const Layout = ({ children }) => {
@@ -67,12 +68,17 @@ const App = () => {
                         </Layout>
                     }/>
                     
-                
+
+                {/* product display page */}
                 <Route 
                     path="/admin/product-mgmt/display/:id"
                     element={<DisplaySingleProduct />}/>
 
-        
+                
+                {/* product update page */}
+                <Route 
+                    path="/admin/product-mgmt/update/:id"
+                    element={<UpdateProduct />}/>
 
             </Routes>
         </Router>

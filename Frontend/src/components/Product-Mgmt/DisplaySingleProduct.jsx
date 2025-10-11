@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 
 const DisplaySingleProduct = () => {
     const navigate = useNavigate();
-    const {product, lSizePhoto, handleLargeDisplayPhoto} = displaySingleProductHook();
-    const {alert, deleteProduct} = deleteProductHook();
+    const {id, product, lSizePhoto, handleLargeDisplayPhoto} = displaySingleProductHook();
+    const {alert, deleteProduct, showConfirm, setShowConfirm} = deleteProductHook();
 
     return (
         <>
-            <nav>
+            <nav className='deleteProduct'>
                 <div className='displaySingleProduct'>
                     {alert.message && (
                         <div className={`alert-section alert-${alert.type}`}>
@@ -28,13 +28,28 @@ const DisplaySingleProduct = () => {
                             <img src="/img/Product-Mgmt/product-overview/return.png"/> Return
                         </button>
                         
-                        <button> 
+
+                        <button onClick={() => navigate(`/admin/product-mgmt/update/${id}`)}> 
                             <img src="/img/Product-Mgmt/product-overview/update.png" /> Update
                         </button>
                         
-                        <button onClick={deleteProduct}> 
+
+                        <button onClick={() => setShowConfirm(true)}> 
                             <img src="/img/Product-Mgmt/product-overview/delete.png" /> Delete
                         </button>
+
+                        {showConfirm && (
+                            <div className="modal">
+                                <div className="modal-content">
+                                    <p>Are you sure you want to delete this product?</p>
+
+                                    <div className='modal-content-btnSection'>
+                                        <button onClick={() => {deleteProduct(), setShowConfirm(false)}}>Yes, Delete</button>
+                                        <button onClick={() => setShowConfirm(false)}>No, Cancel</button>
+                                    </div>
+                                </div>
+                            </div>                            
+                        )}
                     </div>
                 </div>
             </nav>

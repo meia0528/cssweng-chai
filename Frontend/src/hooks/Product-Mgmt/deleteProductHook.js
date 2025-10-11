@@ -6,6 +6,7 @@ const deleteProductHook = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [alert, setAlert] = useState({ message: '', type: ''})
+    const [showConfirm, setShowConfirm] = useState(false);
     
     const deleteProduct = async () => {
         try {
@@ -29,7 +30,9 @@ const deleteProductHook = () => {
 
     return {
         alert,
-        deleteProduct
+        deleteProduct,
+        showConfirm,
+        setShowConfirm
     }
 }
 

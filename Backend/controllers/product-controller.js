@@ -148,10 +148,72 @@ const deleteSingleProduct = async (req, res) => {
 };
 
 
+const updateProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, description, price, quantity, type } = req.body;
+        const newImagePaths = req.files.map((file) => file.path);
+        
+        // check if previous images are in an array, otherwise make it to array
+        const existingImages = Array.isArray(req.body.existingImages) ? (req.body.existingImages) : (req.body.existingImages ? [req.body.existingImages] : []);
+
+
+        // request from database
+        const prevProduct = await Product.findById(id);
+        if (!prevProduct) return res.status(404).json({ message: "Product not found." });
+
+        const productType = await ProductType.findOne({ name: type });
+        if (!productType) return res.status(400).json({ message: `Invalid product type: ${type}` });
+
+
+
+        // determine which previous images are no longer kept
+        const imagesToDelete = prevProduct.images.filter(
+            (oldPath) => !existingImages.includes(oldPath)
+        );
+
+        // delete old images not kept
+        for (const imagePath of imagesToDelete) {
+            const fullPath = path.join(process.cwd(), imagePath);
+
+            fs.unlink(fullPath, (err) => {
+                if (err) console.error(`Failed to delete image: ${err.message}`);
+                else console.log(`Deleted old image`);
+            });
+        }
+        
+        
+        const updatedImages = [...existingImages, ...newImagePaths];
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+            id,
+            {
+                title,
+                description,
+                price,
+                quantity,
+                type: productType._id,
+                images: updatedImages,
+            }, {
+                new: true, runValidators: true 
+            }
+        );
+
+        if(updatedProduct)
+            res.json({ message: "Product updated successfully!" });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server error updating product." });
+    }
+};
+
+
 module.exports = {
     getProductTypes,
     createProduct,
     displayProducts,
     renderSingleProduct,
-    deleteSingleProduct
+    deleteSingleProduct,
+    updateProduct
 }

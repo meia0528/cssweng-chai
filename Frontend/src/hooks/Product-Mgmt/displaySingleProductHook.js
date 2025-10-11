@@ -16,6 +16,7 @@ const displaySingleProductHook = () => {
 
 
     return {
+        id,
         product,
         lSizePhoto,
         handleLargeDisplayPhoto

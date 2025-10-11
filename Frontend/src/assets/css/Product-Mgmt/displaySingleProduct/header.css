@@ -8,7 +8,39 @@
     margin: 0px;
 }
 
-    .chai-logo{
+    .deleteProduct .modal {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex; justify-content: center; align-items: center;
+    }
+
+    .deleteProduct .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+        .deleteProduct .modal-content p{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            font-weight: bold;
+            color: #173F27;
+
+            margin-bottom: 25px;
+        }
+
+        .deleteProduct .modal-content-btnSection{
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-around;
+            align-items: center;
+        }
+
+
+    .deleteProduct .chai-logo{
         width: 250px;
 
         object-fit: cover;
@@ -17,7 +49,7 @@
         margin-left: 70px;
     }
 
-    .option-section{
+    .deleteProduct .option-section{
         display: flex;
         flex-direction: row;
 
@@ -28,7 +60,7 @@
         padding: 0px 70px 0px 60px;
     }
 
-        .option-section button{
+        .deleteProduct .option-section button{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -48,11 +80,11 @@
             cursor: pointer;
         }
 
-        .option-section button:hover {
+        .deleteProduct .option-section button:hover {
             background-color: #ebe3c4;
         }
 
-        .option-section img{
+        .deleteProduct .option-section img{
             width: 22px;
             margin-right: 8px;
         }
