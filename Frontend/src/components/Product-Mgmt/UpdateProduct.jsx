@@ -9,6 +9,13 @@ const UpdateProduct = () => {
     
     return (
         <main className='updateProduct'>
+  
+            {hook.alert.message && (
+                <div className={`alert-section alert-${hook.alert.type}`}>
+                    {hook.alert.message}
+                </div>
+            )}           
+
             <form onSubmit={hook.handleUpdate} encType="multipart/form-data">
                 <nav>
                     <div className="header-section">

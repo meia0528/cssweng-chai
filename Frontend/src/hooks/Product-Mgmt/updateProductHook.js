@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useFetchSingleProduct from "./useFetchSingleProduct.js";
 import useFetchProductType from "./useFetchProductType.js";
 import useClickOutside from "../useClickOutside.js";
 
 const updateProductHook = () => {
+    const navigate = useNavigate();
+
     const {id} = useParams();
     const dropdownRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
@@ -99,14 +101,20 @@ const updateProductHook = () => {
                 formData, { headers: {"Content-Type": "multipart/form-data"} }
             );
 
-            navigate("/admin/product-mgmt/display");
+            setAlert({ message: response.data.message, type: 'success' });
+            setTimeout(() => {
+                setAlert({ message: '', type: '' });                // hide the alert
+                navigate('/admin/product-mgmt/display');
+            }, 2000);
+
         } catch (error) {
             console.error("Error updating product:", error);
+            setAlert({ message: response.data.message, type: 'error' });
+            setTimeout(() => {
+                setAlert({ message: '', type: '' });                // hide the alert
+            }, 2000);
         }
     };
-
-
-
 
 
 
@@ -133,7 +141,8 @@ const updateProductHook = () => {
         selectedType,
         prevImageFiles,
         handleImageChange,
-        imagePreviews
+        imagePreviews,
+        alert
     };
 };
 

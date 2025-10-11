@@ -200,7 +200,7 @@ const updateProduct = async (req, res) => {
         );
 
         if(updatedProduct)
-            res.json({ message: "Product updated successfully!" });
+            res.status(200).json({ message: "Product updated successfully!" });
 
     } catch (err) {
         console.error(err);
