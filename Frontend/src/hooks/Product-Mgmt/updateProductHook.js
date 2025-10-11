@@ -84,6 +84,7 @@ const updateProductHook = () => {
         const imagesNotDeleted = prevImageFiles.filter((path, index) => (
             newImageFiles[index] === null
         ));
+        
 
         if (imagesNotDeleted.length > 0) {
             imagesNotDeleted.forEach((imgPath) => {

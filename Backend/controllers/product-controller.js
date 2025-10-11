@@ -17,7 +17,7 @@ const getProductTypes = async (req, res) => {
 const createProduct = async (req, res) => {
     try {
         const { title, description, price, quantity, type } = req.body;
-        const imagePaths = req.files.map((file) => file.path);
+        const imagePaths = req.files.map((file) => file.path.replace(/\\/g, '/')) || [];
 
         const productType = await ProductType.findOne({ name: type });
         if (!productType)
@@ -152,8 +152,9 @@ const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, price, quantity, type } = req.body;
-        const newImagePaths = req.files?.map((file) => file.path) || [];
-        
+        const newImagePaths = req.files.map((file) => file.path.replace(/\\/g, '/')) || [];
+
+
         // check if previous images are in an array, otherwise make it to array
         const prevImagesToKeep = Array.isArray(req.body.prevImagesToKeep) ? (req.body.prevImagesToKeep) : (req.body.prevImagesToKeep ? [req.body.prevImagesToKeep] : []);
 
@@ -167,24 +168,27 @@ const updateProduct = async (req, res) => {
 
 
         // determine which previous images are no longer kept
-        const imagesToDelete = prevProduct.images.filter((path) => (
+        const imagesToDelete = Array.from(prevProduct.images).filter((path) => (
             !prevImagesToKeep.includes(path)
         ))        
 
-
-        /*
+        
         // delete old images not kept
         for (const imagePath of imagesToDelete) {
-            const fullPath = path.join(process.cwd(), imagePath);
+            // remove leading 'uploads/' prevent duplicate in the code after this
+            const filename = imagePath.replace('uploads/', '');
 
-            fs.unlink(fullPath, (err) => {
-                if (err) console.error(`Failed to delete image: ${err.message}`);
-                else console.log(`Deleted old image`);
-            });
-        }        
-        
-        */
-        
+            // build absolute path from project root
+            const fullPath = path.join(process.cwd(), 'uploads', filename);
+
+            try {
+                await fs.promises.unlink(fullPath);
+                console.log(`Deleted old image: ${imagePath}`);
+            } catch (err) {
+                console.error(`Failed to delete image ${err.message}:`);
+            }
+        }
+
         
         const updatedImages = [...prevImagesToKeep, ...newImagePaths];
 
