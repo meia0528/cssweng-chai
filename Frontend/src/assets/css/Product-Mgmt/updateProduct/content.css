@@ -1,3 +1,7 @@
+body{
+    margin: 0px;
+}
+
 .updateProduct .product-overview-grid{
     display: grid;
     grid-template-columns: 850px 1fr;
@@ -83,11 +87,13 @@
 
     .updateProduct .product-details{
         width: 500px;
+        height: 570px;
         margin-left: 65px;
         padding: 20px 30px 20px 30px;
 
         background-color: rgb(158, 132, 30, 0.8);
         border-radius: 20px;
+        
     }
 
         .updateProduct .label{
@@ -95,11 +101,8 @@
         }
 
         .updateProduct .product-title-input{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-
-            width: 470px;
+            width: 100%;
+            box-sizing: border-box;
 
             color: #9E841E;
             font-size: 22px;
@@ -141,12 +144,14 @@
         }
 
 
-        .updateProduct .product-description{
+        .updateProduct .product-description-section{
             height: 280px;
-            width: 470px;
+            width: 100%;
+            box-sizing: border-box;
 
             color: #9E841E;
             font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
             background-color: white;
             text-align: justify;
             line-height: 23px;
@@ -155,8 +160,8 @@
             border-radius: 10px;
 
             margin-top: 10px;
-            margin-bottom: 20px;
-            padding: 10px 15px 10px 15px;
+            margin-bottom: 35px;
+            padding: 20px 20px;
         }
 
         
@@ -220,7 +225,7 @@
 
 
     .updateProduct .product-title-input:focus,
-    .updateProduct .product-description:focus,
+    .updateProduct .product-description-section:focus,
     .updateProduct .stats-input input:focus,
     .updateProduct .product-details .dropdown-button:focus {
         outline: none;

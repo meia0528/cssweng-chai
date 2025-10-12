@@ -103,7 +103,7 @@ const UpdateProduct = () => {
                             
                             <label className="label">Product Description</label>
                             <textarea 
-                                className="product-description" 
+                                className="product-description-section" 
                                 value={hook.selectedDescription || ''}
                                 onChange={(e) => hook.setSelectedDescription(e.target.value)}>
                             </textarea>

@@ -1,18 +1,18 @@
-.product-overview-grid{
+.displaySingleProduct .product-overview-grid{
     display: grid;
     grid-template-columns: 850px 1fr;
 
     margin-top: 10px;
 }
 
-    .product-overview-grid .product-image-section{
+    .displaySingleProduct .product-image-section{
         display: flex;
         flex-direction: column;
         
         align-items: center;
     }
 
-        .product-overview-grid .main-display-img{
+        .displaySingleProduct .main-display-img{
             width: 700px;
             height: 450px;
 
@@ -23,7 +23,7 @@
             margin-bottom: 30px;
         }
 
-    .product-overview-grid .product-images-section{
+    .displaySingleProduct .product-images-section{
         display: flex;
         flex-direction: row;
 
@@ -37,7 +37,7 @@
         padding: 15px 30px 16px 30px;
     }
 
-        .product-overview-grid .product-images-section img{
+        .displaySingleProduct .product-images-section img{
             width: 80px;
             height: 70px;
 
@@ -48,14 +48,14 @@
             cursor: pointer;
         }
         
-        .product-overview-grid .product-images-section img:active{
+        .displaySingleProduct .product-images-section img:active{
             transform: translate(2px, 2px); 
             transition: transform 0.1s, box-shadow 0.1s;
             box-shadow: none
         }
 
 
-    .product-overview-grid .product-details{
+    .displaySingleProduct .product-details{
         width: 500px;
         margin-left: 65px;
         padding: 40px 30px 20px 30px;
@@ -64,7 +64,7 @@
         border-radius: 20px;
     }
 
-    .product-overview-grid .product-title-section {
+    .displaySingleProduct .product-title-section {
         color: #9E841E;
         font-size: 22px;
         font-weight: bold;
@@ -85,7 +85,7 @@
     }
 
 
-        .product-overview-grid .product-stats-section{
+        .displaySingleProduct .product-stats-section{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -96,7 +96,7 @@
         }
 
 
-        .product-overview-grid .product-description-section {
+        .displaySingleProduct .product-description-section {
             height: 310px; 
 
             color: #9E841E;
@@ -120,7 +120,7 @@
         }
 
 
-        .product-overview-grid .product-type-section{
+        .displaySingleProduct .product-type-section{
             display: inline-block;
 
             color: #9E841E;

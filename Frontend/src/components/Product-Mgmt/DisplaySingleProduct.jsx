@@ -11,14 +11,12 @@ const DisplaySingleProduct = () => {
 
     return (
         <>
-            <nav className='deleteProduct'>
-                <div className='displaySingleProduct'>
-                    {alert.message && (
-                        <div className={`alert-section alert-${alert.type}`}>
-                            {alert.message}
-                        </div>
-                    )}                    
-                </div>
+            <nav className='displaySingleProduct-nav'>
+                {alert.message && (
+                    <div className={`alert-section alert-${alert.type}`}>
+                        {alert.message}
+                    </div>
+                )}                    
 
                 <div className="header-section">
                     <img className="chai-logo" src="/img/Product-Mgmt/product-overview/logo.png" />
@@ -54,7 +52,7 @@ const DisplaySingleProduct = () => {
                 </div>
             </nav>
 
-            <main>
+            <main className='displaySingleProduct'>
                 <div className="product-overview-grid">
                     <div className="product-image-section">
                         <img className="main-display-img" src={`http://localhost:5000/${lSizePhoto}`} />

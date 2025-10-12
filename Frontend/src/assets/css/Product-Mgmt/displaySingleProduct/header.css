@@ -1,28 +1,29 @@
-.header-section{
+.displaySingleProduct-nav .header-section{
     display: flex;
     flex-direction: row;
 
     justify-content: space-between;
     align-items: center;
 
-    margin: 0px;
+    margin-bottom: 20px;
+    margin-right: 18px;
 }
 
-    .deleteProduct .modal {
+    .displaySingleProduct-nav .modal {
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
         background: rgba(0, 0, 0, 0.5);
         display: flex; justify-content: center; align-items: center;
     }
 
-    .deleteProduct .modal-content {
+    .displaySingleProduct-nav .modal-content {
         background: white;
         padding: 20px;
         border-radius: 10px;
         text-align: center;
     }
 
-        .deleteProduct .modal-content p{
+        .displaySingleProduct-nav .modal-content p{
             font-family: 'Courier New', Courier, monospace;
             font-size: 16px;
             font-weight: bold;
@@ -31,7 +32,7 @@
             margin-bottom: 25px;
         }
 
-        .deleteProduct .modal-content-btnSection{
+        .displaySingleProduct-nav .modal-content-btnSection{
             display: flex;
             flex-direction: row;
 
@@ -40,7 +41,7 @@
         }
 
 
-    .deleteProduct .chai-logo{
+    .displaySingleProduct-nav .chai-logo{
         width: 250px;
 
         object-fit: cover;
@@ -49,7 +50,7 @@
         margin-left: 70px;
     }
 
-    .deleteProduct .option-section{
+    .displaySingleProduct-nav .option-section{
         display: flex;
         flex-direction: row;
 
@@ -60,7 +61,7 @@
         padding: 0px 70px 0px 60px;
     }
 
-        .deleteProduct .option-section button{
+        .displaySingleProduct-nav .option-section button{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -80,17 +81,17 @@
             cursor: pointer;
         }
 
-        .deleteProduct .option-section button:hover {
+        .displaySingleProduct-nav .option-section button:hover {
             background-color: #ebe3c4;
         }
 
-        .deleteProduct .option-section img{
+        .displaySingleProduct-nav .option-section img{
             width: 22px;
             margin-right: 8px;
         }
 
 
-.displaySingleProduct .alert-section {
+.displaySingleProduct-nav .alert-section {
     position: fixed; 
     top: 20px;
     right: 55px;
@@ -108,20 +109,20 @@
     color: #fff;
 }
 
-.displaySingleProduct .alert-success {
+.displaySingleProduct-nav .alert-success {
     background-color: rgb(33, 80, 39);
 }
 
-.displaySingleProduct .alert-error {
+.displaySingleProduct-nav .alert-error {
     background-color: #dc3545;
 }
 
-.displaySingleProduct .alert-warning {
+.displaySingleProduct-nav .alert-warning {
     background-color: #ffc107;
     color: #333;
 }
 
-.displaySingleProduct .alert-info {
+.displaySingleProduct-nav .alert-info {
     background-color: #17a2b8;
 }
 
