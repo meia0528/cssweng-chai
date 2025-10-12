@@ -26,7 +26,6 @@ app.get('/about-us', async(req, res) => {
     try {
         const officers = await Officer.find().lean();
         res.render('aboutchai', { Title: 'About Us', officers });
-        //console.log(officers);
     } catch(err) {
         res.status(500).json({ error: err.message });
     }
@@ -35,6 +34,14 @@ app.get('/about-us', async(req, res) => {
 
 app.get('/batang-gift-of-love', (req, res) => {
   res.render('bgl', { Title: 'Batang Gift of Love' });
+});
+
+app.get('/likhang-maharlika', (req, res) => {
+  res.render('lm', { Title: 'Likhang Maharlika' });
+});
+
+app.get('/gift-global', (req, res) => {
+  res.render('gg', { Title: 'Gift Global' });
 });
 
 app.listen(port, () => {

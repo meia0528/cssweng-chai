@@ -171,20 +171,12 @@ body{
     font-size: 35px;
 }
 
-.mission h2{
+.mission h2, .mission p{
     color: #173F27;
 }
 
-.mission p{
-    color: #628667;
-}
-
-.vision h2{
+.vision h2, .vision p{
     color: #986800;
-}
-
-.vision p{
-    color: #AFA040;
 }
 
 .our-beneficiaries-text{
@@ -295,9 +287,14 @@ body{
     height: 140px;
 }
 
-.footer-left, .footer-left a, .footer-right{
+.footer-left, .footer-left a, .footer-right a, .footer-right{
     color: white;
     font-size: 14px;
+}
+
+.footer-right a{
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .footer p, .footer-right .btn-success{
@@ -317,6 +314,7 @@ body{
 
 .footer-fb i {
     font-size: 25px;
+    margin-top: 8px;
 }
 
 .footer-right .btn-success{
@@ -547,12 +545,12 @@ body{
     font-size: 26px;
 }
 
-.officer-card h3, .officer-card h4{
+.officer-card h3, .officer-card h5{
     text-align: center;
     color: #133A18;
 }
 
-.officer-card h4{
+.officer-card h5{
     font-style: italic;
 }
 
