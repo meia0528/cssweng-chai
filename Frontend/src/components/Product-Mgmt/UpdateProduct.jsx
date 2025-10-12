@@ -52,17 +52,27 @@ const UpdateProduct = () => {
                                             onChange={(e) => hook.handleImageChange(e, index)}
                                         />
 
+
                                         {hook.imagePreviews[index] ? (
                                             <img className="preview" src={`${hook.imagePreviews[index]}`} />
                                         ) : (
 
-                                            hook.prevImageFiles[index] ? (
-                                                <img className="preview" src={`http://localhost:5000/${hook.prevImageFiles[index]}`} />
+                                            hook.prevImages[index] ? (
+                                                <img className="preview" src={`http://localhost:5000/${hook.prevImages[index]}`} />
                                             ) : (
                                                 <img className="upload-icon" src="/img/Product-Mgmt/update-product/upload.png" />
                                             )
 
                                         )}
+
+
+                                        <button 
+                                            key={index}
+                                            type='button'
+                                            className='removepicBtn'
+                                            onClick={() => hook.handleRemovedImage(index)}>
+                                            X
+                                        </button>                                        
 
                                     </label>                                    
                                 ))}

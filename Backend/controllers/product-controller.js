@@ -152,11 +152,32 @@ const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, price, quantity, type } = req.body;
-        const newImagePaths = req.files.map((file) => file.path.replace(/\\/g, '/')) || [];
 
 
-        // check if previous images are in an array, otherwise make it to array
-        const prevImagesToKeep = Array.isArray(req.body.prevImagesToKeep) ? (req.body.prevImagesToKeep) : (req.body.prevImagesToKeep ? [req.body.prevImagesToKeep] : []);
+        const newImagePaths = Object.keys(req.files || {})
+            .filter((key) => key.startsWith("images"))
+            .map((key) => {
+                const index = parseInt(key.replace("images", ""), 10);              // removes "images" from the string and converts the remaining part {index} to a number
+                const file = req.files[key][0];                                     // gets the first file from that field
+                if (!file) return null;                                             // return null if no file
+                return { index, path: file.path.replace(/\\/g, "/") };
+            })
+                .filter(Boolean)                                                    // remove any nulls
+                .sort((a, b) => a.index - b.index);                                 // sort based on index number
+
+
+        const prevImagesToKeep = Object.keys(req.body)
+            .filter((key) => key.startsWith("prevImagesToKeep"))                    // gets all the field names from the request body and keep only the keys that start with "prevImagesToKeep"
+            .map((key) => {
+                const index = parseInt(key.replace("prevImagesToKeep", ""), 10);    // removes "prevImagesToKeep" from the string and converts the remaining part {index} to a number
+                return { index: index, path: req.body[key] };
+
+            }).sort((a, b) => a.index - b.index);                                   // sort based on index number
+
+
+
+        // check if it is an array, otherwise convert it to array
+        const prevImagesToDelete = Array.isArray(req.body.prevImagesToDelete) ? (req.body.prevImagesToDelete) : (req.body.prevImagesToDelete ? [req.body.prevImagesToDelete] : []);            
 
 
         // request from database
@@ -167,14 +188,9 @@ const updateProduct = async (req, res) => {
         if (!productType) return res.status(400).json({ message: `Invalid product type: ${type}` });
 
 
-        // determine which previous images are no longer kept
-        const imagesToDelete = Array.from(prevProduct.images).filter((path) => (
-            !prevImagesToKeep.includes(path)
-        ))        
-
         
         // delete old images not kept
-        for (const imagePath of imagesToDelete) {
+        for (const imagePath of prevImagesToDelete) {
             // remove leading 'uploads/' prevent duplicate in the code after this
             const filename = imagePath.replace('uploads/', '');
 
@@ -190,7 +206,16 @@ const updateProduct = async (req, res) => {
         }
 
         
-        const updatedImages = [...prevImagesToKeep, ...newImagePaths];
+        // updated images
+        let updatedImages = [];
+        for (let i = 0; i < 4; i++) {
+            const newImg = newImagePaths.find(img => img.index === i);
+            const prevKeepImg = prevImagesToKeep.find(img => img.index === i);
+
+            if (newImg) updatedImages.push(newImg.path);
+            else if (prevKeepImg) updatedImages.push(prevKeepImg.path);
+        }
+        
 
         const updatedProduct = await Product.findByIdAndUpdate(
             id,

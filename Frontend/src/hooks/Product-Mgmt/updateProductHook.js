@@ -17,12 +17,13 @@ const updateProductHook = () => {
     const [productTypes, setProductTypes] = useState([]);
 
     const [selectedTitle, setSelectedTitle] = useState(product?.title);
-    const [prevImageFiles, setPrevImageFiles] = useState([]);
+    const [prevImages, setPrevImages] = useState([]);
     const [selectedDescription, setSelectedDescription] = useState(product?.description);
     const [selectedPrice, setSelectedtPrice] = useState(product?.price);
     const [selectedQty, setSelectedQty] = useState(product?.quantity);
     const [selectedType, setSelectedType] = useState(product?.type?.name);
 
+    const [prevDeleteImages, setPrevDeleteImages] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);
     const [newImageFiles, setNewImageFiles] = useState([null, null, null, null]);
 
@@ -32,7 +33,7 @@ const updateProductHook = () => {
         if (product?.price) setSelectedtPrice(product.price)
         if (product?.quantity) setSelectedQty(product.quantity)
         if (product?.type?.name) setSelectedType(product.type.name)
-        if (Array.isArray(product?.images)) setPrevImageFiles(product.images);
+        if (Array.isArray(product?.images)) setPrevImages(product.images);
     }, [product]);
 
 
@@ -66,7 +67,29 @@ const updateProductHook = () => {
         };
 
         reader.readAsDataURL(file);                 // raw image data loaded into memory, encoded as a string
-    };    
+    };
+
+
+    const handleRemovedImage = (index) => {
+        // delete preview
+        const newPreviews = [...imagePreviews];
+        newPreviews[index] = null;
+        setImagePreviews(newPreviews);
+
+        // delete 'previous' new selected file
+        const newFiles = [...newImageFiles];
+        newFiles[index] = null
+        setNewImageFiles(newFiles);        
+
+        // save the deleted previous selected image; content is path not file
+        const newImagesToDelete = [...prevDeleteImages, prevImages[index]];
+        setPrevDeleteImages(newImagesToDelete);
+
+        // delete the corresponding previous images; this will serve as the remaining previous images
+        const newPrevImage = [...prevImages];
+        newPrevImage[index] = null;
+        setPrevImages(newPrevImage)
+    }
 
 
     const handleUpdate = async (e) => {
@@ -79,24 +102,26 @@ const updateProductHook = () => {
         formData.append("price", selectedPrice);
         formData.append("quantity", selectedQty);
         formData.append("type", selectedType);
-
-
-        const imagesNotDeleted = prevImageFiles.filter((path, index) => (
-            newImageFiles[index] === null
-        ));
         
 
-        if (imagesNotDeleted.length > 0) {
-            imagesNotDeleted.forEach((imgPath) => {
-                if (imgPath) formData.append("prevImagesToKeep", imgPath);
+        if (prevImages.length > 0) {
+            prevImages.forEach((imgPath, index) => {
+                if (imgPath) formData.append(`prevImagesToKeep${index}`, imgPath);
             });
+        }
+
+
+        if(prevDeleteImages.length > 0){
+            prevDeleteImages.forEach((imgPath) => {
+                if (imgPath) formData.append(`prevImagesToDelete`, imgPath);
+            })
         }
 
 
         // new uploaded images
         if (newImageFiles && newImageFiles.length > 0) {
-            newImageFiles.forEach((file) => {
-                if (file) formData.append("images", file);
+            newImageFiles.forEach((file, index) => {
+                if (file) formData.append(`images${index}`, file);
             });
         }
 
@@ -126,15 +151,12 @@ const updateProductHook = () => {
     return {
         product,
         lSizePhoto,
-        handleUpdate,
-        productTypes,
-        dropdownRef,
         isOpen,
         setIsOpen,
         handleDropdownSelect,
         setLSizePhoto, 
         setSelectedTitle, 
-        setPrevImageFiles, 
+        setPrevImages, 
         setSelectedtPrice, 
         setSelectedQty, 
         setSelectedType,
@@ -144,10 +166,12 @@ const updateProductHook = () => {
         selectedPrice,
         selectedQty,
         selectedType,
-        prevImageFiles,
+        prevImages,
         handleImageChange,
         imagePreviews,
-        alert
+        alert,
+        handleRemovedImage,
+        handleUpdate
     };
 };
 

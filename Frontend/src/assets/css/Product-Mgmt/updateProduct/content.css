@@ -66,6 +66,22 @@ body{
             display: none;
         }
 
+        .updateProduct .removepicBtn{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+
+            color: white;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            background-color: #9E841E;
+
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;            
+        }
+
         .updateProduct .upload-icon {
             width: 60px;
             height: 60px;
