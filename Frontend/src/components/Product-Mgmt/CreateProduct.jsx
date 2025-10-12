@@ -38,6 +38,14 @@ const CreateProduct = () => {
                                     <img className="upload-icon" src="/img/Product-Mgmt/create-product/upload.png" />
                                 )}
 
+                                <button 
+                                    key={index}
+                                    type='button'
+                                    className='removepicBtn'
+                                    onClick={() => hook.handleRemoveFile(index)}>
+                                    X
+                                </button>
+
                             </label>
                         ))}
                     </div>

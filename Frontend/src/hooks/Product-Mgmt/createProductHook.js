@@ -7,7 +7,7 @@ import axios from "axios";
 const createProductHook = () => {
     const navigate = useNavigate();
 
-    const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);
+    const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);       // only for image preview
     const [productTypes, setProductTypes] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [alert, setAlert] = useState({ message: '', type: '' });
@@ -15,11 +15,12 @@ const createProductHook = () => {
 
 
     const [selectedTitle, setSelectedTitle] = useState('');
-    const [imageFiles, setImageFiles] = useState([null, null, null, null]);
+    const [imageFiles, setImageFiles] = useState([null, null, null, null]);             // for image files selected by user
     const [selectedDescription, setSelectedDescription] = useState('');
     const [selectedPrice, setSelectedtPrice] = useState();
     const [selectedQty, setSelectedQty] = useState();
     const [selectedType, setSelectedType] = useState('Select an option');    
+    const [removedFile, setRemovedFile] = useState(null);
 
 
     useFetchProductType(setProductTypes);
@@ -55,6 +56,19 @@ const createProductHook = () => {
 
         reader.readAsDataURL(file);                 // raw image data loaded into memory, encoded as a string
     };
+
+
+    const handleRemoveFile = (index) => {
+        // remove file
+        const newFiles = [...imageFiles];
+        newFiles[index] = null
+        setImageFiles(newFiles);
+
+        // remove preview
+        const newPreviews = [...imagePreviews];
+        newPreviews[index] = null;
+        setImagePreviews(newPreviews);
+    }
 
 
     const handleSubmit = async (e) => {
@@ -126,7 +140,8 @@ const createProductHook = () => {
         setSelectedtPrice,
         selectedQty, 
         setSelectedQty,
-        alert
+        alert,
+        handleRemoveFile
     };
 }
 

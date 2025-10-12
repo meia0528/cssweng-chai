@@ -81,6 +81,7 @@
             border: 2px solid #9e841e;
             border-radius: 10px;
 
+            overflow: hidden;
             cursor: pointer;
             transition: transform 0.1s ease, box-shadow 0.2s ease;
         }
@@ -92,6 +93,22 @@
         .upload-box:active {
             transform: translateY(2px);
             box-shadow: none;
+        }
+
+        .product-upload-section .removepicBtn{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+
+            color: white;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            background-color: #9E841E;
+
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
         }
 
         /* hide input file */
