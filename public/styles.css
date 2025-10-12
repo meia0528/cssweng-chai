@@ -18,6 +18,16 @@ body{
     flex-wrap: nowrap;
 }
 
+.navbar-gg{
+    background-color: rgba(168, 152, 88, 0.3);
+    color: #9E841E;
+}
+
+.navbar-lm{
+    background-color: rgba(55, 118, 63, 0.2);
+    color: #37763F;
+}
+
 .navbar-brand{
     padding-right: 80px;
 }
@@ -661,4 +671,144 @@ body{
 
 .donate-image img{
     height: 300px;
+}
+
+
+
+/* GIFT GLOBAL PAGE */
+.gg-description{
+    min-height: 500px;
+    min-width: 1000px;
+    margin: 50px 150px 50px 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px;
+    justify-content: center;
+}
+
+.gg-description h1{
+    position: relative;
+    color: #9E841E;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.gg-description-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+.gg-description-container img{
+    width: 488px;
+    height: 366px;
+}
+
+.gg-description-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.gg-description-text p{
+    font-size: 22px;
+    justify-content: space-between;
+    margin: 28px 0px 28px 50px;
+}
+
+/*not finished*/
+.gg-description-top-ribbon{
+    position: absolute;
+    font-size: 32px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #B8A045;
+    padding: 30px 300px;
+    bottom: -5%;
+    right: 12%;
+    z-index: 2;
+}
+
+/*not finished*/
+.gg-description-bottom-ribbon{
+    position: absolute;
+    font-size: 32px;
+    font-weight: bold;
+    color: #B8A045;
+    background-color: #E3D086;
+    padding: 30px 300px;
+    left: 12%;
+    bottom: -15%;
+    z-index: 1;
+}
+
+.gg-initiatives{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 250px 50px 0px 50px;
+}
+
+.gg-initiatives h1, .gg-pastevents h1{
+    font-weight: bold;
+    color: #9E841E;
+}
+
+.gg-initiatives p{
+    padding: 25px 100px;
+}
+
+.gg-initiatives-container{
+    display: flex;
+    flex-direction: row;
+    background-color: #D5CFB5;
+    padding: 80px 150px;
+    justify-content: center;
+}
+
+.gg-initiatives-container > img{
+    background-color: #FFFFFF;
+    width: 469;
+    height: 352;
+    padding: 10px;
+}
+
+.gg-initiatives-column{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 50px 50px 190px;
+}
+
+.gg-initiatives-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.gg-initiatives-row > img{
+    width: 135px;
+    height: 135px;
+    margin: 0px 30px 0px 10px;
+}
+
+.gg-initiatives-text{
+    display: flex;
+    flex-direction: column;
+    margin: 25px 30px 0px 10px;
+}
+
+.gg-initiatives-text h1{
+    font-weight: bold;
+    color: #9E841E;
+}
+
+.gg-pastevents{
+    min-height: 225px;
+    min-width: 1000px;
+    margin: 0px 150px 50px 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px;
+    justify-content: center;
 }
