@@ -31,6 +31,9 @@ app.get('/about-us', async(req, res) => {
     }
 });
 
+app.get('/donate-now', (req, res) => {
+  res.render('donate', { Title: 'Donate Now' });
+});
 
 app.get('/batang-gift-of-love', (req, res) => {
   res.render('bgl', { Title: 'Batang Gift of Love' });
