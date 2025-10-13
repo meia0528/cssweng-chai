@@ -40,7 +40,15 @@ const UpdateProduct = () => {
                 <main>
                     <div className="product-overview-grid">
                         <div className="product-image-section">
-                            <img className="main-display-img" src={`http://localhost:5000/${hook.lSizePhoto}`} />
+                            {hook.isLSizeDeleted ? (
+                                (hook.imagePreviews[0] ? (
+                                    <img className="main-display-img preview" src={`${hook.imagePreviews[0]}`} />
+                                ) : (
+                                    <img className="main-display-img" />
+                                ) )
+                            ) : (
+                                <img className="main-display-img" src={`http://localhost:5000/${hook.lSizePhoto}`} />
+                            )}
 
                             <div className="upload-container">    
 

@@ -15,6 +15,7 @@ const updateProductHook = () => {
     const [lSizePhoto, setLSizePhoto] = useState();
     const [product, setProduct] = useState();
     const [productTypes, setProductTypes] = useState([]);
+    const [isLSizeDeleted, setIsLSizeDeleted] = useState(false);
 
     const [selectedTitle, setSelectedTitle] = useState(product?.title);
     const [prevImages, setPrevImages] = useState([]);
@@ -67,6 +68,9 @@ const updateProductHook = () => {
         };
 
         reader.readAsDataURL(file);                 // raw image data loaded into memory, encoded as a string
+
+        if (index === 0)
+            setLSizePhoto(imagePreviews[index]);
     };
 
 
@@ -89,6 +93,12 @@ const updateProductHook = () => {
         const newPrevImage = [...prevImages];
         newPrevImage[index] = null;
         setPrevImages(newPrevImage)
+
+        // remove the LSizePhoto if the image[0] was removed
+        if (index === 0){
+            setLSizePhoto(null);
+            setIsLSizeDeleted(true);
+        }
     }
 
 
@@ -171,7 +181,9 @@ const updateProductHook = () => {
         imagePreviews,
         alert,
         handleRemovedImage,
-        handleUpdate
+        handleUpdate,
+        isLSizeDeleted,
+        productTypes
     };
 };
 

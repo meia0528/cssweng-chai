@@ -75,9 +75,10 @@ const Content = ({setSearch, search, sortOption, productFilter}) => {
                         onClick={() => goToPage(currentPage + 1)}>
                         &gt;
                     </button>
+
                 </div>
+      
             </div>
-        
             
         </main>
     );
