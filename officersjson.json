@@ -1,0 +1,54 @@
+[{
+  "_id": "1",
+  "name": "Cristopher Gregorio",
+  "position": "Overall Coordinator",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "2",
+  "name": "Dorothy Gregorio",
+  "position": "Program Manager",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "3",
+  "name": "Doris Isabel Gregorio",
+  "position": "Academic Affair",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "4",
+  "name": "Noralyn Maed",
+  "position": "Operation Department",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "5",
+  "name": "Marie Francis Pelasol",
+  "position": "Finance Department",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "6",
+  "name": "Halmida Piang",
+  "position": "Educational Department",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "7",
+  "name": "Zuhari Pompong",
+  "position": "Medical Department",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "8",
+  "name": "Raihana Piang",
+  "position": "Medical Department",
+  "image": "images/temp_pfp.png"
+},
+{
+  "_id": "9",
+  "name": "Khairoden Utto",
+  "position": "Values and Ethics Department",
+  "image": "images/temp_pfp.png"
+}]
