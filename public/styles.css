@@ -819,10 +819,11 @@ body{
 .lm-description{
     min-height: 500px;
     min-width: 1000px;
-    margin: 50px 150px 50px 150px;
+    margin: 100px 150px 100px 150px;
     display: flex;
     flex-direction: row;
     padding: 0px 100px;
+    align-items: center;
     justify-content: center;
 }
 
@@ -831,9 +832,14 @@ body{
     flex-direction: column;
 }
 
-.lm-description-text h1, .lm-women-container h1{
+.lm-description-text h1{
     font-weight: bold;
     color: #37763F;
+    margin: 0px 0px 50px 0px;
+}
+
+.lm-description-text p{
+    margin: 0px 50px 25px 0px;
 }
 
 .lm-description > img{
@@ -908,11 +914,43 @@ body{
     color: #173F27;
 }
 
-.lm-women-container{
+.lm-team-container{
     background-color: rgba(55, 118, 63, 0.2);
     padding: 40px 300px;
     text-align: center;
     justify-content: center;
     display: flex;
+    flex-direction: column;
+}
+
+.lm-team-container h1{
+    font-weight: bold;
+    color: #37763F;
+    margin: 25px 0px 75px 0px;
+}
+
+.lm-team-people{
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0px 75px 0px;
+}
+
+.lm-team-person{
+    display: flex;
+    flex-direction: column;
+}
+
+.lm-team-person img{
+    width: 203;
+    height: 260;
+    margin: 0px 100px;
+    padding: 3px;
+    background-color: #37763F;
+}
+
+.lm-team-person h4{
+    font-weight: bold;
+    color: #173F27;
 }
