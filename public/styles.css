@@ -954,3 +954,34 @@ body{
     font-weight: bold;
     color: #173F27;
 }
+
+
+
+
+/*Batang Gift of Love Page*/
+.container-bgl-main{
+    height: 550px;
+    margin: 80px 100px;
+}
+
+.container-bgl-main h1{
+    font-weight: bold;
+    color: #133A18;
+}
+
+.bgl-image-desc img{
+    height: 320px;
+}
+
+.bgl-image-desc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.bgl-motto{
+    background-color: #133A18;
+    color: white;
+    padding: 20px;
+}
