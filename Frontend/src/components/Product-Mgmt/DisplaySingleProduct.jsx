@@ -74,7 +74,7 @@ const DisplaySingleProduct = () => {
                         </div>
 
                         <div className="product-stats-section">
-                            <p>Php {product.price}</p>
+                            <p>Php: {Number(product.price).toFixed(2)}</p>
                             <p>Qty: {product.quantity}</p>
                         </div>
 

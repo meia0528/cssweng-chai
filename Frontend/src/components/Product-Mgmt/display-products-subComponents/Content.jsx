@@ -48,7 +48,7 @@ const Content = ({setSearch, search, sortOption, productFilter}) => {
                                     <p className="product-name">{product.title}</p>
                                 </Link>                                
                                 
-                                <p className="product-price">&#8369; {product.price}</p>
+                                <p className="product-price">&#8369; {Number(product.price).toFixed(2)}</p>
                             </div>
 
                             <p className="product-description">{product.description}</p>
