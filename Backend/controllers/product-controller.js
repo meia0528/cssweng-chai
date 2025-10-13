@@ -241,11 +241,40 @@ const updateProduct = async (req, res) => {
 };
 
 
+const clearAllProducts = async (req, res) => {
+    try {
+        await Product.deleteMany({})             // delete all documents in the Product collection
+        res.status(200).json({ message: "All products have been deleted successfully!" });
+
+        // delete all the files stored in uploads folder
+        const uploadDir = path.join(process.cwd(), "uploads");
+
+        fs.readdir(uploadDir, (err, files) => {
+            if (err) {
+                console.error("Error reading upload folder:", err);
+                return;
+            }
+
+            for (const file of files) {
+                fs.unlink(path.join(uploadDir, file), (err) => {
+                if (err) console.error("Error deleting file:", file, err);
+                });
+            }
+        });
+
+    } catch (err) {
+         console.error(err);
+        res.status(500).json({ message: "Failed to clear products." });
+    }
+};
+
+
 module.exports = {
     getProductTypes,
     createProduct,
     displayProducts,
     renderSingleProduct,
     deleteSingleProduct,
-    updateProduct
+    updateProduct,
+    clearAllProducts
 }

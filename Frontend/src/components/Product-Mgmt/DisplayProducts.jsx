@@ -22,6 +22,10 @@ const DisplayProducts = () => {
                 search={hook.search}
                 productFilter={hook.productFilter}
                 sortOption={hook.sortOption}
+                showModal={hook.showModal}
+                setShowModal={hook.setShowModal}
+                clearAllProducts={hook.clearAllProducts}
+                alert={hook.alert}
             />
         </main>
     );

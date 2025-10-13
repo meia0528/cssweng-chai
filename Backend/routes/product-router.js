@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const upload = require('../config/multer.js');
-const {getProductTypes, createProduct, displayProducts, renderSingleProduct, deleteSingleProduct, updateProduct} = require('../controllers/product-controller.js')
+const {getProductTypes, createProduct, displayProducts, renderSingleProduct, deleteSingleProduct, updateProduct, clearAllProducts} = require('../controllers/product-controller.js')
 
 
 router.route('/product-types').get(getProductTypes);
@@ -23,5 +23,6 @@ router.route('/update/:id').put(upload.fields([
   updateProduct
 );
 
+router.route('/clearAll').delete(clearAllProducts);
 
 module.exports = router;

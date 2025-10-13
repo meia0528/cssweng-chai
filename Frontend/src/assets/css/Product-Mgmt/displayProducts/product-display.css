@@ -180,12 +180,94 @@
     .navigation-area{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
 
         column-gap: 13px;
+
+        margin: 0px 15px 0px 0px;
     }
+
+    .clear-all-btn{
+        background-color: #E1CD82;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 14px;
+
+        border: none;
+        border-radius: 5px;
+
+        padding: 8px 10px 8px 10px;
+        cursor: pointer; 
+
+        border: 2px solid #9E841E;
+        transition: background-color 0.3s;
+    }
+
+    .clear-all-btn:hover {
+        background-color: #9E841E;
+    }
+
+    .clear-section .modal {
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+
+        position: fixed;
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        z-index: 100;
+
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .clear-section .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+        .clear-section .modal-content p{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            font-weight: bold;
+            color: #173F27;
+
+            margin-bottom: 25px;
+        }
+
+        .clear-section .modal-content-btnSection{
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-around;
+            align-items: center;
+        }
     
+        .clear-section .modal-content-btnSection button{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #9E841E;
+            background-color: white;
+
+            border: 2px solid #9E841E;
+            border-radius: 10px;
+
+            padding: 5px 10px 5px 10px;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+        
     .nav-button{
         background-color: #9E841E;
         color: white;
@@ -198,6 +280,8 @@
 
         padding: 8px 10px 8px 10px;
         cursor: pointer;
+
+        margin: 0px 10px 0px 10px;
     }
 
     .round-button{
@@ -213,3 +297,59 @@
 
         cursor: pointer;
     }
+
+    .page-summary{
+        background-color: #E1CD82;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+
+        border-radius: 5px;
+        border: 2px solid #9E841E;
+        padding: 5px;
+    }
+
+
+.displayAllProducts .alert-section {
+    position: fixed; /* stays visible even if user scrolls */
+    top: 12px;
+    right: 20px;
+    padding: 20px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: fadeIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+    color: #fff;
+}
+
+.displayAllProducts .alert-success {
+      background-color: rgb(33, 80, 39);
+}
+
+.displayAllProducts .alert-error {
+    background-color: #dc3545;
+}
+
+.displayAllProducts .alert-warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.displayAllProducts .alert-info {
+    background-color: #17a2b8;
+}
+
+/* smooth appear/disappear animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}    
