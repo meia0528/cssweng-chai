@@ -243,9 +243,15 @@ const updateProduct = async (req, res) => {
 
 const clearAllProducts = async (req, res) => {
     try {
-        await Product.deleteMany({})             // delete all documents in the Product collection
-        res.status(200).json({ message: "All products have been deleted successfully!" });
+        const nProducts = await Product.countDocuments();
+        if(nProducts > 0){
+            await Product.deleteMany({})             // delete all documents in the Product collection
+            res.status(200).json({ message: "All products have been deleted successfully!" }, nProducts);
+        }
+        else
+            res.status(200).json({ message: "No products found to clear." }, nProducts);
 
+        
         // delete all the files stored in uploads folder
         const uploadDir = path.join(process.cwd(), "uploads");
 

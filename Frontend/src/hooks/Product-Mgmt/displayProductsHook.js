@@ -41,7 +41,11 @@ const displayProductsHook = () => {
         try {
             const res = await axios.delete(`http://localhost:5000/product-mgmt/clearAll`);
 
-            setAlert({message: res.data.message, type: 'success'});
+            if (res.data.nProducts > 0)
+                setAlert({message: res.data.message, type: 'success'});
+            else 
+                setAlert({message: res.data.message, type: 'info'});
+            
             setTimeout(() => {
                 setAlert({ message: '', type: '' });                // hide the alert
                 window.location.reload(); 
