@@ -212,17 +212,23 @@
 
         .product-upload-section .dropdown-list {
             position: absolute;
-            top: 100%;
-            left: 0;
-            width: 222px;
-
+            top: -5px;
+            left: 230px;
+            width: 690px;
             background: #f8f5ee;
             border: 2px solid #9e841e;
             border-radius: 10px;
-
             margin-top: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             z-index: 10;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+            grid-auto-rows: min-content;
+            gap: 5px 0px;                           /* spacing between rows and columns */
+            max-height: calc(5 * 40px);             /* each row roughly 40px tall */
+            overflow-y: auto;                       /* scroll if too many rows */
+            padding: 8px;
         }
 
 

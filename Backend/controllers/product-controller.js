@@ -38,7 +38,7 @@ const createProduct = async (req, res) => {
 
     } catch (err) {
         console.error('Error creating product:', err);
-        res.status(500).json({ message: 'Failed to create product.' });
+        res.status(500).json({ message: 'Failed to create product. Please check your input.' });
     }
 };
 
@@ -246,10 +246,10 @@ const clearAllProducts = async (req, res) => {
         const nProducts = await Product.countDocuments();
         if(nProducts > 0){
             await Product.deleteMany({})             // delete all documents in the Product collection
-            res.status(200).json({ message: "All products have been deleted successfully!" }, nProducts);
+            res.status(200).json({ message: "All products have been deleted successfully!", nProducts});
         }
         else
-            res.status(200).json({ message: "No products found to clear." }, nProducts);
+            res.status(200).json({ message: "No products found to clear.", nProducts});
 
         
         // delete all the files stored in uploads folder
