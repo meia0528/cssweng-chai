@@ -22,7 +22,7 @@
         justify-content: center;
 
         width: 205px;
-        height: 95px;
+        height: 75px;
 
         background-color: white;
         border: 2px solid #9E841E;
@@ -30,7 +30,7 @@
 
         padding: 15px;
         margin-top: 22px;
-        margin-bottom: 70px;
+        margin-bottom: 10px;
     }
 
     .sort-section p{
@@ -117,7 +117,7 @@
         border: 2px solid #9E841E;
         border-radius: 10px;
 
-        padding: 15px;
+        padding: 10px 15px 2px 15px;
     }
 
     .product-section p{
