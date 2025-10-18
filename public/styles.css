@@ -14,8 +14,13 @@ body{
     font-weight: bold;
     font-size: 22px;
     color: #164886;
-    margin: 25px 0px 20px 0px;
     flex-wrap: nowrap;
+    padding: 25px 0;
+}
+
+.navbar-bgl{
+    background-color: #C5CDC8;
+    color: #133A18;
 }
 
 .navbar-gg{
@@ -48,6 +53,14 @@ body{
 
 .dropdown-item {
     color: #164886;
+}
+
+.dropdown-bgl{
+    border-color: #133A18;
+}
+
+.dropdown-item-bgl{
+    color: #133A18;
 }
 
 .dropdown-item:hover {
@@ -956,32 +969,83 @@ body{
 }
 
 
-
-
 /*Batang Gift of Love Page*/
 .container-bgl-main{
-    height: 550px;
-    margin: 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px 80px 100px 80px;
 }
 
 .container-bgl-main h1{
     font-weight: bold;
     color: #133A18;
-}
-
-.bgl-image-desc img{
-    height: 320px;
+    margin-bottom: 20px;
 }
 
 .bgl-image-desc{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    margin-top: 20px;
 }
 
-.bgl-motto{
-    background-color: #133A18;
+.bgl-image-desc img{
+    height: 350px;
+}
+
+.container-history-bgl{
+    height: 600px;
+    background-color: white;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; /*remove later*/
+}
+
+.container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1{
+    font-weight: bold;
+    color: #133A18;
+}
+
+.container-events-bgl{
+    height: 600px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; /*remove later*/
+}
+
+.container-fb-bgl{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #A9BBD7;
+    margin: 50px 120px 80px 120px;
+    padding: 40px;
+    color: #334B89;
+}
+
+.container-fb-bgl h3{
+    font-weight: bold;
+}
+
+.container-fb-bgl a{
+    background-color: #778DC3;
+    margin-top: 15px;
+    padding: 20px 50px;
+    border-radius: 30px;
     color: white;
-    padding: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.container-fb-bgl a:hover{
+    background-color: #55648a;
+    color: rgb(199, 199, 199);
+}
+
+.container-officers-bgl{
+    height: 600px;
+    background-color: #E1E7E2;
 }
