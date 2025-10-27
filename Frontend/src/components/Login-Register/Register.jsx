@@ -1,4 +1,5 @@
 import '../../assets/css/Login-Register/register.css'
+import { Link } from 'react-router-dom';
 import registerHook from "../../hooks/Login-Register/registerHook.js";
 
 const Register = () => {
@@ -68,6 +69,13 @@ const Register = () => {
                     </div>             
 
                     <button type="submit" className='submit-btn'>Sign up</button>
+
+                    <p className='login-msg'>
+                        Already have an account? 
+                        <Link to={'/admin/login'}>
+                            <u className='login-navigate'> Login</u>
+                        </Link>
+                    </p>
                 </form>
             </div>
 

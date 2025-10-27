@@ -106,6 +106,15 @@
     background-color: #3970e5;
 }
 
+.register-container .login-msg{
+    color: gray;
+    font-size: 14px;
+}
+
+.register-container .login-navigate{
+    cursor: pointer;
+}
+
 
 .register-page .alert-section {
     position: fixed; 
