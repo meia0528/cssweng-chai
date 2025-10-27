@@ -1,0 +1,142 @@
+body{
+    background: linear-gradient(135deg, #1e293b, #334155);
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.register-container form {
+    background: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+}
+
+
+.register-container form:hover {
+    transform: translateY(-5px);
+}
+
+.register-container h2 {
+    color: #0f172a;
+    margin-bottom: 30px;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+
+.register-container input[type="text"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    
+    font-size: 16px;
+    color: gray;
+
+    transition: border 0.2s ease;
+    box-sizing: border-box;
+}
+
+
+.register-container input[type="text"]:focus,
+.register-container input[type="password"]:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+
+.register-container input[type="password"] {
+    padding-right: 50px;
+}
+
+
+.register-container input[type="password"]:focus {
+    padding-right: 50px;
+}
+
+
+.register-container input[type="text"] {
+    background-image: url('../../../../public/img/Login-Register/user.png');
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    background-size: 20px;
+    padding-left: 45px;
+}
+
+
+.register-container input[type="password"] {
+    background-image: url('../../../../public/img/Login-Register/password.png');
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    background-size: 20px;
+    padding-left: 45px;
+}
+
+
+.password-container{
+    position: relative;
+    width: 100%;
+}
+
+
+.password-toggle{
+    position: absolute;
+    right: 12px;
+    top: 7px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+.password-toggle img{
+    width: 25px;
+}
+
+
+.register-container .submit-btn {
+    width: 100%;
+    background-color: #5887d3;
+    color: white;
+    font-size: 16px;
+    padding: 13px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.register-container .submit-btn:hover {
+    background-color: #3970e5;
+}
+
+
+@media (max-width: 480px) {
+.register-container form {
+    padding: 2rem;
+    width: 90%;
+}
+
+.register-container h2 {
+    font-size: 1.5rem;
+}
+}
