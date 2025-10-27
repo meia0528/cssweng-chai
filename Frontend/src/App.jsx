@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { isExpired } from "react-jwt";
 import useSidebarHook from './hooks/useSidebarHook.js'
-import Sidebar from "./components/Sidebar.jsx";
 import useAuthCheck from "./hooks/useAuthCheck.js";
+import Sidebar from "./components/Sidebar.jsx";
 import DisplayProducts from  './components/Product-Mgmt/DisplayProducts.jsx';
 import CreateProduct from './components/Product-Mgmt/CreateProduct.jsx'
 import DisplaySingleProduct from "./components/Product-Mgmt/DisplaySingleProduct.jsx";
