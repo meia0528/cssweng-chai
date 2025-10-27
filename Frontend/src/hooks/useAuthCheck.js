@@ -1,34 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isExpired, decodeToken } from "react-jwt";
 import { useNavigate, useLocation } from "react-router-dom";
+import AlertBox from "../components/AlertBox.jsx";
 
 const useAuthCheck = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
-        const checkToken = () => {
+        const interval = setInterval(() => {
             const token = localStorage.getItem("adminToken");
-            if (!token) return;
-
-            console.log(decodeToken(token));
-            console.log("Expired?", isExpired(token));
-
-            if (isExpired(token)) {
-                
-                localStorage.removeItem("adminToken");
-                alert("Session expired. Please log in again.");
-                navigate("/admin/login", { replace: true });
-            }
-        };
+            if (isExpired(token))
+                setShowAlert(true);
+        }, 5000);
 
         
-        checkToken();
-        const interval = setInterval(checkToken, 5000);
-
-        // cleanup on unmount
         return () => clearInterval(interval);
-    }, [location.pathname]);
+    }, []);
+
+
+    return (
+        <>
+            {showAlert && (
+                <AlertBox
+                    message="Session expired. Please log in again." 
+                    onClose={() => {
+                        setShowAlert(false);
+                        localStorage.removeItem("adminToken");
+                        navigate("/admin/login", { replace: true });
+                    }}>
+                </AlertBox>
+            )}        
+        </>
+    )
+
+
 };
 
 export default useAuthCheck;
