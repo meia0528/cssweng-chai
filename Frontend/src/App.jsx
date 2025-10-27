@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
                     displayDropDownList={sidebarHooks.displayDropDownList}
                     renderSubPage={sidebarHooks.renderSubPage}
                     handleDropdownSelect={sidebarHooks.handleDropdownSelect}
+                    handleLogout={sidebarHooks.handleLogout}
                 />
             )}
             

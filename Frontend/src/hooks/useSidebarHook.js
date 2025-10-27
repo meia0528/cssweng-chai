@@ -1,9 +1,11 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import useClickOutside from "./useClickOutside.js";
 import useSubPageLocation from "./useSubpageLocation.js";
 
 const useSidebar = () => {
     let mgmtPath = '';
+    const navigate = useNavigate();
     const [management, setManagement] = useState('Product Management');
     const [subPage, setSubPage] = useState('Display');
     const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +45,11 @@ const useSidebar = () => {
     }
 
 
+    const handleLogout = () => {
+        localStorage.removeItem('adminToken');
+        navigate('/admin/login');
+    }
+
     return {
         mgmtPath,
         management,
@@ -52,6 +59,7 @@ const useSidebar = () => {
         renderSubPage,
         displayDropDownList,
         handleDropdownSelect,
+        handleLogout
     };
 }
 

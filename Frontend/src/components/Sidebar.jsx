@@ -1,7 +1,7 @@
 import '../assets/css/sidebar.css'
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDropDownList, renderSubPage, handleDropdownSelect}) => {
+const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDropDownList, renderSubPage, handleDropdownSelect, handleLogout}) => {
     const navigate = useNavigate();
     const mgmtOptions = ['Product Management', 'Post Management', 'Sales Management', 'Membership Management'];
     const subPageOptions = ['Display', 'Add'];
@@ -67,7 +67,7 @@ const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDro
                 </div>
 
                 <div className="sidebar-lower-section">
-                    <button className="logout-button">
+                    <button className="logout-button" onClick={handleLogout}>
                         LOGOUT
                         <img className="logout-image" src="/img/sidebar/logout.png" />
                     </button>
