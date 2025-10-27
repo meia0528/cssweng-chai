@@ -4,6 +4,8 @@ import useClickOutside from '../../hooks/useClickOutside.js';
 import axios from "axios";
 
 const displayProductsHook = () => {
+    const token = localStorage.getItem("adminToken");
+
     const dropdownRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -39,7 +41,9 @@ const displayProductsHook = () => {
     
     const clearAllProducts = async () => {
         try {
-            const res = await axios.delete(`http://localhost:5000/product-mgmt/clearAll`);
+            const res = await axios.delete(`http://localhost:5000/product-mgmt/clearAll`, {
+                headers: {Authorization: `Bearer ${token}`}
+            });
 
             if (res.data.nProducts > 0)
                 setAlert({message: res.data.message, type: 'success'});

@@ -8,6 +8,12 @@ const Login = () => {
     return (
         <main className="login-page">
 
+            {hook.alert.message && (
+                <div className={`alert-section alert-${hook.alert.type}`}>
+                    {hook.alert.message}
+                </div>
+            )}
+
             <div className="login-container">
                 <form onSubmit={hook.handleLogin} encType="multipart/form-data">
                     <h2>Welcome Back!</h2>

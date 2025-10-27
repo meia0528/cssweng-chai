@@ -6,6 +6,7 @@ import axios from "axios";
 
 const createProductHook = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem("adminToken");
 
     const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);       // only for image preview
     const [productTypes, setProductTypes] = useState([]);
@@ -98,7 +99,9 @@ const createProductHook = () => {
         try {
             // pass the formData to backend
             const res = await axios.post('http://localhost:5000/product-mgmt/create', formData, {
-                headers: { "Content-Type": "multipart/form-data" }
+                headers: { 
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `Bearer ${token}`}
             });
 
             

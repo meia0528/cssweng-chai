@@ -7,6 +7,7 @@ import useClickOutside from "../useClickOutside.js";
 
 const updateProductHook = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem("adminToken");
 
     const {id} = useParams();
     const dropdownRef = useRef();
@@ -137,8 +138,11 @@ const updateProductHook = () => {
 
         try {
             const response = await axios.put(
-                `http://localhost:5000/product-mgmt/update/${product._id}`,
-                formData, { headers: {"Content-Type": "multipart/form-data"} }
+                `http://localhost:5000/product-mgmt/update/${product._id}`, formData, { 
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Authorization": `Bearer ${token}`
+                    }}
             );
 
             setAlert({ message: response.data.message, type: 'success' });
@@ -149,7 +153,9 @@ const updateProductHook = () => {
 
         } catch (error) {
             console.error("Error updating product:", error);
-            setAlert({ message: response.data.message, type: 'error' });
+            
+            const errorMsg = err.response?.data?.message || 'Something went wrong!';
+            setAlert({message: errorMsg, type: 'error'});
             setTimeout(() => {
                 setAlert({ message: '', type: '' });                // hide the alert
             }, 2000);

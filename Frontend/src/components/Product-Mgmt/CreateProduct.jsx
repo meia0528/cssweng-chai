@@ -25,7 +25,7 @@ const CreateProduct = () => {
                         {hook.imagePreviews.map((preview, index) => (
 
                             <label className="upload-box" key={index}>
-                                <input  
+                                <input
                                     key={index}
                                     type="file" 
                                     accept="image/*" 
@@ -39,7 +39,6 @@ const CreateProduct = () => {
                                 )}
 
                                 <button 
-                                    key={index}
                                     type='button'
                                     className='removepicBtn'
                                     onClick={() => hook.handleRemoveFile(index)}>

@@ -6,6 +6,12 @@ const Register = () => {
 
     return (
         <main className="register-page">
+            
+            {hook.alert.message && (
+                <div className={`alert-section alert-${hook.alert.type}`}>
+                    {hook.alert.message}
+                </div>
+            )}
 
             <div className="register-container">
                 <form onSubmit={hook.handleRegister} encType="multipart/form-data">
@@ -42,19 +48,19 @@ const Register = () => {
                     <div className='password-container'>
                         <input 
                             required
-                            type={hook.showConfirmPassword ? "text" : "password"}
-                            name='confirmPassword'
-                            placeholder="Confirm Password"
-                            value={hook.confirmPassword}
-                            onChange={(e) => hook.setConfirmPassword(e.target.value)}/>
+                            type={hook.showToken ? "text" : "password"}
+                            name='token'
+                            placeholder="Admin Token"
+                            value={hook.token}
+                            onChange={(e) => hook.setToken(e.target.value)}/>
 
 
                         <button
                             type='button'
                             className='password-toggle'
-                            onClick={() => hook.setShowConfirmPassword(!hook.showConfirmPassword)}>
+                            onClick={() => hook.setShowToken(!hook.showToken)}>
                             
-                            <img src={hook.showConfirmPassword ? "/img/Login-Register/visible.png" : "/img/Login-Register/invisible.png"} />
+                            <img src={hook.showToken ? "/img/Login-Register/visible.png" : "/img/Login-Register/invisible.png"} />
                         </button>                  
                     </div>             
 

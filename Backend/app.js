@@ -1,9 +1,10 @@
 const express = require('express');
 const dotenv  = require('dotenv');
 const cors = require('cors');
-const morgan = require('morgan');
 const path = require('path');
+const morgan = require('morgan');
 const productRouter = require('./routes/product-router.js');
+const authRouter = require('./routes/auth-router.js');
 const connectDB = require('./db-connect/db.js');
 
 const app = express();
@@ -32,6 +33,7 @@ app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use('/product-mgmt', productRouter);
+app.use('/auth', authRouter);
 
 // Start server
 const startServer = async () => {

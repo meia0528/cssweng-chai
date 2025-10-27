@@ -4,13 +4,17 @@ import axios from "axios";
 
 const deleteProductHook = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem("adminToken");
+    
     const {id} = useParams();
     const [alert, setAlert] = useState({ message: '', type: ''})
     const [showConfirm, setShowConfirm] = useState(false);
     
     const deleteProduct = async () => {
         try {
-            const res = await axios.delete(`http://localhost:5000/product-mgmt/display/${id}`)
+            const res = await axios.delete(`http://localhost:5000/product-mgmt/display/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
 
             setAlert({message: res.data.message, type: 'success'});
             setTimeout(() => {

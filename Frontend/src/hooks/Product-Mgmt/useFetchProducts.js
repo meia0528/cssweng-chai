@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useFetchProducts = (currentPage, search, sortOption, productFilter) => {
+    const token = localStorage.getItem("adminToken");
     const [data, setData] = useState({ products: [], totalPages: 1, currentPage: 1 });
 
     useEffect(() => {
@@ -13,6 +14,7 @@ const useFetchProducts = (currentPage, search, sortOption, productFilter) => {
                     .map(f => f.name);
 
                 const res = await axios.get('http://localhost:5000/product-mgmt/fetch-products', {
+                    headers: { Authorization: `Bearer ${token}` },
                     params: { page: currentPage, limit: 6, search: search || '', sort: sortOption, types: selectedTypes.join(',') }});
                     
                 setData(res.data);
