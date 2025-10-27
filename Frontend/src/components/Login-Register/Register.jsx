@@ -18,6 +18,7 @@ const Register = () => {
                     <h2>Create Account</h2>
 
                     <input 
+                        className="input-field input-icon-user"
                         required
                         type="text"
                         placeholder="Username"
@@ -28,6 +29,7 @@ const Register = () => {
 
                     <div className='password-container'>
                         <input 
+                            className="input-field input-icon-password"
                             required
                             type={hook.showPassword ? "text" : "password"}
                             name='password'
@@ -47,6 +49,7 @@ const Register = () => {
 
                     <div className='password-container'>
                         <input 
+                            className='input-field input-icon-password'
                             required
                             type={hook.showToken ? "text" : "password"}
                             name='token'
