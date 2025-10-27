@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "r
 import { isExpired } from "react-jwt";
 import useSidebarHook from './hooks/useSidebarHook.js'
 import Sidebar from "./components/Sidebar.jsx";
+import useAuthCheck from "./hooks/useAuthCheck.js";
 import DisplayProducts from  './components/Product-Mgmt/DisplayProducts.jsx';
 import CreateProduct from './components/Product-Mgmt/CreateProduct.jsx'
 import DisplaySingleProduct from "./components/Product-Mgmt/DisplaySingleProduct.jsx";
@@ -54,77 +55,81 @@ const ProtectedRoute = ({ children }) => {
 };
 
 
-const App = () => {
-    
-    return (
-        <Router>
-            
-            <Routes>
+const AppRoutes = () => {
+    useAuthCheck();
 
-                {/* default route */}
-                <Route 
-                    path="/" 
-                    element={<Navigate to="/admin/login" replace />} />           
+    return (   
+        <Routes>
 
-
-                {/* login page */}
-                <Route
-                    path="/admin/login"
-                    element={<Login/>}/>
+            {/* default route */}
+            <Route 
+                path="/" 
+                element={<Navigate to="/admin/login" replace />} />           
 
 
-                {/* register page */}
-                <Route
-                    path="/admin/register"
-                    element={<Register/>}/>
+            {/* login page */}
+            <Route
+                path="/admin/login"
+                element={<Login/>}/>
 
 
-                {/* product display page */}
-                <Route 
-                    path="/admin/product-mgmt/display" 
-                    element={
-                        <ProtectedRoute>
-                            <Layout>
-                                <DisplayProducts />
-                            </Layout>                            
-                        </ProtectedRoute>
-                    } />
+            {/* register page */}
+            <Route
+                path="/admin/register"
+                element={<Register/>}/>
 
 
-                {/* product create page */}
-                <Route 
-                    path="/admin/product-mgmt/create"
-                    element={
-                        <ProtectedRoute>
-                            <Layout>
-                                <CreateProduct />
-                            </Layout>                        
-                        </ProtectedRoute>
-                    }/>
-                    
+            {/* product display page */}
+            <Route 
+                path="/admin/product-mgmt/display" 
+                element={
+                    <ProtectedRoute>
+                        <Layout>
+                            <DisplayProducts />
+                        </Layout>                            
+                    </ProtectedRoute>
+                } />
 
-                {/* product display page */}
-                <Route 
-                    path="/admin/product-mgmt/display/:id"
-                    element={
-                        <ProtectedRoute>
-                            <DisplaySingleProduct />
-                        </ProtectedRoute>
-                    }/>
 
+            {/* product create page */}
+            <Route 
+                path="/admin/product-mgmt/create"
+                element={
+                    <ProtectedRoute>
+                        <Layout>
+                            <CreateProduct />
+                        </Layout>                        
+                    </ProtectedRoute>
+                }/>
                 
-                {/* product update page */}
-                <Route 
-                    path="/admin/product-mgmt/update/:id"
-                    element={
-                        <ProtectedRoute>
-                            <UpdateProduct />
-                        </ProtectedRoute>
-                    }/>
 
-            </Routes>
-        </Router>
+            {/* product display page */}
+            <Route 
+                path="/admin/product-mgmt/display/:id"
+                element={
+                    <ProtectedRoute>
+                        <DisplaySingleProduct />
+                    </ProtectedRoute>
+                }/>
+
+            
+            {/* product update page */}
+            <Route 
+                path="/admin/product-mgmt/update/:id"
+                element={
+                    <ProtectedRoute>
+                        <UpdateProduct />
+                    </ProtectedRoute>
+                }/>
+
+        </Routes>
     );
 }
+
+const App = () => (
+    <Router>
+        <AppRoutes />
+    </Router>
+);
 
 export default App;
