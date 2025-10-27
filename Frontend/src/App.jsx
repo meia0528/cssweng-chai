@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { isExpired } from "react-jwt";
 import useSidebarHook from './hooks/useSidebarHook.js'
 import Sidebar from "./components/Sidebar.jsx";
 import DisplayProducts from  './components/Product-Mgmt/DisplayProducts.jsx';
@@ -38,6 +39,20 @@ const Layout = ({ children }) => {
 };
 
 
+const ProtectedRoute = ({ children }) => {
+    const token = localStorage.getItem("adminToken");
+
+    if (!token) return <Navigate to="/admin/login" replace />;
+
+    if (isExpired(token)) {
+        localStorage.removeItem("adminToken");
+        return <Navigate to="/admin/login" replace />;
+    }
+
+    // otherwise, render the page
+    return children;
+};
+
 
 const App = () => {
     
@@ -68,9 +83,11 @@ const App = () => {
                 <Route 
                     path="/admin/product-mgmt/display" 
                     element={
-                        <Layout>
-                            <DisplayProducts />
-                        </Layout>
+                        <ProtectedRoute>
+                            <Layout>
+                                <DisplayProducts />
+                            </Layout>                            
+                        </ProtectedRoute>
                     } />
 
 
@@ -78,22 +95,32 @@ const App = () => {
                 <Route 
                     path="/admin/product-mgmt/create"
                     element={
-                        <Layout>
-                            <CreateProduct />
-                        </Layout>
+                        <ProtectedRoute>
+                            <Layout>
+                                <CreateProduct />
+                            </Layout>                        
+                        </ProtectedRoute>
                     }/>
                     
 
                 {/* product display page */}
                 <Route 
                     path="/admin/product-mgmt/display/:id"
-                    element={<DisplaySingleProduct />}/>
+                    element={
+                        <ProtectedRoute>
+                            <DisplaySingleProduct />
+                        </ProtectedRoute>
+                    }/>
 
                 
                 {/* product update page */}
                 <Route 
                     path="/admin/product-mgmt/update/:id"
-                    element={<UpdateProduct />}/>
+                    element={
+                        <ProtectedRoute>
+                            <UpdateProduct />
+                        </ProtectedRoute>
+                    }/>
 
             </Routes>
         </Router>
