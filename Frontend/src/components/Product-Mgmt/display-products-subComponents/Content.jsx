@@ -55,7 +55,7 @@ const Content = ({setSearch, search, sortOption, productFilter, showModal, setSh
                                     <p className="product-name">{product.title}</p>
                                 </Link>                                
                                 
-                                <p className="product-price">&#8369; {Number(product.price).toFixed(2)}</p>
+                                <p className="product-price">&#8369; {Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
                             </div>
 
                             <p className="product-description">{product.description}</p>

@@ -160,7 +160,11 @@
                     font-size: 14px;
                     font-weight: bold;
                     font-family: 'Courier New', Courier, monospace;
-                    color: #9E841E;                
+                    color: #9E841E;              
+                    
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
             .product-description{

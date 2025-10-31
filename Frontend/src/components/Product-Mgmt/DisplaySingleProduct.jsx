@@ -74,8 +74,8 @@ const DisplaySingleProduct = () => {
                         </div>
 
                         <div className="product-stats-section">
-                            <p>Php: {Number(product.price).toFixed(2)}</p>
-                            <p>Qty: {product.quantity}</p>
+                            <p>Php: {Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
+                            <p>Qty: {Number(product.quantity).toLocaleString('en-US')}</p>
                         </div>
 
                         <div className="product-description-section">
