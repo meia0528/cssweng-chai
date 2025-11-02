@@ -998,6 +998,9 @@ body{
 
 .bgl-image-desc img{
     height: 350px;
+    max-width: 100%;
+    width: auto;
+    object-fit: cover;
 }
 
 .container-history-bgl{
