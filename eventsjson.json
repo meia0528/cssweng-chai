@@ -1,0 +1,100 @@
+[
+  {
+    "title": "Charity Fun Run 2025",
+    "date": "February 15, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "A community fun run event to raise funds for underprivileged children’s education and healthcare."
+  },
+  {
+    "title": "Beach Clean-Up Drive",
+    "date": "March 22, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Join our environmental volunteers in cleaning up local beaches and spreading awareness about marine pollution."
+  },
+  {
+    "title": "Tree Planting Activity",
+    "date": "April 10, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Help restore our forests by planting native tree species and learning about sustainable forestry practices."
+  },
+  {
+    "title": "Feeding Program",
+    "date": "May 5, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "A feeding program aimed at supporting malnourished children and providing nutrition education for families."
+  },
+  {
+    "title": "Christmas Gift Drive",
+    "date": "December 20, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Spread the holiday spirit by donating toys, clothes, and school supplies for children in need."
+  },
+  {
+    "title": "Gift-Giving Program 2023",
+    "date": "December 15, 2023",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "A holiday outreach event providing school supplies and food packs to children in need."
+  },
+  {
+    "title": "Tree Planting Drive",
+    "date": "March 12, 2024",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Volunteers and beneficiaries joined hands to plant over 300 saplings in local communities."
+  },
+  {
+    "title": "Summer Feeding Program",
+    "date": "May 8, 2024",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "A nutrition-focused initiative serving free healthy meals to underprivileged kids during summer."
+  },
+  {
+    "title": "Community Clean-Up Drive",
+    "date": "July 20, 2024",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Local residents and youth worked together to clean parks and public spaces to promote environmental awareness."
+  },
+  {
+    "title": "Back-to-School Supply Drive",
+    "date": "August 25, 2024",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Distributed school kits, uniforms, and learning materials to over 150 elementary students."
+  },
+  {
+    "title": "Mental Health Awareness Seminar",
+    "date": "October 10, 2024",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "A seminar to promote emotional well-being among teens, featuring guest speakers and group activities."
+  },
+  {
+    "title": "Christmas Gift of Love 2024",
+    "date": "December 18, 2024",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "An annual celebration bringing joy through gifts, games, and performances for children and families."
+  },
+  {
+    "title": "Health and Wellness Fair",
+    "date": "February 5, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "A community event offering free health check-ups, fitness sessions, and wellness workshops."
+  },
+  {
+    "title": "Youth Leadership Workshop",
+    "date": "April 14, 2025",
+    "image": "/images/temp_event.jpeg",
+    "beneficiary": "bgl",
+    "description": "Empowering young leaders through interactive workshops and motivational talks."
+  }
+]

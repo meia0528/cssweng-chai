@@ -533,11 +533,12 @@ body{
 
 .officer-scroll {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding-bottom: 25px;
+  padding-right: 50px;
 }
 
 
@@ -1008,13 +1009,6 @@ body{
     color: #133A18;
 }
 
-.container-events-bgl{
-    height: 600px;
-    display: flex;
-    align-items: center; 
-    justify-content: center; /*remove later*/
-}
-
 .container-fb-bgl{
     display: flex;
     flex-direction: column;
@@ -1046,6 +1040,105 @@ body{
 }
 
 .container-officers-bgl{
-    height: 600px;
+    height: 700px;
     background-color: #E1E7E2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
 }
+
+.container-officers-main-bgl{
+    height: 500px;
+    padding-top: 20px;
+    max-width: 1500px;
+    width: 90%;
+    background-color: #BEC7C1;
+    margin: 20px 70px 0px 70px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.officer-scroll-bgl{
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: none;
+    scroll-behavior: smooth;
+    padding: 0 60px 25px 20px;
+}
+
+.container-events-bgl{
+    background-color: #F4F4F4;
+    max-height: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+        padding-bottom: 50px;
+
+}
+
+.container-events-bgl.expanded {
+    max-height: 10000px; 
+
+}
+
+.container-events-main-bgl {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    justify-items: center;
+}
+
+
+.card-bgl-events{
+    width: 20rem;
+    display: none;
+}
+
+.card-bgl-events.visible {
+  display: block; /* only visible ones will show */
+}
+
+.card-bgl-events .card-title{
+    font-weight: bold;
+    color: #133A18;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-beneficiary{
+    background-color: #133A18;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    width: 150px;
+}
+
+.card-bgl-events img{
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-date{
+    color: #67B170;
+    font-size: 13px;
+}
+
+.card-bgl-events .card-text {
+    color: #406c52;
+}
+
+

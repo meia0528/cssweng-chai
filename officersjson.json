@@ -2,53 +2,126 @@
   "_id": "1",
   "name": "Cristopher Gregorio",
   "position": "Overall Coordinator",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "2",
   "name": "Dorothy Gregorio",
   "position": "Program Manager",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "3",
   "name": "Doris Isabel Gregorio",
   "position": "Academic Affair",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "4",
   "name": "Noralyn Maed",
   "position": "Operation Department",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "5",
   "name": "Marie Francis Pelasol",
   "position": "Finance Department",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "6",
   "name": "Halmida Piang",
   "position": "Educational Department",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "7",
   "name": "Zuhari Pompong",
   "position": "Medical Department",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "8",
   "name": "Raihana Piang",
   "position": "Medical Department",
-  "image": "images/temp_pfp.png"
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
 },
 {
   "_id": "9",
   "name": "Khairoden Utto",
   "position": "Values and Ethics Department",
-  "image": "images/temp_pfp.png"
-}]
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
+},
+{
+  "_id": "9",
+  "name": "Khairoden Utto",
+  "position": "Values and Ethics Department",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "chai"
+},
+{
+  "_id": "10",
+  "name": "Shiaravon Badal",
+  "position": "President",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "11",
+  "name": "Anesa Sadon",
+  "position": "Vice President",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "12",
+  "name": "Medzra Moctar",
+  "position": "Secretary",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "13",
+  "name": "Monisa Aba",
+  "position": "Treasurer",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "14",
+  "name": "Aldren Dimalao",
+  "position": "Auditor",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "15",
+  "name": "Anesa Sadon",
+  "position": "P.I.O",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "16",
+  "name": "Alden Datomanong",
+  "position": "P.I.O",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+},
+{
+  "_id": "17",
+  "name": "Joshen Pelasol",
+  "position": "P.O",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "bgl"
+}
+]
