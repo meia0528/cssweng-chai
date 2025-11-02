@@ -68,6 +68,11 @@ body{
     color: white;
 }
 
+.dropdown-item-bgl:hover {
+    background-color: #133A18;
+    color: white;
+}
+
 #EN{
     height: 20px;
 }
