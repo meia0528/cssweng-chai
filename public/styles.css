@@ -1083,7 +1083,7 @@ body{
     align-items: center;
     overflow: hidden;
     padding-bottom: 100px;
-
+    transition: max-height 1.5s ease; 
 }
 
 .container-events-bgl.expanded {
@@ -1099,14 +1099,13 @@ body{
     justify-items: center;
 }
 
-
 .card-bgl-events{
     width: 20rem;
     display: none;
 }
 
 .card-bgl-events.visible {
-  display: block; /* only visible ones will show */
+  display: block; 
 }
 
 .card-bgl-events .card-title{
