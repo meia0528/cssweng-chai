@@ -215,6 +215,8 @@ const updateProduct = async (req, res) => {
             if (newImg) updatedImages.push(newImg.path);
             else if (prevKeepImg) updatedImages.push(prevKeepImg.path);
         }
+
+        if (updatedImages.length === 0) return res.status(500).json({message: "You must have at least one image."});
         
 
         const updatedProduct = await Product.findByIdAndUpdate(
