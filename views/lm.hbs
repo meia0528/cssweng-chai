@@ -85,11 +85,25 @@
 <!--Our Products-->
 <div class="lm-products-header">
     <h1>Our Products</h1>
-    <input type="search" id="search" placeholder="Search here...">
+    <input type="search" id="lm-searchbar" placeholder="Search here...">
 </div>
 
-<div class="lm-products-list">
-    
+<div class="container-products-lm">
+    <div class="container-products-main-lm">
+        {{#each products}}
+        <div class="card card-lm-products">
+            <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+            <div class="card-body">
+                <div class="card-info">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-price">Php {{this.price}}</p>
+                </div>
+                <p class="card-text">{{this.description}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+      <button id="viewMoreBtn" class="btn btn-success mt-4">View More</button>
 </div>
 
 <!--The Women Behind Likhang Maharlika-->
@@ -131,11 +145,11 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const viewMoreBtn = document.getElementById("viewMoreBtn");
-  const container = document.querySelector(".container-events-bgl");
-  const cards = [...document.querySelectorAll(".card-bgl-events")];
+  const container = document.querySelector(".container-products-lm");
+  const cards = [...document.querySelectorAll(".card-lm-products")];
 
   cards.forEach((card, index) => {
-    if (index < 6) {
+    if (index < 8) {
       card.classList.add("visible");
     }
   });
