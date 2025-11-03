@@ -48,7 +48,7 @@ app.get('/batang-gift-of-love', async(req, res) => {
     }
 });
 
-app.get('/likhang-maharlika', (req, res) => {
+app.get('/likhang-maharlika', async(req, res) => {
   try {
       const officers = await Officer.find({ beneficiary: 'lm' }).lean();
       const products = await Product.find({ }).lean();  
@@ -59,7 +59,7 @@ app.get('/likhang-maharlika', (req, res) => {
   }
 });
 
-app.get('/gift-global', (req, res) => {
+app.get('/gift-global', async(req, res) => {
   try {
       const events = await Event.find({ beneficiary: 'bgl' }).lean();
 
