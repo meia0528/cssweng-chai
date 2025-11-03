@@ -52,10 +52,10 @@
     </div>
 </div>
 
-<div>
+<!--<div>
     <div class="gg-description-top-ribbon"><i>Be a catalyst, be a medium of change</i></div>
     <div class="gg-description-bottom-ribbon"><i>Lorem Ipsum yes yes yes</i></div>
-</div>
+</div>-->
 
 <!--Our Initiatives-->
 <div class="gg-initiatives">
@@ -93,8 +93,24 @@
 </div>
 
 <!--Our Past Events-->
-<div class="gg-pastevents">
+<div class="container-events-gg">
     <h1>Our Past Events</h1>
+    <div class="container-events-main-gg">
+        {{#each events}}
+        <div class="card card-gg-events">
+            <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <div class="card-info">
+                    <p class="card-beneficiary">Gift Global</p>
+                    <p class="card-date"><i class="bi bi-calendar-fill"></i> {{this.date}}</p>
+                </div>
+                <p class="card-text">{{this.description}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+      <button id="viewMoreBtn" class="btn btn-success mt-4">View More</button>
 </div>
 
 <!--Footer-->
@@ -116,3 +132,23 @@
         <button class="btn btn-success">DONATE NOW!</button>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const viewMoreBtn = document.getElementById("viewMoreBtn");
+  const container = document.querySelector(".container-events-gg");
+  const cards = [...document.querySelectorAll(".card-gg-events")];
+
+  cards.forEach((card, index) => {
+    if (index < 6) {
+      card.classList.add("visible");
+    }
+  });
+
+  viewMoreBtn.addEventListener("click", () => {
+    cards.forEach(card => card.classList.add("visible"));
+    container.classList.add("expanded");
+    viewMoreBtn.style.display = "none";
+  });
+});
+</script>
