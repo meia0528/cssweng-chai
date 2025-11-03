@@ -1035,6 +1035,10 @@ body{
     margin-bottom: 20px;
 }
 
+.container-bgl-main p{
+    font-size: large;
+}
+
 .bgl-image-desc{
     display: flex;
     justify-content: center;
@@ -1043,7 +1047,7 @@ body{
 }
 
 .bgl-image-desc img{
-    height: 350px;
+    height: 380px;
     max-width: 100%;
     width: auto;
     object-fit: cover;
