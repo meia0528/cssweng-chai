@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const Officer = require('./models/officer');
 const Event = require('./models/events');
+const Product = require('./models/products');
 const hbs = require('express-handlebars');
 
 const app = express();
@@ -48,11 +49,24 @@ app.get('/batang-gift-of-love', async(req, res) => {
 });
 
 app.get('/likhang-maharlika', (req, res) => {
-  res.render('lm', { Title: 'Likhang Maharlika' });
+  try {
+      const officers = await Officer.find({ beneficiary: 'lm' }).lean();
+      const products = await Product.find({ }).lean();  
+
+      res.render('lm', { Title: 'Likhang Maharlika', officers, products });
+  } catch(err) {
+      res.status(500).json({ error: err.message });
+  }
 });
 
 app.get('/gift-global', (req, res) => {
-  res.render('gg', { Title: 'Gift Global' });
+  try {
+      const events = await Event.find({ beneficiary: 'bgl' }).lean();
+
+      res.render('gg', { Title: 'Gift Global', events });
+  } catch(err) {
+      res.status(500).json({ error: err.message });
+  }
 });
 
 app.listen(port, () => {
