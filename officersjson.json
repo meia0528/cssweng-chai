@@ -62,13 +62,6 @@
   "beneficiary": "chai"
 },
 {
-  "_id": "9",
-  "name": "Khairoden Utto",
-  "position": "Values and Ethics Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
   "_id": "10",
   "name": "Shiaravon Badal",
   "position": "President",
@@ -123,5 +116,75 @@
   "position": "P.O",
   "image": "images/temp_pfp.png",
   "beneficiary": "bgl"
+},
+{
+  "_id": "18",
+  "name": "Dorothy Gregorio",
+  "position": "CEO",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "19",
+  "name": "Bai Mona Naga",
+  "position": "QA Officer",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "20",
+  "name": "Monawara Badal",
+  "position": "Bookeeper",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "21",
+  "name": "Pia Landasan",
+  "position": "Marketing and Sales Officer",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "22",
+  "name": "Aya  Maguid",
+  "position": "Inventory/Logistic Officer",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "23",
+  "name": "Rohana Kasan",
+  "position": "Production Manager",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "24",
+  "name": "Sapia Ayunan",
+  "position": "Production Staff",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "25",
+  "name": "Norhaya Bagowan",
+  "position": "Production Staff",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "26",
+  "name": "Milda Isnari",
+  "position": "Production Staff",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
+},
+{
+  "_id": "27",
+  "name": "Halmida Piang",
+  "position": "Production Staff",
+  "image": "images/temp_pfp.png",
+  "beneficiary": "lm"
 }
 ]
