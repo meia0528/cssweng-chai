@@ -151,8 +151,8 @@ const updateProductHook = () => {
                 navigate('/admin/product-mgmt/display');
             }, 2000);
 
-        } catch (error) {
-            console.error("Error updating product:", error);
+        } catch (err) {
+            console.error("Error updating product:", err);
             
             const errorMsg = err.response?.data?.message || 'Something went wrong!';
             setAlert({message: errorMsg, type: 'error'});
