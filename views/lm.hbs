@@ -83,65 +83,27 @@
 </div>
 
 <!--Our Products-->
-<div class="lm-products">
+<div class="lm-products-header">
     <h1>Our Products</h1>
+    <input type="search" id="search" placeholder="Search here...">
+</div>
+
+<div class="lm-products-list">
+    
 </div>
 
 <!--The Women Behind Likhang Maharlika-->
-<div class="lm-team-container">
+<div class="container-officers-lm">
     <h1>The Women Behind Likhang Maharlika</h1>
-
-    <div class="lm-team-people">
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
+    <div class="container-officers-main-lm">
+        <div class="officer-scroll-lm">
+        {{#each officers}}
+        <div class="officer-card">
+            <img src="{{this.image}}" alt="{{this.image_alt}}">
+            <h3>{{this.name}}</h3>
+            <h5>{{this.position}}</h5>
         </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-    </div>
-
-    <div class="lm-team-people">
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
-        </div>
-
-        <div class="lm-team-person">
-            <img src="images/temp_pfp.png">
-            <h4>Name<br><i>Position</i></h4>
+        {{/each}}
         </div>
     </div>
 </div>
@@ -165,3 +127,23 @@
         <button class="btn btn-success">DONATE NOW!</button>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const viewMoreBtn = document.getElementById("viewMoreBtn");
+  const container = document.querySelector(".container-events-bgl");
+  const cards = [...document.querySelectorAll(".card-bgl-events")];
+
+  cards.forEach((card, index) => {
+    if (index < 6) {
+      card.classList.add("visible");
+    }
+  });
+
+  viewMoreBtn.addEventListener("click", () => {
+    cards.forEach(card => card.classList.add("visible"));
+    container.classList.add("expanded");
+    viewMoreBtn.style.display = "none";
+  });
+});
+</script>
