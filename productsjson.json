@@ -1,0 +1,109 @@
+[{
+  "_id": "1",
+  "title": "Filipiniana Terno",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "2",
+  "title": "‌Wrap-around Silk",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "3",
+  "title": "‌Kimono",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "4",
+  "title": "‌Mukna Terno",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "5",
+  "title": "‌Kuppiya/Tutob",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "6",
+  "title": "‌Shiny Malong Silk",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "7",
+  "title": "‌Malong",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "8",
+  "title": "‌Earrings",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "9",
+  "title": "‌Handkerchief",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "10",
+  "title": "‌Scrunchies",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "11",
+  "title": "‌Ribbon",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+},
+{
+  "_id": "12",
+  "title": "‌Hairband",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+  "price": "00.00",
+  "quantity": "10",
+  "type": "Cosmetic",
+  "image": "/images/temp_prod.jpeg"
+}
+]
