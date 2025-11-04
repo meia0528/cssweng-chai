@@ -38,13 +38,19 @@ const Login = () => {
 
                     <button type="submit">Login</button>                        
 
-                    <p className="sign-up-msg">
-                        Don't have an account?
+                    {hook.adminExists ? (
+                        <p className="sign-up-msg">
+                            Don't have an account?
 
-                        <Link to={'/admin/register'}>
-                            <u className="sign-up"> Sign up</u>
-                        </Link>
-                    </p>
+                            <Link to={'/admin/register'}>
+                                <u className="sign-up"> Sign up</u>
+                            </Link>
+                        </p>                        
+                    ) : (
+                        <p className='sign-up-msg'>
+                            An admin account already exists — please log in.
+                        </p>
+                    )}
                 </form>
             </div>
 

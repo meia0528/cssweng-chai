@@ -9,9 +9,11 @@ import DisplaySingleProduct from "./components/Product-Mgmt/DisplaySingleProduct
 import UpdateProduct from "./components/Product-Mgmt/UpdateProduct.jsx";
 import Login from "./components/Login-Register/Login.jsx";
 import Register from "./components/Login-Register/Register.jsx";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
-const Layout = ({ children }) => {
+const SidebarLayout = ({ children }) => {
     const sidebarHooks = useSidebarHook();
     const location = useLocation();
 
@@ -38,6 +40,33 @@ const Layout = ({ children }) => {
         </>
     );
 };
+
+
+const AdminRegisterGuard = ({children}) => {
+    const [allowed, setAllowed] = useState(null);
+
+    useEffect(() => {
+        const checkAdmin = async () => {
+            try {
+                const res = await axios.get("http://localhost:5000/auth/admin-exists");
+                setAllowed(!res.data.exists); 
+            } catch (err) {
+                console.error(err);
+                setAllowed(false);
+            }
+        };
+
+        checkAdmin();
+    }, []);
+
+    if (allowed === null)
+        return;
+
+    if (!allowed) return <Navigate to="/admin/login" />;
+
+    return children;
+};
+
 
 
 const ProtectedRoute = ({ children }) => {
@@ -76,7 +105,11 @@ const AppRoutes = () => {
             {/* register page */}
             <Route
                 path="/admin/register"
-                element={<Register/>}/>
+                element={
+                    <AdminRegisterGuard>
+                        <Register/>
+                    </AdminRegisterGuard>
+                }/>
 
 
             {/* product display page */}
@@ -84,9 +117,9 @@ const AppRoutes = () => {
                 path="/admin/product-mgmt/display" 
                 element={
                     <ProtectedRoute>
-                        <Layout>
+                        <SidebarLayout>
                             <DisplayProducts />
-                        </Layout>                            
+                        </SidebarLayout>                            
                     </ProtectedRoute>
                 } />
 
@@ -96,9 +129,9 @@ const AppRoutes = () => {
                 path="/admin/product-mgmt/create"
                 element={
                     <ProtectedRoute>
-                        <Layout>
+                        <SidebarLayout>
                             <CreateProduct />
-                        </Layout>                        
+                        </SidebarLayout>                        
                     </ProtectedRoute>
                 }/>
                 

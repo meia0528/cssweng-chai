@@ -10,8 +10,8 @@ const registerAdmin = async (req, res) => {
     try {
         const {username, password, token} = req.body;
 
-        const existing = await Admin.findOne({username});
-        if(existing) return res.status(400).json({message: 'Admin already exists.'});
+        const adminCount = await Admin.countDocuments({});
+        if(adminCount >= 1) return res.status(403).json({ message: "Registration disabled. Admin already exists." });
 
         if (token !== process.env.TOKEN) return res.status(400).json({message: 'Incorrect admin token.'});
 
@@ -47,8 +47,19 @@ const loginAdmin = async (req, res) => {
 };
 
 
+const checkAdminExist = async (req, res) => {
+    try {
+        const adminCount = await Admin.countDocuments({});
+        res.json({ exists: adminCount >= 1 });
+        
+    } catch (err) {
+        console.error(`Error checking existing admin: ${err}`);
+    }
+};
+
 
 module.exports = {
     registerAdmin,
-    loginAdmin
+    loginAdmin,
+    checkAdminExist
 }

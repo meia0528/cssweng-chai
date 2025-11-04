@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -7,6 +7,22 @@ const loginHook = () => {
     const [alert, setAlert] = useState({message: '', type: ''});
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [adminExists, setAdminExists] = useState(null);
+
+
+    useEffect(() => {
+        const checkAdmin = async () => {
+            try {
+                const res = await axios.get("http://localhost:5000/auth/admin-exists");
+                setAdminExists(!res.data.exists); 
+            } catch (err) {
+                console.error(err);
+                setAdminExists(false);
+            }
+        };
+
+        checkAdmin();
+    }, []);
 
 
     const handleLogin = async (e) => {
@@ -36,7 +52,8 @@ const loginHook = () => {
         setUsername,
         password,
         setPassword,
-        handleLogin
+        handleLogin,
+        adminExists
     };
 };
 
