@@ -63,125 +63,69 @@
 },
 {
   "_id": "10",
-  "name": "Shiaravon Badal",
-  "position": "President",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "11",
-  "name": "Anesa Sadon",
-  "position": "Vice President",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "12",
-  "name": "Medzra Moctar",
-  "position": "Secretary",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "13",
-  "name": "Monisa Aba",
-  "position": "Treasurer",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "14",
-  "name": "Aldren Dimalao",
-  "position": "Auditor",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "15",
-  "name": "Anesa Sadon",
-  "position": "P.I.O",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "16",
-  "name": "Alden Datomanong",
-  "position": "P.I.O",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "17",
-  "name": "Joshen Pelasol",
-  "position": "P.O",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "bgl"
-},
-{
-  "_id": "18",
   "name": "Dorothy Gregorio",
   "position": "CEO",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "19",
+  "_id": "11",
   "name": "Bai Mona Naga",
   "position": "QA Officer",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "20",
+  "_id": "12",
   "name": "Monawara Badal",
   "position": "Bookeeper",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "21",
+  "_id": "13",
   "name": "Pia Landasan",
   "position": "Marketing and Sales Officer",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "22",
+  "_id": "14",
   "name": "Aya  Maguid",
   "position": "Inventory/Logistic Officer",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "23",
+  "_id": "15",
   "name": "Rohana Kasan",
   "position": "Production Manager",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "24",
+  "_id": "16",
   "name": "Sapia Ayunan",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "25",
+  "_id": "17",
   "name": "Norhaya Bagowan",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "26",
+  "_id": "18",
   "name": "Milda Isnari",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "27",
+  "_id": "19",
   "name": "Halmida Piang",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",

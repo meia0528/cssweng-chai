@@ -40,9 +40,19 @@ app.get('/donate-now', (req, res) => {
 app.get('/batang-gift-of-love', async(req, res) => {
   try {
         const officers = await Officer.find({ beneficiary: 'bgl' }).lean();
-        const events = await Event.find({ beneficiary: 'bgl' }).lean();
+        const allEvents = await Event.find({ beneficiary: 'bgl' }).lean();
 
-        res.render('bgl', { Title: 'Batang Gift of Love', officers, events });
+        //sorting dates for upcoming & past events
+        const today = new Date();
+
+        const upcomingEvents = allEvents.filter(event => new Date(event.date) >= today)
+                                        .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const pastEvents = allEvents.filter(event => new Date(event.date) < today)
+                                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        res.render('bgl', { Title: 'Batang Gift of Love', officers, upcomingEvents, pastEvents  });
+        
     } catch(err) {
         res.status(500).json({ error: err.message });
     }

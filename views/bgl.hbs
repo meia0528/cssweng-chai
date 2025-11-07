@@ -48,12 +48,37 @@
     <h1>Our History</h1>
 </div>
 
-<!--Events-->
+<!--Upcoming Events-->
+<div class="container-upcoming-bgl">
+    <h1>Upcoming<br>Events</h1>
+    <div class="container-upcoming-main-bgl">
+        <div class="upcoming-scroll-bgl">
+        {{#if upcomingEvents.length}}
+        {{#each upcomingEvents}}
+            <div class="card card-bgl-events" id="upcoming-bgl">
+                <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <div class="card-info">
+                        <p class="card-date"><i class="bi bi-calendar-fill"></i> {{this.date}}</p>
+                    </div>
+                    <p class="card-text">{{this.description}}</p>
+                </div>
+            </div>
+        {{/each}}
+        {{else}}
+            <p style="padding: 40px;">No upcoming events at the moment.</p>
+        {{/if}}
+        </div>
+    </div>
+</div>
+
+<!--Our Past Events-->
 <div class="container-events-bgl">
     <h1>Our Past Events</h1>
     <div class="container-events-main-bgl">
-        {{#each events}}
-        <div class="card card-bgl-events">
+        {{#each pastEvents}}
+        <div class="card card-bgl-events" id = "past-events">
             <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
             <div class="card-body">
                 <h5 class="card-title">{{this.title}}</h5>
@@ -73,17 +98,49 @@
 <!--Officers--> 
 <div class="container-officers-bgl">
     <h1>Meet Our Team</h1>
-    <div class="container-officers-main-bgl">
-        <div class="officer-scroll-bgl">
-        {{#each officers}}
-        <div class="officer-card">
-            <img src="{{this.image}}" alt="{{this.image_alt}}">
-            <h3>{{this.name}}</h3>
-            <h5>{{this.position}}</h5>
+    <h5><em>We are a dedicated team of individuals working together to bring hope, love, and <br>opportunity to every child in Batang Gift of Love.</em></h5>
+    
+    <div class="bgl-officers-all">
+        <div class="bgl-officer-first">
+            <div class="bgl-officer officer-darkgreen">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Shiaravon Badal</h3>
+            </div>
+            <div class="bgl-officer officer-light">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Medzra Moctar</h3>
+            </div>
+            <div class="bgl-officer officer-darkgreen">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Monisa Aba</h3>
+            </div>
+            <div class="bgl-officer officer-light">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Aldren Dimalao</h3>
+            </div>
         </div>
-        {{/each}}
+
+        <div class="bgl-officer-second">
+            <div class="bgl-officer officer-darkgreen">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Anesa Sadon</h3>
+            </div>
+            <div class="bgl-officer officer-light">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Alden Datomanong</h3>
+            </div>
+            <div class="bgl-officer officer-darkgreen">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Joshen Pelasol</h3>
+            </div>
+            <div class="bgl-officer officer-light">
+                <img src="/images/bgl_officers.png" alt="BGL Officer">
+                <h3>Datu Abel Rakim</h3>
+            </div>
         </div>
+
     </div>
+   
 </div>
 
 
@@ -98,7 +155,6 @@
     <div class="footer-left">
         <p>Taguig Community Hope <br> Alternative Incorporated</p>
         <a href="/about-us"> About Us</a>
-        <a href="#"> INSERT LINK</a>
         <a href="#"> Back to Top</a>
     </div>
 
@@ -119,8 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".container-events-bgl");
   const cards = [...document.querySelectorAll(".card-bgl-events")];
 
+ const upcomingCtr = {{upcomingEvents.length}};
+
   cards.forEach((card, index) => {
-    if (index < 6) {
+    if (index < 6 + upcomingCtr) {
       card.classList.add("visible");
     }
   });

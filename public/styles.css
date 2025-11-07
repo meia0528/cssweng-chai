@@ -59,6 +59,22 @@ body{
     border-color: #133A18;
 }
 
+.dropdown-item-lm{
+    color: #37763F;
+}
+
+.dropdown-lm{
+    border-color: #37763F;
+}
+
+.dropdown-gg{
+    border-color: #B8A045;
+}
+
+.dropdown-item-gg{
+    color: #B8A045;
+}
+
 .dropdown-item-bgl{
     color: #133A18;
 }
@@ -70,6 +86,16 @@ body{
 
 .dropdown-item-bgl:hover {
     background-color: #133A18;
+    color: white;
+}
+
+.dropdown-item-lm:hover {
+    background-color: #37763F;
+    color: white;
+}
+
+.dropdown-item-gg:hover {
+    background-color: #B8A045;
     color: white;
 }
 
@@ -545,7 +571,6 @@ body{
   padding-bottom: 25px;
   padding-right: 50px;
 }
-
 
 .officer-card{
     background-color: #98a89e;
@@ -1138,7 +1163,7 @@ body{
     justify-content: center; /*remove later*/
 }
 
-.container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1{
+.container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1, .container-upcoming-bgl h1{
     font-weight: bold;
     color: #133A18;
 }
@@ -1174,38 +1199,104 @@ body{
 }
 
 .container-officers-bgl{
-    height: 700px;
+    height: 620px;
     background-color: #E1E7E2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    margin: 50px 0;
+    padding: 0 50px;
 }
 
-.container-officers-main-bgl{
-    height: 500px;
-    padding-top: 20px;
-    max-width: 1500px;
-    width: 90%;
-    background-color: #BEC7C1;
-    margin: 20px 70px 0px 70px;
-    border-radius: 30px;
+.container-officers-bgl h5{
+    text-align: center;
+    color: #67B170;
+    font-size: 19px;
+}
+
+.bgl-officer{
+    width: 350px;
+    height: 60px;
+    gap: 12px;
     display: flex;
     align-items: center;
-    gap: 35px;
+    border-radius: 8px;
+    padding: 0 18px;
 }
 
-.officer-scroll-bgl{
+.officer-darkgreen{
+    background-color: #76867c;
+}
+
+.officer-light{
+    background-color: #a3c2af;
+}
+
+.bgl-officer img{
+    height: 40px;
+}
+
+.bgl-officer h3{
+    color: white;
+    font-weight: bold;
+    padding-top: 6px;
+}
+
+.bgl-officers-all{
+    display: flex;
+    gap: 70px;
+    padding-top: 50px;
+}
+
+.bgl-officer-first, .bgl-officer-second{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+
+.container-upcoming-bgl{
+    background-color: white;
+    height: 520px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 0 30px;
+}
+
+.container-upcoming-bgl h1{
+    text-align: center;
+}
+
+.container-upcoming-main-bgl {
+    background-color: #e9eaec;
+    border-radius: 1rem;
+    padding: 1.5rem 0;
+    overflow: hidden;
+}
+
+.upcoming-scroll-bgl {
     display: flex;
     gap: 20px;
     overflow-x: auto;
     scroll-snap-type: none;
     scroll-behavior: smooth;
-    padding: 0 60px 25px 20px;
+    padding: 20px 50px;
+    scroll-snap-type: none;
+    max-width: 750px;
+}
+
+#upcoming-bgl{
+    scroll-snap-align: start;
+    flex: 0 0 auto;
 }
 
 .container-events-bgl{
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     max-height: 1020px;
     display: flex;
     flex-direction: column;
