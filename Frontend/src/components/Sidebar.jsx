@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDropDownList, renderSubPage, handleDropdownSelect, handleLogout}) => {
     const navigate = useNavigate();
-    const mgmtOptions = ['Product Management', 'Post Management', 'Sales Management', 'Membership Management'];
+    const mgmtOptions = ['Product Management', 'Sales Management', 'Membership Management'];
     const subPageOptions = ['Display', 'Add'];
 
     return (
@@ -28,8 +28,7 @@ const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDro
                                         className="sidebar-dropdown-item" 
                                         onClick={() => {handleDropdownSelect(option)
 
-                                            if (option === mgmtOptions[0]) navigate('/admin/product-mgmt/display');  
-                                            if (option === mgmtOptions[1]) navigate('/admin/post-mgmt/display');
+                                            if (option === mgmtOptions[0]) navigate('/admin/product-mgmt/display');
                                             if (option === mgmtOptions[2]) navigate('/admin/sales-mgmt/display');
                                             if (option === mgmtOptions[3]) navigate('/admin/membership-mgmt/display');
 

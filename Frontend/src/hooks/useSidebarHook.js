@@ -16,9 +16,6 @@ const useSidebar = () => {
         case 'Product Management':
             mgmtPath = 'product-mgmt';
             break;
-        case 'Post Management':
-            mgmtPath = 'post-mgmt';
-            break;
         case 'Sales Management':
             mgmtPath = 'sales-mgmt';
             break;
