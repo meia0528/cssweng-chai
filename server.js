@@ -37,8 +37,6 @@ app.use((req, res, next) => {
    next();
 })
 
-//app.use('/post-mgmt', eventRouter); ---TBD ---
-
 // ---HANDLEBARS----
 app.engine('hbs', hbs.engine({extname: 'hbs'})); 
 app.set('view engine', 'hbs');
