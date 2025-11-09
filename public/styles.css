@@ -1437,10 +1437,10 @@ body{
 .admindonate-body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #ededed;
     min-height: 100vh;
+    padding: 100px 0;
 }
 
 .admindonate-body img{
