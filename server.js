@@ -145,7 +145,7 @@ function requireLogin(req, res, next) {
 };
 
 app.get('/centralhub', requireLogin, (req, res) => {
-  res.render('centralhub', { username: req.session.user.username });
+  res.render('centralhub', { Title: '(ADMIN) Central Hub', username: req.session.user.username });
 });
 
 app.get('/logout', (req, res) =>{
