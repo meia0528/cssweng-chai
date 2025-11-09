@@ -1,16 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const Officer = require('./models/officer');
-const Event = require('./models/events');
-const Product = require('./models/products');
 const hbs = require('express-handlebars');
-const Admin = require('./models/admin');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const upload = require('./config/multer.js');
 const fs = require('fs');
+
+const Officer = require('./models/officer');
+const Event = require('./models/events');
+const Product = require('./models/products');
+const Admin = require('./models/admin');
+const Donate = require('./models/donate');
 
 // Don't forget to terminal project folder and install packages.
 // Input: npm install express express-handlebars mongoose express-session bcrypt body-parser
@@ -56,8 +58,17 @@ app.get('/about-us', async(req, res) => {
     }
 });
 
-app.get('/donate-now', (req, res) => {
-  res.render('donate', { Title: 'Donate Now' });
+app.get('/donate-now', async(req, res) => {
+  try{
+    const info = await Donate.findOne();
+    
+    const name = info ? info.name : 'Not Available';
+    const contactNo = info ? info.contactNo : 'Not Available';
+
+    res.render('donate', { Title: 'Donate Now', name: name, contactNo: contactNo });
+  } catch(err){
+    res.status(500).json({ error: err.message });
+  }
 });
 
 app.get('/batang-gift-of-love', async(req, res) => {
@@ -153,6 +164,28 @@ app.get('/logout', (req, res) =>{
     res.redirect('/');
   });
 });
+
+// ----DONATE PAGE ADMIN----
+app.get('/admin/donate-edit', requireLogin, async(req, res) =>{
+  try{
+    const prevInfo = await Donate.findOne().lean();
+    res.render('admindonate', { Title: '(ADMIN) Edit Donate Page Contact Details', donateInfo: prevInfo });
+  } catch(err){
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/admin/donate-edit', requireLogin, async(req, res) =>{
+  try{
+    const { name, contactNo } = req.body;
+    await Donate.updateOne({}, { name, contactNo });
+    res.redirect('/admin/donate-edit?updated=true');
+  } catch(err){
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 
 // ----POST MANAGEMENT----
 app.get('showAllPosts', requireLogin, async (req, res) => {
