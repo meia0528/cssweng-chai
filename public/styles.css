@@ -880,6 +880,12 @@ body{
     color: #9E841E;
 }
 
+.card-gg-events .card-title-edit{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #9E841E;
+}
+
 .card-gg-events img{
     height: 180px;
     object-fit: cover;
@@ -1333,6 +1339,12 @@ body{
     color: #133A18;
 }
 
+.card-bgl-events .card-title-edit{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #133A18;
+}
+
 .card-info {
     display: flex;
     align-items: center;
@@ -1505,6 +1517,23 @@ body{
     border: 2px solid #76867c;
     margin-top: 20px;
 }
+
+.admindonate-edit-create{
+    background-color: #76867c;
+    color: white;
+    border: 2px solid #76867c;
+    margin-top: 20px;
+    width: 115px;
+}
+
+.admindonate-edit-delete{
+    background-color: #ff0000;
+    color: white;
+    border: 2px solid #76867c;
+    margin-top: 20px;
+    width: 200px;
+}
+
 
 .admindonate-edit-save:hover{
     background-color: #404843;

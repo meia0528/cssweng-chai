@@ -1,0 +1,47 @@
+<div class="admindonate-body">
+  <img src="/images/logo.png" alt="Logo">
+
+  <div class="admindonate-container">
+    <div class="admindonate-edit">
+      <h1><i class="bi bi-pencil-square"></i>Edit BGL Post</h1>
+
+      <form action="/admin/editPost/{{post._id}}" method="POST" class="admin-form" enctype="multipart/form-data">
+        <div class="form-group admindonate-edit-form">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" maxlength="45" value="{{post.title}}" required>
+        </div>
+
+        <div class="form-group admindonate-edit-form">
+            <label for="formFile" class="form-label">Change Event Image</label>
+            <input class="form-control" type="file" id="formFile" name="formFile" value="{{post.image}}" accept="image/*">
+        </div>
+
+        <div class="form-group admindonate-edit-form">
+            <label for="description">Description (150 characters max)</label>
+            <textarea style="resize: none", id="description" name="description", maxlength="150" rows="5">{{post.description}}</textarea>
+        </div>
+
+        <div class="form-group admindonate-edit-form">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" value="{{date}}" required>
+        </div>
+
+        <button type="button" class="admindonate-edit-cancel" onclick="window.location='/admin/showBGLPosts'">Cancel</button>
+        <button type="submit" class="btn-submit admindonate-edit-create"><i class="bi bi-floppy2-fill"></i> Edit</button>
+      </form>
+
+      <form action="/admin/deleteBGLPost/{{post._id}}" method="POST" class="admin-form">
+        <button type="submit" class="btn-submit admindonate-edit-delete">DELETE</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script>
+   const url = new URLSearchParams(window.location.search);
+   if (url.get('updated') === 'true'){
+    alert('BGL event post edited successfully!');
+    window.location.href = '/admin/showBGLPosts';
+   }
+</script>

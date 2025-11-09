@@ -61,7 +61,7 @@ app.get('/about-us', async(req, res) => {
 app.get('/donate-now', async(req, res) => {
   try{
     const info = await Donate.findOne();
-    
+
     const name = info ? info.name : 'Not Available';
     const contactNo = info ? info.contactNo : 'Not Available';
 
@@ -105,7 +105,7 @@ app.get('/likhang-maharlika', async(req, res) => {
 
 app.get('/gift-global', async(req, res) => {
   try {
-      const events = await Event.find({ beneficiary: 'bgl' }).lean();
+      const events = await Event.find({ beneficiary: 'gg' }).lean();
 
       res.render('gg', { Title: 'Gift Global', events });
   } catch(err) {
@@ -185,132 +185,262 @@ app.post('/admin/donate-edit', requireLogin, async(req, res) =>{
   }
 });
 
-
-
 // ----POST MANAGEMENT----
-app.get('showAllPosts', requireLogin, async (req, res) => {
+app.get('/admin/showBGLPosts', requireLogin, async (req, res) => {
   try{
-    const allEvents = await Event.find().lean();
-    res.render('postMgmnt-main', {allEvents});
+    const bglEvents = await Event.find({ beneficiary: 'bgl' }).lean();
+    const sorted = bglEvents.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    res.render('postMgmnt-BGL', {Title: '(ADMIN) Edit BGL Posts', bglEvents: sorted});
   } catch (err) {
-    console.error('Error fetching posts: ', err);
-      res.status(500).json({error: err.message});
+    console.error('Error fetching BGL posts: ', err);
+    res.status(500).json({error: err.message});
   }
 });
 
-app.get('displayPost/:id', requireLogin, async (req, res) => {
-  try{ // removing {} around id might break something idk
-    const postId = req.params.id;
-    const post = await Event.findById({postId}).lean();
-    res.render('postMgmnt-singlePost', {post});
+app.get('/admin/showGGPosts', requireLogin, async (req, res) => {
+  try{
+    const ggEvents = await Event.find({ beneficiary: 'gg' }).lean();
+    const sorted = ggEvents.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    res.render('postMgmnt-GG', {Title: '(ADMIN) Edit GG Posts', ggEvents: sorted});
   } catch (err) {
-    console.error('Error fetching posts: ', err);
-      res.status(500).json({error: err.message});
+    console.error('Error fetching GG posts: ', err);
+    res.status(500).json({error: err.message});
   }
 });
 
-app.post('/createPost', requireLogin, upload.single('formFile'), async (req, res) => {
+function fetchDate(date) {
+  let newDate = '';
+  let month = String(date.getMonth() + 1).padStart(2, '0');
+  let day = String(date.getDate()).padStart(2, '0');
+  let year = date.getFullYear();
+
+  newDate = year + '-' + month + '-' + day;
+  return newDate;
+};
+
+app.get('/admin/editBGLPost/:id', requireLogin, async (req, res) => {
+  try{ 
+    const id = req.params.id;
+    const post = await Event.findById(id).lean();
+
+    const date = new Date(post.date);
+    const formattedDate = fetchDate(date);
+    res.render('postMgmnt-editBGLPost', {Title: '(ADMIN) Edit BGL Post Contents', post, date: formattedDate });
+  } catch (err) {
+    console.error('Error fetching BGL post: ', err);
+    res.status(500).json({error: err.message});
+  }
+});
+
+app.get('/admin/editGGPost/:id', requireLogin, async (req, res) => {
+  try{ 
+    const id = req.params.id;
+    const post = await Event.findById(id).lean();
+
+    const date = new Date(post.date);
+    const formattedDate = fetchDate(date);
+    res.render('postMgmnt-editGGPost', {Title: '(ADMIN) Edit GG Post Contents', post, date: formattedDate });
+  } catch (err) {
+    console.error('Error fetching GG post: ', err);
+    res.status(500).json({error: err.message});
+  }
+});
+
+app.get('/admin/menuCreateBGLPost', requireLogin, async (req, res) => {
+  try{
+    res.render('postMgmnt-createBGLPost', {Title: '(ADMIN) Create BGL Post'});
+  } catch (err) {
+    console.error('Error finding create BGL posts menu: ', err);
+    res.status(500).json({error: err.message});
+  }
+});
+
+app.get('/admin/menuCreateGGPost', requireLogin, async (req, res) => {
+  try{
+    res.render('postMgmnt-createGGPost', {Title: '(ADMIN) Create GG Post'});
+  } catch (err) {
+    console.error('Error finding create GG posts menu: ', err);
+    res.status(500).json({error: err.message});
+  }
+});
+
+function formatDate(dateString) {
+  let newDate = '';
+  let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let month = monthNames[dateString.getMonth()]; 
+  let day = dateString.getDate();
+  let year = dateString.getFullYear();
+
+  newDate = month + ' ' + day + ', ' + year;
+  return newDate;
+};
+
+app.post('/admin/createBGLPost', requireLogin, upload.single('formFile'), async (req, res) => {
     try {
-      const { title, date, beneficiary, description } = req.body;
+      const { title, date, description } = req.body;
       //const imagePaths = req.files.map((file) => file.path.replace(/\\/g, '/')) || [];
-      
+      const beneficiary = 'bgl';
+      let imagePath = '';
+      const selectedDate = new Date(date);
+      let newDate = formatDate(selectedDate);
+
       if(req.file){ 
-        const imagePath = '/images/' + Date.now() + req.file.filename;
+        imagePath = '/images/' + req.file.filename;
       } else { // places default image on post if no image uploaded
-        const imagePath = '/images/logo.png';
+        imagePath = '/images/favicon.png';
       }
 
       const newEvent = new Event({
           title,
-          date,
+          date: newDate,
           image: imagePath,
-          beneficiary,
+          beneficiary: beneficiary,
           description
       });
 
-      const allEvents = await Event.find().lean();
       await newEvent.save();
-      res.render('postMgmnt-main', {message: 'Event post created successfully!', allEvents });
-
+      res.redirect('/admin/menuCreateBGLPost?updated=true');
     } catch (err) {
       console.error('Error creating post: ', err);
       res.status(500).json({ message: 'Failed to create post. Please check your input.' });
     }
 });
 
-app.post('/deletePost/:id', requireLogin, async (req, res) => {
-    // removing {} around id might break something idk
+app.post('/admin/createGGPost', requireLogin, upload.single('formFile'), async (req, res) => {
+    try {
+      const { title, date, description } = req.body;
+      //const imagePaths = req.files.map((file) => file.path.replace(/\\/g, '/')) || [];
+      const beneficiary = 'gg';
+      let imagePath = '';
+      const selectedDate = new Date(date);
+      let newDate = formatDate(selectedDate);
+
+      if(req.file){ 
+        imagePath = '/images/' +  req.file.filename;
+      } else { // places default image on post if no image uploaded
+        imagePath = '/images/favicon.png';
+      }
+
+      const newEvent = new Event({
+          title,
+          date: newDate,
+          image: imagePath,
+          beneficiary: beneficiary,
+          description
+      });
+
+      await newEvent.save();
+      res.redirect('/admin/showGGPosts');
+      
+    } catch (err) {
+      console.error('Error creating post: ', err);
+      res.status(500).json({ message: 'Failed to create post. Please check your input.' });
+    }
+});
+
+app.post('/admin/deleteBGLPost/:id', requireLogin, async (req, res) => {
     const id = req.params.id;
 
     try {
       const post = await Event.findById(id);
       if (!post) 
         return res.status(404).json({ message: "Post not found." });
-      const imagePath = post.image;
+      let imagePath = post.image;
       await Event.findByIdAndDelete(id);
 
       imagePath = imagePath.replace('/images/', '');
       // delete the old image saved in images folder (only if it is not the default image)
-      if (post.image !== '/images/logo.png') {
+      if (post.image !== '/images/favicon.png') {
           const fullPath = path.join(process.cwd(), 'public', 'images', imagePath);
 
           fs.unlink(fullPath, (err) => {
               if (err) console.error("Failed to delete image:", imagePath, err.message);
-              else console.log("Deleted image:", imagePath);
+              else console.log("Deleted image from deleted post:", imagePath);
           }); 
         }
 
-      const allEvents = await Event.find().lean();
-      res.render('postMgmnt-main', {message: 'Event post deleted successfully!', allEvents });
+      res.redirect('/admin/showBGLPosts');
     } catch (err) {
-        console.error("Error deleting post: ", err);
-        res.status(500).json({ message: "Failed to delete Post." });
+      console.error("Error deleting post: ", err);
+      res.status(500).json({ message: "Failed to delete Post." });
     }
 });
 
-app.post('/updatePost/:id', requireLogin, upload.single('formFile'), async (req, res) => {
-    try { // removing {} around id might break something idk
-        const id = req.params.id;
-        const { title, date, beneficiary, description } = req.body;
+app.post('/admin/deleteGGPost/:id', requireLogin, async (req, res) => {
+    const id = req.params.id;
 
-        const prevPost = await Post.findById(id);
+    try {
+      const post = await Event.findById(id);
+      if (!post) 
+        return res.status(404).json({ message: "Post not found." });
+      let imagePath = post.image;
+      await Event.findByIdAndDelete(id);
+
+      imagePath = imagePath.replace('/images/', '');
+      // delete the old image saved in images folder (only if it is not the default image)
+      if (post.image !== '/images/favicon.png') {
+          const fullPath = path.join(process.cwd(), 'public', 'images', imagePath);
+
+          fs.unlink(fullPath, (err) => {
+              if (err) console.error("Failed to delete image:", imagePath, err.message);
+              else console.log("Deleted image from deleted post::", imagePath);
+          }); 
+        }
+
+      res.redirect('/admin/showGGPosts');
+    } catch (err) {
+      console.error("Error deleting post: ", err);
+      res.status(500).json({ message: "Failed to delete Post." });
+    }
+});
+
+app.post('/admin/editPost/:id', requireLogin, upload.single('formFile'), async (req, res) => {
+    try { 
+        const id = req.params.id;
+        const { title, date, description } = req.body;
+
+        const prevPost = await Event.findById(id);
         if (!prevPost) return res.status(404).json({ message: "Post not found." });
+        const oldImg = prevPost.image;
+        const selectedDate = new Date(date);
+        let newDate = formatDate(selectedDate);
 
         if(req.file){ 
-        const imagePath = '/images/' + Date.now() + req.file.filename;
-        const oldImg = prevPost.image;
+        const imagePath = '/images/' + req.file.filename;
         const updatedPost = await Event.findByIdAndUpdate(
             id,
             {$set:{
                 title,
-                date,
+                date: newDate,
                 image: imagePath,
-                beneficiary,
                 description
               }     
             }, {
                 new: true, runValidators: true 
             }
           );
-          // Delete old image
+          // Delete old image (if it is not the default image)
           // remove leading 'images/' prevent duplicate in the code after this
+          if (oldImg !== '/images/favicon.png'){
             const oldFilename = oldImg.replace('/images/', '');
 
-          // build absolute path from project root
-          const fullPath = path.join(process.cwd(), 'public', 'images', oldFilename);
-          try {
-                await fs.promises.unlink(fullPath);
-                console.log(`Deleted old image: ${oldFilename}`);
+            // build absolute path from project root
+            const fullPath = path.join(process.cwd(), 'public', 'images', oldFilename);
+            try {
+              await fs.promises.unlink(fullPath);
+              console.log(`Deleted old image: ${oldFilename}`);
             } catch (err) {
-                console.error(`Failed to delete image ${err.message}:`);
+              console.error(`Failed to delete image ${err.message}:`);
             }
+          } 
         } else { // no new image
            const updatedPost = await Event.findByIdAndUpdate(
             id,
             {$set:{
                 title,
-                date,
-                beneficiary,
+                date: newDate,
                 description
               }     
             }, {
@@ -319,14 +449,16 @@ app.post('/updatePost/:id', requireLogin, upload.single('formFile'), async (req,
           );
         }
 
-        const allEvents = await Event.find().lean();
-        res.render('postMgmnt-main', {message: 'Post updated successfully!', allEvents });
+        if (prevPost.beneficiary === 'bgl'){
+          res.redirect('/admin/showBGLPosts');
+        } else {
+          res.redirect('/admin/showGGPosts');
+        } 
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server error updating post." });
     }
 });
-
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

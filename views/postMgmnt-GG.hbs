@@ -1,0 +1,55 @@
+<nav class="navbar navbar-gg">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src= "/images/logo.png" alt = "CHAI-Taguig Logo" id = "logo-pic">
+        </a>
+
+        <a href="/admin/menuCreateGGPost" class="nav-link">Create New GG Post</a>
+
+        <form method="GET" action="/centralhub">
+            <button class="centralhub-logout" type="submit"><i class="bi bi-box-arrow-in-left"></i> BACK</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container-events-gg">
+    <h1>GG Event Post Management</h1>
+    <h5>Click on a post title to open it's edit page</h5>
+    <div class="container-events-main-gg">
+        {{#each ggEvents}}
+        <div class="card card-gg-events" id = "all-events">
+            <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+            <div class="card-body">
+                <h5 class="card-title-edit"><a href="/admin/editGGPost/{{this._id}}" class="nav-link">{{this.title}}</a></h5>
+                <div class="card-info">
+                    <p class="card-beneficiary">Gift Global</p>
+                    <p class="card-date"><i class="bi bi-calendar-fill"></i> {{this.date}}</p>
+                </div>
+                <p class="card-text">{{this.description}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+      <button id="viewMoreBtn" class="btn btn-success mt-4">View More</button>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const viewMoreBtn = document.getElementById("viewMoreBtn");
+  const container = document.querySelector(".container-events-gg");
+  const cards = [...document.querySelectorAll(".card-gg-events")];
+
+  cards.forEach((card, index) => {
+    if (index < 6) {
+      card.classList.add("visible");
+    }
+  });
+
+  viewMoreBtn.addEventListener("click", () => {
+    cards.forEach(card => card.classList.add("visible"));
+    container.classList.add("expanded");
+    viewMoreBtn.style.display = "none";
+  });
+});
+</script>
