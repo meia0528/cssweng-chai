@@ -29,8 +29,8 @@ const Sidebar = ({mgmtPath, management, isOpen, subPage, dropdownRef, displayDro
                                         onClick={() => {handleDropdownSelect(option)
 
                                             if (option === mgmtOptions[0]) navigate('/admin/product-mgmt/display');
-                                            if (option === mgmtOptions[2]) navigate('/admin/sales-mgmt/display');
-                                            if (option === mgmtOptions[3]) navigate('/admin/membership-mgmt/display');
+                                            if (option === mgmtOptions[1]) navigate('/admin/sales-mgmt/display');
+                                            if (option === mgmtOptions[2]) navigate('/admin/membership-mgmt/display');
 
                                         }}>
                                         
