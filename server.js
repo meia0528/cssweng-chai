@@ -178,7 +178,17 @@ app.get('/admin/donate-edit', requireLogin, async(req, res) =>{
 app.post('/admin/donate-edit', requireLogin, async(req, res) =>{
   try{
     const { name, contactNo } = req.body;
-    await Donate.updateOne({}, { name, contactNo });
+    const prevInfo = await Donate.findOne().lean();
+    if (prevInfo){
+      await Donate.updateOne({}, { name, contactNo });
+    } else { // when there is nothing in donate database, create a new one
+      const newDonate = new Donate({
+          name: name,
+          contactNo: contactNo
+      });
+      await newDonate.save();
+    }
+    
     res.redirect('/admin/donate-edit?updated=true');
   } catch(err){
     res.status(500).json({ error: err.message });
