@@ -938,35 +938,6 @@ body{
 
 
 /* LIKHANG MAHARLIKA PAGE */
-.lm-description{
-    margin: 100px 150px 100px 150px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.lm-description-text{
-    display: flex;
-    flex-direction: column;
-}
-
-.lm-description-text h1{
-    font-weight: bold;
-    color: #173F27;
-    margin-bottom: 20px;
-}
-
-.lm-description-text p{
-    margin: 0px 50px 25px 0px;
-}
-
-.lm-description > img{
-    height: 380px;
-    max-width: 100%;
-    width: auto;
-}
-
 .lm-ribbon{
     font-size: 32px;
     font-weight: bold;
@@ -982,22 +953,24 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 100px 50px 0px 50px;
+    margin: 100px 80px 100px 80px;
 }
 
 .lm-collection h1{
+    margin-bottom: 30px;
     font-weight: bold;
     color: #173F27;
 }
 
 .lm-collection p{
-    padding: 20px 20px;
+    margin: 5px 0px;
+    font-size: 20;
     text-align: center;
 }
 
 .lm-collection-container{
     background-color: rgba(55, 118, 63, 0.3);
-    padding: 40px 300px;
+    padding: 60px 80px;
     text-align: center;
     justify-content: center;
     display: flex;
@@ -1010,9 +983,16 @@ body{
     align-items: center;
 }
 
+.lm-collection-column p{
+    margin-top: 35px;
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
 .lm-collection-column img{
     width: 164px;
     height: 164px;
+    margin-bottom: 35px;
 }
 
 .container-products-lm{
@@ -1022,7 +1002,8 @@ body{
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    margin-top: 100px;
+    margin-top: 80px;
+    margin-bottom: 80px;
     padding-bottom: 100px;
     transition: max-height 1.5s ease; 
 }
@@ -1030,6 +1011,7 @@ body{
 .container-products-lm h1, .container-officers-lm h1{
     font-weight: bold;
     color: #173F27;
+    margin-bottom: 30px;
 }
 
 .container-products-lm.expanded{
@@ -1056,8 +1038,8 @@ body{
 }
 
 .card-lm-products .card-title{
-    margin: 5px 0px;
-    font-weight: 600;
+    margin-bottom: 10px;
+    font-weight: bold;
     color: #000000;
 }
 
@@ -1067,13 +1049,9 @@ body{
     object-position: center;
 }
 
-.card-lm-products .card-text{
+.card-lm-products .card-body .card-text{
     color: #4B4646;
-}
-
-.card-lm-products .card-price{
-    padding: 5px 10px;
-    color: #665F5F;
+    text-align: center;
 }
 
 .card-lm-products .card-body{
@@ -1082,8 +1060,7 @@ body{
 
 .card-lm-products .card-body .card-info{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
 }
 
 .container-officers-lm{
@@ -1093,7 +1070,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .container-officers-main-lm{
@@ -1116,6 +1093,29 @@ body{
     scroll-snap-type: none;
     scroll-behavior: smooth;
     padding: 0 60px 25px 20px;
+}
+
+.lm-collage{
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 80px 80px;
+}
+
+.lm-collage-column{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px;
+}
+
+.lm-collage-column img{
+    height: 350px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
