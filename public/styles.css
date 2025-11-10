@@ -1398,8 +1398,24 @@ body{
     font-size: 18px;
 }
 
-.centralhub-buttons:hover, .centralhub-logout:hover{
+.centralhub-buttons:hover, .centralhub-createPost:hover, .centralhub-logout:hover{
     background-color: #cad1cb;
+}
+
+.centralhub-createPost{
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    padding: 0 20px;
+    background-color: #f3f8f4;
+    border: 2px solid #133A18;
+    border-radius: 8px;
+    height: 60px;
+    width: 270px;
+    color: #133A18;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .centralhub-logout{
