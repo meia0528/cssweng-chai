@@ -120,7 +120,7 @@ app.get('/register', (req, res) => {
 app.post('/register', async(req, res) => {
   const { username, password } = req.body;
   const exists = await Admin.findOne({ username });
-  if (exists) return res.render('register', { error: 'Username already exists!' });
+  if (exists) return res.render('register', { Title: '(ADMIN) Register', error: 'Username already exists!' });
    
   const hashed = await bcrypt.hash(password, 10);
   const newAdmin = new Admin({ username, password: hashed });
@@ -131,7 +131,7 @@ app.post('/register', async(req, res) => {
 
 // ----LOGIN----
 app.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { Title: '(ADMIN) Login'});
 });
 
 app.post('/login', async(req, res) => {
