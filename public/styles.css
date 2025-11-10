@@ -721,12 +721,9 @@ body{
 
 /* GIFT GLOBAL PAGE */
 .gg-description{
-    min-height: 500px;
-    min-width: 1000px;
     margin: 100px 150px 50px 150px;
     display: flex;
     flex-direction: column;
-    padding: 0px 100px;
     justify-content: center;
 }
 
@@ -734,7 +731,7 @@ body{
     position: relative;
     color: #9E841E;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .gg-description-container{
@@ -746,8 +743,9 @@ body{
 }
 
 .gg-description-container img{
-    width: 488px;
-    height: 366px;
+    height: 380px;
+    max-width: 100%;
+    width: auto;
 }
 
 .gg-description-text{
@@ -915,12 +913,9 @@ body{
 
 /* LIKHANG MAHARLIKA PAGE */
 .lm-description{
-    min-height: 500px;
-    min-width: 1000px;
     margin: 100px 150px 100px 150px;
     display: flex;
     flex-direction: row;
-    padding: 0px 100px;
     align-items: center;
     justify-content: center;
 }
@@ -932,8 +927,8 @@ body{
 
 .lm-description-text h1{
     font-weight: bold;
-    color: #37763F;
-    margin: 0px 0px 50px 0px;
+    color: #173F27;
+    margin-bottom: 20px;
 }
 
 .lm-description-text p{
@@ -941,8 +936,9 @@ body{
 }
 
 .lm-description > img{
-    width: 687px;
-    height: 515px;
+    height: 380px;
+    max-width: 100%;
+    width: auto;
 }
 
 .lm-ribbon{
@@ -969,7 +965,7 @@ body{
 }
 
 .lm-collection p{
-    padding: 25px 100px;
+    padding: 20px 20px;
     text-align: center;
 }
 
@@ -993,41 +989,6 @@ body{
     height: 164px;
 }
 
-.lm-collection-column p, .lm-collection-column h1{
-    margin: 10px 100px;
-}
-
-.lm-products-header{
-    margin: 100px 15% 100px 15%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-.lm-products-header h1, .container-officers-lm h1{
-    font-weight: bold;
-    color: #173F27;
-}
-
-.lm-products-header h1{
-   margin: 0px;
-}
-
-.lm-products-header input{
-   padding: 5px 10px;
-}
-
-#lm-searchbar{
-    width: 300px;
-    padding: 10px 15px 10px 40px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background: #FFFFFF url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/search.svg') no-repeat 10px center;
-    background-size: 16px;
-    outline: none;
-}
-
 .container-products-lm{
     background-color: #F4F4F4;
     max-height: 1020px;
@@ -1038,6 +999,11 @@ body{
     margin-top: 100px;
     padding-bottom: 100px;
     transition: max-height 1.5s ease; 
+}
+
+.container-products-lm h1, .container-officers-lm h1{
+    font-weight: bold;
+    color: #173F27;
 }
 
 .container-products-lm.expanded{
