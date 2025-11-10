@@ -1,100 +1,60 @@
-[
-  {
-    "title": "Charity Fun Run 2025",
-    "date": "February 15, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "A community fun run event to raise funds for underprivileged children’s education and healthcare."
+[{
+  "_id": {
+    "$oid": "69122eb91c8fa316e90fdc91"
   },
-  {
-    "title": "Beach Clean-Up Drive",
-    "date": "March 22, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Join our environmental volunteers in cleaning up local beaches and spreading awareness about marine pollution."
+  "title": "NPAW 2025",
+  "date": "2025-11-16",
+  "image": "/images/bgl_event1.jpg",
+  "beneficiary": "bgl",
+  "description": "The National Play Advocacy 2025 supports the advocacy towards child safety and protection online and offline."
+},
+{
+  "_id": {
+    "$oid": "69122eb91c8fa316e90fdc92"
   },
-  {
-    "title": "Tree Planting Activity",
-    "date": "April 10, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Help restore our forests by planting native tree species and learning about sustainable forestry practices."
+  "title": "National Children's Month",
+  "date": "2025-11-01",
+  "image": "/images/bgl_event2.jpg",
+  "beneficiary": "bgl",
+  "description": "We celebrate National Children's Month this November through activities for all the children we support. #ParaSaBata #2025BuwanNgMgaBata"
+},
+{
+  "_id": {
+    "$oid": "69122eb91c8fa316e90fdc93"
   },
-  {
-    "title": "Feeding Program",
-    "date": "May 5, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "A feeding program aimed at supporting malnourished children and providing nutrition education for families."
+  "title": "BGL Family Night",
+  "date": "2025-09-06",
+  "image": "/images/bgl_event3.jpg",
+  "beneficiary": "bgl",
+  "description": "Empowerment begins when we choose to learn, not when we rely on others."
+},
+{
+  "_id": {
+    "$oid": "69122eb91c8fa316e90fdc94"
   },
-  {
-    "title": "Christmas Gift Drive",
-    "date": "December 20, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Spread the holiday spirit by donating toys, clothes, and school supplies for children in need."
+  "title": "Behavior-Based Safety Seminar",
+  "date": "2025-07-18",
+  "image": "/images/bgl_event4.jpg",
+  "beneficiary": "bgl",
+  "description": "This seminar by Batang Gift of Love united professionals to promote a culture of safety through behavioral awareness and peer-driven action."
+},
+{
+  "_id": {
+    "$oid": "69122eb91c8fa316e90fdc95"
   },
-  {
-    "title": "Gift-Giving Program 2023",
-    "date": "December 15, 2023",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "A holiday outreach event providing school supplies and food packs to children in need."
+  "title": "Eliminate Online Sexual Exploitation of Children (EOSEC)",
+  "date": "2025-11-01",
+  "image": "/images/bgl_event5.jpeg",
+  "beneficiary": "bgl",
+  "description": "EOSEC is BGL’s advocacy to protect children from online sexual abuse through awareness, education, and promoting safe digital practices."
+},
+{
+  "_id": {
+    "$oid": "69122eb91c8fa316e90fdc96"
   },
-  {
-    "title": "Tree Planting Drive",
-    "date": "March 12, 2024",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Volunteers and beneficiaries joined hands to plant over 300 saplings in local communities."
-  },
-  {
-    "title": "Summer Feeding Program",
-    "date": "May 8, 2024",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "A nutrition-focused initiative serving free healthy meals to underprivileged kids during summer."
-  },
-  {
-    "title": "Community Clean-Up Drive",
-    "date": "July 20, 2024",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Local residents and youth worked together to clean parks and public spaces to promote environmental awareness."
-  },
-  {
-    "title": "Back-to-School Supply Drive",
-    "date": "August 25, 2024",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Distributed school kits, uniforms, and learning materials to over 150 elementary students."
-  },
-  {
-    "title": "Mental Health Awareness Seminar",
-    "date": "October 10, 2024",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "A seminar to promote emotional well-being among teens, featuring guest speakers and group activities."
-  },
-  {
-    "title": "Christmas Gift of Love 2024",
-    "date": "December 18, 2024",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "An annual celebration bringing joy through gifts, games, and performances for children and families."
-  },
-  {
-    "title": "Health and Wellness Fair",
-    "date": "February 5, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "A community event offering free health check-ups, fitness sessions, and wellness workshops."
-  },
-  {
-    "title": "Youth Leadership Workshop",
-    "date": "April 14, 2025",
-    "image": "/images/temp_event.jpeg",
-    "beneficiary": "bgl",
-    "description": "Empowering young leaders through interactive workshops and motivational talks."
-  }
-]
+  "title": "Financial Literacy",
+  "date": "2025-11-01",
+  "image": "/images/bgl_event6.jpg",
+  "beneficiary": "bgl",
+  "description": "Financial Literacy is BGL’s advocacy to empower students with knowledge and skills to manage money wisely, make informed financial decisions, and build a secure financial future."
+}]

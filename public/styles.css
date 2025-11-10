@@ -1320,12 +1320,11 @@ body{
 
 .container-events-bgl{
     background-color: #f4f4f4;
-    max-height: 1020px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
     transition: max-height 1.5s ease; 
 }
 
