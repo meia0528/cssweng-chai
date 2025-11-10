@@ -283,6 +283,47 @@ body{
   width: 180px;
 }
 
+.main-fb-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 100px 70px;
+    gap: 85px;
+}
+
+.main-fb-text{
+    max-width: 410px;
+}
+
+.main-fb-text h1{
+    color: #114a8c;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.main-fb-text p{
+    font-size: large;
+    color: #143459;
+    margin-bottom: 35px;
+}
+
+.main-fb-text a{
+    color: white;
+    text-decoration: none;
+    background-color: #114a8c;
+    padding: 10px 22px;
+    border-radius: 12px;
+}
+
+.main-fb-text i{
+    margin-right: 10px;
+}
+
+.main-fb-text a:hover{
+    background-color: #0a2c53;
+}
+
 .card-bgl{
     background-color:#173F27;
 }
@@ -377,6 +418,11 @@ body{
     border-color: white;
     border-width: 3px;
     width: 200px;
+}
+
+.footer-right .btn-success:hover{
+    background-color: #3e6c43;
+    border-color: rgb(223, 222, 222);
 }
 
 
@@ -1150,7 +1196,6 @@ body{
     background-color: #55648a;
     color: rgb(199, 199, 199);
 }
-
 
 .container-officers-bgl, .container-officers-chai {
     background-color: #E1E7E2;

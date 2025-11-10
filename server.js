@@ -51,8 +51,7 @@ app.get('/', (req, res) => {
 
 app.get('/about-us', async(req, res) => {
     try {
-        const officers = await Officer.find({ beneficiary: 'chai' }).lean();
-        res.render('aboutchai', { Title: 'About Us', officers });
+        res.render('aboutchai', { Title: 'About Us' });
     } catch(err) {
         res.status(500).json({ error: err.message });
     }
