@@ -746,69 +746,50 @@ body{
 
 
 /* GIFT GLOBAL PAGE */
-.gg-description{
-    margin: 100px 150px 50px 150px;
+.gg-title{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: left;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: 7%;
 }
 
-.gg-description h1{
-    position: relative;
+.gg-title h1{
+    font-weight: bold;
+    color: #9E841E;
+}
+
+.gg-mission-vision {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 80px;
+    background-color: #F4F4F4;
+}
+
+.gg-mission, .gg-vision {
+  width: 55%;
+}
+
+.gg-mission h2, .gg-vision h2{
     color: #9E841E;
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
-.gg-description-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 3;
+.gg-mission p, .gg-vision p{
+    font-size: 22;
 }
 
-.gg-description-container img{
-    height: 380px;
-    max-width: 100%;
-    width: auto;
+.gg-mission h2, .gg-mission p{
+    text-align: right;
 }
 
-.gg-description-text{
-    display: flex;
-    flex-direction: column;
-}
-
-.gg-description-text p{
-    font-size: 22px;
-    justify-content: space-between;
-    margin: 28px 0px 28px 50px;
-}
-
-/*not finished*/
-.gg-description-top-ribbon{
-    position: absolute;
-    font-size: 32px;
-    font-weight: bold;
-    color: #FFFFFF;
-    background-color: #B8A045;
-    padding: 30px 300px;
-    bottom: -5%;
-    right: 12%;
-    z-index: 2;
-}
-
-/*not finished*/
-.gg-description-bottom-ribbon{
-    position: absolute;
-    font-size: 32px;
-    font-weight: bold;
-    color: #B8A045;
-    background-color: #E3D086;
-    padding: 30px 300px;
-    left: 12%;
-    bottom: -15%;
-    z-index: 1;
+.divider {
+    width: 4px;
+    background-color: black;
+    height: auto;
+    align-self: stretch;
 }
 
 .gg-initiatives{
@@ -816,54 +797,50 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 100px 50px 0px 50px;
+    background-color: #D5CFB5;
+    padding: 60px 60px;
 }
 
-.gg-initiatives h1, .gg-initiatives-text h1, .container-events-gg h1{
+.gg-initiatives h1, .gg-initiatives-row h1, .container-events-gg h1{
     font-weight: bold;
     color: #9E841E;
-}
-
-.gg-initiatives p{
-    padding: 25px 100px;
 }
 
 .gg-initiatives-container{
     display: flex;
     flex-direction: row;
     background-color: #D5CFB5;
-    padding: 80px 150px;
     justify-content: center;
 }
 
-.gg-initiatives-container > img{
-    background-color: #FFFFFF;
-    width: 469;
-    height: 352;
-    padding: 10px;
+.gg-initiatives-column .gg-initiatives-pic{
+    width: 100%;
+    height: 500;
 }
 
 .gg-initiatives-column{
     display: flex;
     flex-direction: column;
-    margin: 50px 50px 50px 190px;
+    justify-content: center;
+    margin:0px 50px ;
 }
 
 .gg-initiatives-row{
     display: flex;
     flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 40px;
 }
 
-.gg-initiatives-row > img{
+.gg-initiatives-column .gg-initiatives-row img{ /*CHANGED*/
     width: 135px;
     height: 135px;
-    margin: 0px 30px 0px 10px;
+    margin-right: 5px;
 }
 
-.gg-initiatives-text{
+.gg-initiatives-row h1{ /*CHANGED*/
     display: flex;
-    flex-direction: column;
-    margin: 25px 30px 0px 10px;
+    align-items: center;
 }
 
 .container-events-gg{
