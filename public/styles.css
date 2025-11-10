@@ -536,16 +536,6 @@ body{
     min-width: 1000px;
 }
 
-.container-officers{
-    height: 500px;
-    background-color: #BEC7C1;
-    margin: 70px 70px 0px 70px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    gap: 35px;
-}
-
 .officer-title{
     background-color: white;
     height: 500px;
@@ -562,15 +552,6 @@ body{
     color: #133A18;
 }
 
-.officer-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding-bottom: 25px;
-  padding-right: 50px;
-}
 
 .officer-card{
     background-color: #98a89e;
@@ -1135,7 +1116,7 @@ body{
     justify-content: center; /*remove later*/
 }
 
-.container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1, .container-upcoming-bgl h1{
+.container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1, .container-upcoming-bgl h1, .container-officers-chai h1{
     font-weight: bold;
     color: #133A18;
 }
@@ -1170,64 +1151,90 @@ body{
     color: rgb(199, 199, 199);
 }
 
-.container-officers-bgl{
-    height: 620px;
+
+.container-officers-bgl, .container-officers-chai {
     background-color: #E1E7E2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    margin: 50px 0;
+   
     padding: 0 50px;
 }
 
-.container-officers-bgl h5{
+.container-officers-bgl {
+    height: 620px;
+    margin: 50px 0;
+}
+
+.container-officers-chai {
+    height: 720px;
+}
+
+.container-officers-bgl h5, .container-officers-chai h5 {
     text-align: center;
-    color: #67B170;
+    color: #7fa984;
     font-size: 19px;
 }
 
-.bgl-officer{
-    width: 350px;
-    height: 60px;
-    gap: 12px;
+.bgl-officer, .chai-officer {
     display: flex;
     align-items: center;
     border-radius: 8px;
     padding: 0 18px;
+    gap: 12px;
 }
 
-.officer-darkgreen{
+.bgl-officer {
+    width: 350px;
+    height: 60px;
+}
+
+.chai-officer {
+    width: 380px;
+    height: 80px;
+    gap: 15px;
+}
+
+.officer-darkgreen {
     background-color: #76867c;
 }
 
-.officer-light{
+.officer-light {
     background-color: #a3c2af;
 }
 
-.bgl-officer img{
+.bgl-officer img, .chai-officer img {
     height: 40px;
 }
 
-.bgl-officer h3{
+.bgl-officer h3, .chai-officer h3 {
     color: white;
     font-weight: bold;
     padding-top: 6px;
 }
 
-.bgl-officers-all{
+.chai-officer-role {
+    font-size: 18px;
+    font-weight: 100;
+    color: #eaeaea;
+}
+
+.bgl-officers-all, .chai-officers-all {
     display: flex;
     gap: 70px;
     padding-top: 50px;
 }
 
-.bgl-officer-first, .bgl-officer-second{
+.chai-officers-all {
+    padding: 25px 0;
+}
+
+.bgl-officer-first, .bgl-officer-second, .chai-officer-first, .chai-officer-second {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-
-
 
 .container-upcoming-bgl{
     background-color: white;

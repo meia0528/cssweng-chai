@@ -1,131 +1,69 @@
-[{
+[
+{
   "_id": "1",
-  "name": "Cristopher Gregorio",
-  "position": "Overall Coordinator",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "2",
-  "name": "Dorothy Gregorio",
-  "position": "Program Manager",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "3",
-  "name": "Doris Isabel Gregorio",
-  "position": "Academic Affair",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "4",
-  "name": "Noralyn Maed",
-  "position": "Operation Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "5",
-  "name": "Marie Francis Pelasol",
-  "position": "Finance Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "6",
-  "name": "Halmida Piang",
-  "position": "Educational Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "7",
-  "name": "Zuhari Pompong",
-  "position": "Medical Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "8",
-  "name": "Raihana Piang",
-  "position": "Medical Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "9",
-  "name": "Khairoden Utto",
-  "position": "Values and Ethics Department",
-  "image": "images/temp_pfp.png",
-  "beneficiary": "chai"
-},
-{
-  "_id": "10",
   "name": "Dorothy Gregorio",
   "position": "CEO",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "11",
+  "_id": "2",
   "name": "Bai Mona Naga",
   "position": "QA Officer",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "12",
+  "_id": "3",
   "name": "Monawara Badal",
   "position": "Bookeeper",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "13",
+  "_id": "4",
   "name": "Pia Landasan",
   "position": "Marketing and Sales Officer",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "14",
+  "_id": "5",
   "name": "Aya  Maguid",
   "position": "Inventory/Logistic Officer",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "15",
+  "_id": "6",
   "name": "Rohana Kasan",
   "position": "Production Manager",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "16",
+  "_id": "7",
   "name": "Sapia Ayunan",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "17",
+  "_id": "8",
   "name": "Norhaya Bagowan",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "18",
+  "_id": "9",
   "name": "Milda Isnari",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
   "beneficiary": "lm"
 },
 {
-  "_id": "19",
+  "_id": "10",
   "name": "Halmida Piang",
   "position": "Production Staff",
   "image": "images/temp_pfp.png",
