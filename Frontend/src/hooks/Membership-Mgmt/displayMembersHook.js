@@ -5,7 +5,7 @@ const displayMembersHook = () => {
   const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [sortOption, setSortOption] = useState('Newest First');
+  const [sortOption, setSortOption] = useState('Newest First'); // default
   const [statusFilters, setStatusFilters] = useState([]); // [{name, checked}]
   const [search, setSearch] = useState('');
 
@@ -14,6 +14,10 @@ const displayMembersHook = () => {
   const displayDropDownList = () => setIsOpen(!isOpen);
 
   const handleDropDownSelect = (selected) => {
+    // Normalize legacy selections to new unified option if user had stale state
+    if (selected === 'Alphabetical (First Name)' || selected === 'Alphabetical (Last Name)') {
+      selected = 'Alphabetical (First, Last)';
+    }
     setSortOption(selected);
     setIsOpen(false);
   };

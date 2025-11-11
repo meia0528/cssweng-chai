@@ -37,4 +37,40 @@ const memberSchema = new mongoose.Schema(
 
 memberSchema.index({ firstName: 1, lastName: 1 }, { unique: true });
 
+// Auto-promotion rule: if eventsAttended >= 3 and status is Pending, promote to Active
+memberSchema.pre('save', function (next) {
+  try {
+    const events = typeof this.eventsAttended === 'number' ? this.eventsAttended : 0;
+    if (this.membershipStatus === 'Pending' && events >= 3) {
+      this.membershipStatus = 'Active';
+    }
+    next();
+  } catch (e) {
+    next(e);
+  }
+});
+
+memberSchema.pre('findOneAndUpdate', async function (next) {
+  try {
+    const update = this.getUpdate() || {};
+    const $set = update.$set || {};
+
+    // Determine the next values considering both update and current document
+    const current = await this.model.findOne(this.getQuery()).lean();
+    if (!current) return next();
+
+    const nextEvents = ($set.eventsAttended ?? update.eventsAttended ?? current.eventsAttended) ?? 0;
+    const nextStatus = ($set.membershipStatus ?? update.membershipStatus ?? current.membershipStatus) ?? 'Pending';
+
+    if (nextStatus === 'Pending' && nextEvents >= 3) {
+      if (update.$set) update.$set.membershipStatus = 'Active';
+      else update.membershipStatus = 'Active';
+      this.setUpdate(update);
+    }
+    next();
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = mongoose.model('Member', memberSchema);

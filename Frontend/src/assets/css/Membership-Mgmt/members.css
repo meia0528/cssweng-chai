@@ -24,6 +24,63 @@
   white-space: nowrap;
 }
 
+.membership-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.membership-edit-btn img {
+  width: 14px;
+  height: 14px;
+}
+.membership-edit-btn:hover {
+  background: #f5f5f5;
+}
+
+.membership-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.membership-delete-btn img {
+  width: 14px;
+  height: 14px;
+}
+.membership-delete-btn:hover {
+  background: #f5f5f5;
+  border-color: #bcbcbc;
+}
+
+/* Toast notification styling - coherent with site cards */
+.membership-toast {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: #ffffff;
+  color: #212529;
+  border: 1px solid #d0d0d0;
+  border-left: 5px solid #28a745; /* success accent matches Active badge */
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+}
+
 @media (max-width: 770px) {
   .membership-body {
     padding-left: 16px;

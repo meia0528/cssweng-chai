@@ -5,8 +5,7 @@ const Filtering = ({ sortOption, displayDropDownList, handleDropDownSelect, isOp
   const sortOptionList = [
     'Newest First',
     'Oldest First',
-    'Alphabetical (First Name)',
-    'Alphabetical (Last Name)',
+    'Alphabetical',
     'Events: High to Low',
     'Events: Low to High',
   ];

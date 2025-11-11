@@ -7,13 +7,16 @@ const parsePagination = (page, limit) => {
 };
 
 const buildSort = (sort) => {
-  const allowed = new Set(['memberCreated', 'firstName', 'lastName', 'email', 'eventsAttended', 'createdAt']);
+  const allowed = new Set(['memberCreated', 'firstName', 'lastName', 'email', 'eventsAttended', 'createdAt', 'name']);
   let field = 'memberCreated';
   let dir = -1;
   if (sort) {
     const [f, d] = String(sort).split(':');
     if (f && allowed.has(f)) field = f;
     dir = d === 'asc' ? 1 : -1;
+  }
+  if (field === 'name') {
+    return { firstName: dir, lastName: dir };
   }
   return { [field]: dir };
 };
@@ -33,11 +36,18 @@ const listMembers = async (req, res) => {
     const sortQuery = buildSort(sort);
 
     const total = await Member.countDocuments(query);
-    const items = await Member.find(query)
+    let mongoQuery = Member.find(query)
       .sort(sortQuery)
       .skip((p - 1) * l)
-      .limit(l)
-      .lean();
+      .limit(l);
+    const needsCollation =
+      Object.prototype.hasOwnProperty.call(sortQuery, 'firstName') ||
+      Object.prototype.hasOwnProperty.call(sortQuery, 'lastName') ||
+      Object.prototype.hasOwnProperty.call(sortQuery, 'email');
+    if (needsCollation) {
+      mongoQuery = mongoQuery.collation({ locale: 'en', strength: 2 });
+    }
+    const items = await mongoQuery.lean();
 
     res.json({
       items,
@@ -83,7 +93,15 @@ const createMember = async (req, res) => {
 
     const exists = await Member.exists({ firstName, lastName });
     if (exists) {
-      return res.status(409).json({ message: 'Member with the same name already exists' });
+      return res.status(409).json({
+        message: `Member with the same name already exists (${firstName} ${lastName})`,
+      });
+    }
+
+    let effectiveEvents = typeof eventsAttended === 'number' ? eventsAttended : 0;
+    let effectiveStatus = membershipStatus || 'Pending';
+    if (effectiveStatus === 'Pending' && effectiveEvents >= 3) {
+      effectiveStatus = 'Active';
     }
 
     const payload = {
@@ -91,8 +109,8 @@ const createMember = async (req, res) => {
       lastName,
       email: email || undefined,
       phoneNumber,
-      membershipStatus,
-      eventsAttended: typeof eventsAttended === 'number' ? eventsAttended : undefined,
+      membershipStatus: effectiveStatus,
+      eventsAttended: effectiveEvents,
       memberCreated: memberCreated ? new Date(memberCreated) : new Date(),
     };
 
@@ -100,7 +118,15 @@ const createMember = async (req, res) => {
     res.status(201).json(created);
   } catch (err) {
     if (err.code === 11000) {
-      return res.status(409).json({ message: 'Member with the same name already exists' });
+      const fields = err.keyPattern ? Object.keys(err.keyPattern) : Object.keys(err.keyValue || {});
+      const isPhone = fields.includes('phoneNumber') || /phoneNumber/.test(err.message || '');
+      const msg = isPhone ? 'Phone number is already in use' : 'Member with the same name already exists';
+      console.warn('E11000 duplicate key on createMember', { code: err.code, keyValue: err.keyValue, fields, msg: err.message });
+      return res.status(409).json({
+        message: msg,
+        details: err.keyValue || undefined,
+        fields,
+      });
     }
     if (err.name === 'ValidationError') {
       return res.status(400).json({ message: 'Validation error', details: err.errors });
@@ -147,17 +173,32 @@ const updateMember = async (req, res) => {
       lastName,
       email: email || undefined,
       phoneNumber,
-      membershipStatus,
     };
     if (eventsAttended !== undefined) update.eventsAttended = eventsAttended;
     if (memberCreated !== undefined) update.memberCreated = new Date(memberCreated);
+
+    // Promotion logic pre-update: evaluate next state
+    const nextEvents = update.eventsAttended !== undefined ? update.eventsAttended : current.eventsAttended;
+    let nextStatus = membershipStatus !== undefined ? membershipStatus : current.membershipStatus;
+    if (nextStatus === 'Pending' && nextEvents >= 3) {
+      nextStatus = 'Active';
+    }
+    update.membershipStatus = nextStatus;
 
     const updated = await Member.findByIdAndUpdate(id, update, { new: true, runValidators: true });
     if (!updated) return res.status(404).json({ message: 'Member not found' });
     res.json(updated);
   } catch (err) {
     if (err.code === 11000) {
-      return res.status(409).json({ message: 'Member with the same name already exists' });
+      const fields = err.keyPattern ? Object.keys(err.keyPattern) : Object.keys(err.keyValue || {});
+      const isPhone = fields.includes('phoneNumber') || /phoneNumber/.test(err.message || '');
+      const msg = isPhone ? 'Phone number is already in use' : 'Member with the same name already exists';
+      console.warn('E11000 duplicate key on updateMember', { code: err.code, keyValue: err.keyValue, fields, msg: err.message });
+      return res.status(409).json({
+        message: msg,
+        details: err.keyValue || undefined,
+        fields,
+      });
     }
     if (err.name === 'ValidationError') {
       return res.status(400).json({ message: 'Validation error', details: err.errors });

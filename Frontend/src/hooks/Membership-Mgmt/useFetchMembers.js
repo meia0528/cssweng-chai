@@ -5,10 +5,9 @@ const API_BASE = 'http://localhost:5000/members';
 
 const mapSortOption = (sortOption) => {
   switch (sortOption) {
-    case 'Alphabetical (First Name)':
-      return 'firstName:asc';
-    case 'Alphabetical (Last Name)':
-      return 'lastName:asc';
+    case 'Alphabetical (First, Last)':
+    case 'Alphabetical':
+      return 'name:asc';
     case 'Newest First':
       return 'memberCreated:desc';
     case 'Oldest First':

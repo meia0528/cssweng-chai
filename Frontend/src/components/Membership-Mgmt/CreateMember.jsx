@@ -88,8 +88,16 @@ const CreateMember = () => {
       console.error(err);
       if (err.response) {
         if (err.response.status === 409) {
-          const msg = err.response.data.message || 'Duplicate value';
-          setErrors((prev) => ({ ...prev, firstName: 'Duplicate name', lastName: 'Duplicate name' }));
+          const msg = err.response.data?.message || 'Duplicate value';
+          const fields = err.response.data?.fields || [];
+          const details = err.response.data?.details || {};
+          const isPhone = fields.includes('phoneNumber') || details.phoneNumber || /phone/i.test(msg);
+
+          if (isPhone) {
+            setErrors((prev) => ({ ...prev, phoneNumber: 'Phone number is already in use' }));
+          } else {
+            setErrors((prev) => ({ ...prev, firstName: 'Duplicate name', lastName: 'Duplicate name' }));
+          }
           setAlert({ message: msg, type: 'warning' });
         } else if (err.response.status === 400) {
           setAlert({ message: 'Validation error from server', type: 'error' });
