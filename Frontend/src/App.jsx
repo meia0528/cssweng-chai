@@ -3,6 +3,8 @@ import { isExpired } from "react-jwt";
 import useSidebarHook from './hooks/useSidebarHook.js'
 import useAuthCheck from "./hooks/useAuthCheck.js";
 import Sidebar from "./components/Sidebar.jsx";
+import DisplayMembers from "./components/Membership-Mgmt/DisplayMembers.jsx";
+import CreateMember from "./components/Membership-Mgmt/CreateMember.jsx";
 import DisplayProducts from  './components/Product-Mgmt/DisplayProducts.jsx';
 import CreateProduct from './components/Product-Mgmt/CreateProduct.jsx'
 import DisplaySingleProduct from "./components/Product-Mgmt/DisplaySingleProduct.jsx";
@@ -18,7 +20,12 @@ const SidebarLayout = ({ children }) => {
     const location = useLocation();
 
     // only show sidebar on these paths
-    const showSidebar = ["/admin/product-mgmt/display", "/admin/product-mgmt/create"].includes(location.pathname);
+    const showSidebar = [
+        "/admin/product-mgmt/display",
+        "/admin/product-mgmt/create",
+        "/admin/membership-mgmt/display",
+        "/admin/membership-mgmt/create"
+    ].includes(location.pathname);
 
     return (
         <>
@@ -154,6 +161,31 @@ const AppRoutes = () => {
                         <UpdateProduct />
                     </ProtectedRoute>
                 }/>
+
+
+            {/* membership display page */}
+            <Route
+                path="/admin/membership-mgmt/display"
+                element={
+                    <ProtectedRoute>
+                        <SidebarLayout>
+                            <DisplayMembers />
+                        </SidebarLayout>
+                    </ProtectedRoute>
+                }
+            />
+
+            {/* membership create page */}
+            <Route
+                path="/admin/membership-mgmt/create"
+                element={
+                    <ProtectedRoute>
+                        <SidebarLayout>
+                            <CreateMember />
+                        </SidebarLayout>
+                    </ProtectedRoute>
+                }
+            />
 
         </Routes>
     );

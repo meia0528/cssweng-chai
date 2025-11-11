@@ -4,11 +4,11 @@ const adminSchema = new mongoose.Schema({
     username: {
         type: String,
         trim: true,
-        require
+        required: true
     },
     password: {
         type: String,
-        require
+        required: true
     }
 });
 

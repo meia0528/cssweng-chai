@@ -18,13 +18,12 @@ const productSchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-        require: true,
-        integer: true        
+        required: true
     },
     type: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'ProductType',
-        require: true
+        required: true
     },
     images: {
         type: [String],

@@ -1,0 +1,35 @@
+/* Keeps membership content clear of the fixed Sidebar */
+/* Outer wrapper (mirrors .display-body from product-display.css) */
+.membership-body {
+  background-color: white;
+  padding-left: 340px; /* align with sidebar width + gutter */
+  padding-top: 10px;
+  margin-top: 8px;
+}
+
+.membership-main-area {
+  margin-left: 274px;
+  margin-right: 10px;
+}
+
+.membership-main-area table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.membership-main-area th,
+.membership-main-area td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 770px) {
+  .membership-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .membership-main-area {
+    display: none;  
+  }
+}
