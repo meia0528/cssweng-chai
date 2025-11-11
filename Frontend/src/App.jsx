@@ -13,6 +13,7 @@ import Login from "./components/Login-Register/Login.jsx";
 import Register from "./components/Login-Register/Register.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import DisplaySales from "./components/Sales-Mgmt/DisplaySales.jsx";
 
 
 const SidebarLayout = ({ children }) => {
@@ -24,7 +25,9 @@ const SidebarLayout = ({ children }) => {
         "/admin/product-mgmt/display",
         "/admin/product-mgmt/create",
         "/admin/membership-mgmt/display",
-        "/admin/membership-mgmt/create"
+        "/admin/membership-mgmt/create",
+        "/admin/sales-mgmt/display",
+        "/admin/sales-mgmt/create"
     ].includes(location.pathname);
 
     return (
@@ -186,6 +189,30 @@ const AppRoutes = () => {
                     </ProtectedRoute>
                 }
             />
+
+            {/* sales display page */}
+            <Route
+                path="/admin/sales-mgmt/display"
+                element={
+                    <ProtectedRoute>
+                        <SidebarLayout>
+                            <DisplaySales />
+                        </SidebarLayout>
+                    </ProtectedRoute>
+                }
+            />
+
+            {/* sales create page */}
+            {/* <Route
+                path="/admin/sales-mgmt/create"
+                element={
+                    <ProtectedRoute>
+                        <SidebarLayout>
+                            <CreateSale />
+                        </SidebarLayout>
+                    </ProtectedRoute>
+                }
+            /> */}
 
         </Routes>
     );
