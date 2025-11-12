@@ -222,20 +222,119 @@ const deleteMember = async (req, res) => {
 };
 
 const exportMembers = async (req, res) => {
+  // Stream a CSV export of members, respecting search/filter/sort.
   try {
-    const hasCreds = !!(
-      process.env.GOOGLE_SHEETS_SPREADSHEET_ID &&
-      (process.env.GOOGLE_CREDENTIALS_B64 || process.env.GOOGLE_CREDENTIALS_PATH)
-    );
-    if (!hasCreds) {
-      return res.status(400).json({
-        message:
-          'Google Sheets export not configured. Set GOOGLE_SHEETS_SPREADSHEET_ID and GOOGLE_CREDENTIALS_B64 or GOOGLE_CREDENTIALS_PATH.',
-      });
+    const {
+      q = '',
+      status,
+      sort = 'memberCreated:desc',
+      columns,
+      limit,
+    } = req.query;
+
+    // Build query (reuse search behavior from listMembers)
+    const query = {};
+    if (q) {
+      const rx = { $regex: q, $options: 'i' };
+      query.$or = [{ firstName: rx }, { lastName: rx }, { email: rx }];
     }
-    return res.status(501).json({ message: 'Export not implemented yet.' });
+    if (status) query.membershipStatus = status;
+
+    // Sorting and collation (case-insensitive for name/email)
+    const sortQuery = buildSort(sort);
+    const needsCollation =
+      Object.prototype.hasOwnProperty.call(sortQuery, 'firstName') ||
+      Object.prototype.hasOwnProperty.call(sortQuery, 'lastName') ||
+      Object.prototype.hasOwnProperty.call(sortQuery, 'email');
+
+    // Columns handling
+    const defaultCols = [
+      'firstName',
+      'lastName',
+      'email',
+      'phoneNumber',
+      'membershipStatus',
+      'eventsAttended',
+      'memberCreated',
+    ];
+    const selectedCols = Array.isArray(columns)
+      ? columns
+      : typeof columns === 'string' && columns.trim()
+        ? columns.split(',').map((c) => c.trim()).filter(Boolean)
+        : defaultCols;
+
+    // Enforce a maximum export row count to prevent abuse
+    const hardMax = 50000;
+    const maxRows = Math.min(Math.max(parseInt(limit, 10) || hardMax, 1), hardMax);
+
+    // Prepare response headers (UTF-8 with BOM for Excel compatibility)
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const filename = `Members_${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}.csv`;
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.setHeader('Cache-Control', 'no-store');
+
+    // CSV helpers
+    const CRLF = '\r\n';
+    const bom = Buffer.from([0xef, 0xbb, 0xbf]);
+    const escapeCell = (v) => {
+      if (v === null || v === undefined) return '""';
+      let s = String(v);
+      s = s.replace(/"/g, '""');
+      return `"${s}"`;
+    };
+    const formatDate = (d) => {
+      if (!d) return '';
+      const dt = new Date(d);
+      if (Number.isNaN(dt.getTime())) return '';
+      const mm = pad(dt.getMonth() + 1);
+      const dd = pad(dt.getDate());
+      return `${dt.getFullYear()}-${mm}-${dd}`;
+    };
+
+    // Write BOM and header
+    res.write(bom);
+    res.write(selectedCols.map((c) => escapeCell(c)).join(',') + CRLF);
+
+    // Build cursor and stream rows
+    let cursor = Member.find(query)
+      .sort(sortQuery)
+      .select(selectedCols.join(' '))
+      .lean()
+      .cursor();
+    if (needsCollation) {
+      // Collation must be applied on the query; rebuild with collation by using query chain pre-cursor
+      const q = Member.find(query)
+        .sort(sortQuery)
+        .collation({ locale: 'en', strength: 2 })
+        .select(selectedCols.join(' '))
+        .lean();
+      cursor = q.cursor();
+    }
+
+    let count = 0;
+    for await (const doc of cursor) {
+      // Stop if exceeding maxRows
+      if (count >= maxRows) break;
+      const row = selectedCols.map((col) => {
+        let val = doc[col];
+        if (col === 'memberCreated') val = formatDate(val);
+        if (col === 'eventsAttended' && typeof val === 'number') val = String(val);
+        return escapeCell(val == null ? '' : val);
+      });
+      res.write(row.join(',') + CRLF);
+      count += 1;
+    }
+
+    return res.end();
   } catch (err) {
     console.error('Error exporting members:', err);
+    // If headers already sent, just end the stream
+    if (res.headersSent) {
+      try { return res.end(); } catch (_) { /* noop */ }
+      return; 
+    }
     res.status(500).json({ message: 'Server error exporting members' });
   }
 };

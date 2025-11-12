@@ -16,7 +16,7 @@ const memberSchema = new mongoose.Schema(
       lowercase: true,
     },
     phoneNumber: {
-      type: String,
+      type: Number,
       required: true,
     },
     memberCreated: {
@@ -37,7 +37,6 @@ const memberSchema = new mongoose.Schema(
 
 memberSchema.index({ firstName: 1, lastName: 1 }, { unique: true });
 
-// Auto-promotion rule: if eventsAttended >= 3 and status is Pending, promote to Active
 memberSchema.pre('save', function (next) {
   try {
     const events = typeof this.eventsAttended === 'number' ? this.eventsAttended : 0;
@@ -55,7 +54,6 @@ memberSchema.pre('findOneAndUpdate', async function (next) {
     const update = this.getUpdate() || {};
     const $set = update.$set || {};
 
-    // Determine the next values considering both update and current document
     const current = await this.model.findOne(this.getQuery()).lean();
     if (!current) return next();
 

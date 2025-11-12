@@ -16,6 +16,7 @@ const DisplayMembers = () => {
         dropdownRef={hook.dropdownRef}
         statusFilters={hook.statusFilters}
         handleSelectedStatusFilter={hook.handleSelectedStatusFilter}
+        search={hook.search}
       />
       <Content
         setSearch={hook.setSearch}

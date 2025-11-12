@@ -40,6 +40,24 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
   const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
   const [editing, setEditing] = useState(null);
   const [toast, setToast] = useState(null);
+  
+  const mapSortOption = (sortOption) => {
+    switch (sortOption) {
+      case 'Alphabetical (First, Last)':
+      case 'Alphabetical':
+        return 'name:asc';
+      case 'Newest First':
+        return 'memberCreated:desc';
+      case 'Oldest First':
+        return 'memberCreated:asc';
+      case 'Events: High to Low':
+        return 'eventsAttended:desc';
+      case 'Events: Low to High':
+        return 'eventsAttended:asc';
+      default:
+        return 'memberCreated:desc';
+    }
+  };
 
   useEffect(() => {
     if (!toast) return;
@@ -70,7 +88,8 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
       );
       const updated = res?.data;
       if (member.membershipStatus === 'Pending' && updated?.membershipStatus === 'Active') {
-        setToast('Member promoted to Active');
+        const first = member.firstName || updated?.firstName || 'Member';
+        setToast(`${first} promoted to Active`);
       }
       reload();
     } catch (err) {
@@ -99,6 +118,8 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
 
   const cancelDelete = () => setPendingDelete(null);
 
+  // CSV download moved to left panel (Filtering)
+
   return (
     <>
     <main className="displayAllProducts">
@@ -118,6 +139,7 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
+          
         </form>
 
         <div style={{ marginTop: 24 }}>
