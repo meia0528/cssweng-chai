@@ -19,20 +19,41 @@ const useMemberForm = (initial) => {
     setErrors((prev) => ({ ...prev, [field]: '' }));
   };
 
+  const sanitizePhone = (raw) => {
+    if (raw == null) return '';
+
+    if (typeof raw === 'object') {
+      if ('value' in raw && raw.value != null) raw = raw.value; else raw = JSON.stringify(raw);
+    }
+    let s = String(raw).trim();
+
+    s = s.replace(/[^0-9]/g, '');
+    return s;
+  };
+
   const validate = () => {
     const e = {};
-    if (!form.firstName?.trim()) e.firstName = 'First name is required';
-    else if (!isTitleCase(form.firstName)) e.firstName = 'Use Title Case';
+    const firstName = typeof form.firstName === 'string' ? form.firstName.trim() : '';
+    const lastName = typeof form.lastName === 'string' ? form.lastName.trim() : '';
+    const email = typeof form.email === 'string' ? form.email.trim() : '';
+    const phone = sanitizePhone(form.phoneNumber);
 
-    if (!form.lastName?.trim()) e.lastName = 'Last name is required';
-    else if (!isTitleCase(form.lastName)) e.lastName = 'Use Title Case';
+    if (!firstName) e.firstName = 'First name is required';
+    else if (!isTitleCase(firstName)) e.firstName = 'Use Title Case';
 
-    if (form.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) e.email = 'Invalid email format';
+    if (!lastName) e.lastName = 'Last name is required';
+    else if (!isTitleCase(lastName)) e.lastName = 'Use Title Case';
 
-    if (!form.phoneNumber?.trim()) e.phoneNumber = 'Phone number is required';
-    else if (!/^\d{10,15}$/.test(form.phoneNumber.trim())) e.phoneNumber = 'Enter 10-15 digits only';
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) e.email = 'Invalid email format';
+
+    if (!phone) e.phoneNumber = 'Phone number is required';
+    else if (!/^\d{10,15}$/.test(phone)) e.phoneNumber = 'Enter 10-15 digits only';
 
     if (form.eventsAttended < 0) e.eventsAttended = 'Must be ≥ 0';
+
+    if (form.phoneNumber !== phone) {
+      setForm((prev) => ({ ...prev, phoneNumber: phone }));
+    }
 
     return e;
   };
