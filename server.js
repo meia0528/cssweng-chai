@@ -20,7 +20,9 @@ const Donate = require('./models/donate');
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb://localhost:27017/CHAI', {
+const dbUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/CHAI';
+
+mongoose.connect(dbUrl, {
 	 useNewUrlParser: true,
 	 useUnifiedTopology: true
 }).then(() => console.log('Connected to MongoDB'))
