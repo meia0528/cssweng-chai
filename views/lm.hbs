@@ -1,15 +1,16 @@
+<!--Navigation Bar-->
 <nav class="navbar navbar-lm">
     <div class="container">
         <a class="navbar-brand">
-            <img src="images/logo.png" alt="CHAI-Taguig Logo" id="logo-pic">
+            <img src= "images/logo.png" alt = "CHAI-Taguig Logo" id = "logo-pic">
         </a>
-
+        
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/about-us">About Us</a>
+        <a class="nav-link" href="/about-us" data-i18n="header-about-us">About Us</a>
 
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="header-ourbeneficiaries">
                 Our Beneficiaries
             </a>
             <div class="dropdown-menu dropdown-lm">
@@ -19,15 +20,16 @@
             </div>
         </li>
 
-        <a class="nav-link">Donate Now</a>
+        <a href="/donate-now" class="nav-link" data-i18n="header-donate-now">Donate Now</a>
 
         <li class="nav-item dropdown dropdown-lm">
-            <img src="images/EN.png" alt="EN" id="EN">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="images/EN.png" alt="EN" id= "lang-icon">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="lang-toggle">
                 EN
             </a>
-             <div class="dropdown-menu dropdown-lm">
-                <a class="dropdown-item dropdown-item-lm" href="#">TAGALOG</a>
+            <div class="dropdown-menu dropdown-lm">
+                <a class="dropdown-item dropdown-item-lm dropdown-item-lang" data-lang="en">ENGLISH</a>
+                <a class="dropdown-item dropdown-item-lm dropdown-item-lang" data-lang="tagalog">TAGALOG</a>
             </div>
         </li>
     </div>
@@ -133,6 +135,8 @@
         <button class="btn btn-success">DONATE NOW!</button>
     </div>
 </div>
+
+<script src="/language.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

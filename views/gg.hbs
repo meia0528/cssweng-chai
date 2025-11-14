@@ -2,15 +2,15 @@
 <nav class="navbar navbar-gg">
     <div class="container">
         <a class="navbar-brand">
-            <img src="images/logo.png" alt="CHAI-Taguig Logo" id="logo-pic">
+            <img src= "images/logo.png" alt = "CHAI-Taguig Logo" id = "logo-pic">
         </a>
-
+        
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/about-us">About Us</a>
+        <a class="nav-link" href="/about-us" data-i18n="header-about-us">About Us</a>
 
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="header-ourbeneficiaries">
                 Our Beneficiaries
             </a>
             <div class="dropdown-menu dropdown-gg">
@@ -20,15 +20,16 @@
             </div>
         </li>
 
-        <a class="nav-link">Donate Now</a>
+        <a href="/donate-now" class="nav-link" data-i18n="header-donate-now">Donate Now</a>
 
         <li class="nav-item dropdown dropdown-gg">
-            <img src="images/EN.png" alt="EN" id="EN">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="images/EN.png" alt="EN" id= "lang-icon">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="lang-toggle">
                 EN
             </a>
-             <div class="dropdown-menu dropdown-gg">
-                <a class="dropdown-item dropdown-item-gg" href="#">TAGALOG</a>
+            <div class="dropdown-menu dropdown-gg">
+                <a class="dropdown-item dropdown-item-gg dropdown-item-lang" data-lang="en">ENGLISH</a>
+                <a class="dropdown-item dropdown-item-gg dropdown-item-lang" data-lang="tagalog">TAGALOG</a>
             </div>
         </li>
     </div>
@@ -114,6 +115,8 @@
     </div>
 </div>
 
+<script src="/language.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const viewMoreBtn = document.getElementById("viewMoreBtn");
@@ -133,3 +136,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+

@@ -2,7 +2,7 @@ let currentLanguage = "en";
 
 // change dropdown
 const langToggle = document.getElementById("lang-toggle");
-const languages = document.querySelectorAll(".dropdown-item");
+const languages = document.querySelectorAll(".dropdown-item-lang");
 
 languages.forEach(item => {
     item.addEventListener("click", (e) => {
