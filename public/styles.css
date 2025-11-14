@@ -98,7 +98,7 @@ body{
     color: white;
 }
 
-#EN{
+#lang-icon{
     height: 20px;
 }
 
@@ -163,7 +163,7 @@ body{
 
 .carousel-caption .btn-success{
     background-color: #397651;
-    width: 170px;
+    padding: 6px 20px;
     border-radius: 30px;
     margin-top: 10px;
 }
@@ -367,14 +367,14 @@ body{
 }
 
 .footer{
-    min-width: 800px; 
+    min-width: 800px;
     height: 200px;
     background-color: #576C5F;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    gap: 20px;
+    justify-content: center; 
+    align-items: center;   
+    gap: 150px;              
+    padding: 20px;
 }
 
 .footer img{
@@ -494,7 +494,7 @@ body{
 
 .sdg-2, .sdg-4{
     height: 160px;
-    width: 400px;
+    width: 420px;
     border-radius: 20px;
     display: flex;
     gap: 20px;
@@ -506,7 +506,7 @@ body{
 }
 
 .sdg-2{
-    background-color: #E5D7BB;
+    background-color: #ccbfa5;
 }
 
 .sdg-2 img, .sdg-4 img{
@@ -548,6 +548,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 10px;
 }
 
 .goals h2{
@@ -566,6 +567,7 @@ body{
     align-items: center;
     justify-content: center;
     margin-right: 50px;
+    padding-left: 10px;
 }
 
 .challenges h2{
@@ -1115,19 +1117,37 @@ body{
     font-size: large;
 }
 
-.bgl-image-desc{
+.bgl-image-desc {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-.bgl-image-desc img{
-    height: 380px;
-    max-width: 100%;
-    width: auto;
-    object-fit: cover;
+.bgl-image-desc img {
+    width: 400px;
+    height: auto;
 }
+
+.bgl-image-desc-text {
+    background-color: #133A18; 
+    color: white;
+    padding: 20px;
+    max-width: 750px;
+}
+
+.bgl-image-desc-text h3 {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.bgl-image-desc-text p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
 
 .container-history-bgl{
     height: 600px;
@@ -1135,7 +1155,7 @@ body{
     margin-bottom: 50px;
     display: flex;
     align-items: center; 
-    justify-content: center; /*remove later*/
+    justify-content: center;
 }
 
 .container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1, .container-upcoming-bgl h1, .container-officers-chai h1{
@@ -1812,3 +1832,4 @@ body{
     font-size: 1.5rem;
   }
 }
+

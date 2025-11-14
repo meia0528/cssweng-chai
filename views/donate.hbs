@@ -6,11 +6,10 @@
         </a>
         
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/about-us">About Us</a>
-
+        <a class="nav-link" href="/about-us" data-i18n="header-about-us">About Us</a>
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="header-ourbeneficiaries">
                 Our Beneficiaries
             </a>
             <div class="dropdown-menu">
@@ -20,7 +19,7 @@
             </div>
         </li>
 
-        <a href="/donate-now" class="nav-link">Donate Now</a>
+        <a href="/donate-now" class="nav-link" data-i18n="header-donate-now">Donate Now</a>
 
         <li class="nav-item dropdown">
             <img src="images/EN.png" alt="EN" id= "EN">
@@ -28,7 +27,8 @@
                 EN
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">TAGALOG</a>
+                <a class="dropdown-item" data-lang="en">ENGLISH</a>
+                <a class="dropdown-item" data-lang="tagalog">TAGALOG</a>
             </div>
         </li>
     </div>
@@ -38,13 +38,16 @@
 <!-- Donate Now Portion -->
 <div class="container-donate">
     <div class="donate-header">
-        <h1>Make a Difference. Donate Now.</h1>
-        <h5>Your donation helps us transform lives and empower communities.</h5>
+        <h1 data-i18n="donate-title">Make a Difference. Donate Now.</h1>
+        <h5 data-i18n="donate-desc">Your donation helps us transform lives and empower communities.</h5>
     </div>
 
     <div class="donate-details-portion">
         <div class="donate-contact-details">
-                <h3 class="contact-us-title"><i class="bi bi-telephone"></i> Contact Us</h3>
+                <h3 class="contact-us-title">
+                    <i class="bi bi-telephone"></i> 
+                    <span data-i18n="donate-contactus">Contact Us</span>
+                </h3>
             <div class="contact-person">
                 <h4>{{name}}</h4>
                 <h4><u>{{contactNo}}</u></h4>
@@ -66,8 +69,8 @@
 <div class="footer">
     <div class="footer-left">
         <p>Taguig Community Hope <br> Alternative Incorporated</p>
-        <a href="/about-us"> About Us</a>
-        <a href="#"> Back to Top</a>
+        <a href="/about-us" data-i18n="footer-about-us"> About Us</a>
+        <a href="#" data-i18n="footer-back-to-top"> Back to Top</a>
     </div>
 
     <img src="images/chai_footerlogo.png" alt="CHAI-Taguig Footer Logo">
@@ -75,8 +78,13 @@
     <div class="footer-right">
         <div class="footer-fb">
             <i class="bi bi-facebook"></i>
-            <a href="https://www.facebook.com/share/16DkCEtRb1/">FOLLOW CHAI TAGUIG<br>ON FACEBOOK</a>
+            <a href="https://www.facebook.com/share/16DkCEtRb1/">
+                <span data-i18n="footer-fb-line1">FOLLOW CHAI TAGUIG</span><br>
+                <span data-i18n="footer-fb-line2">ON FACEBOOK</span>
+            </a>
         </div>
-        <a href="/donate-now" class="btn btn-success">DONATE NOW!</a>
+        <a href="/donate-now" class="btn btn-success" data-i18n="footer-donate-now">DONATE NOW!</a>
     </div>
 </div>
+
+<script src="/language.js"></script>

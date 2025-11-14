@@ -6,10 +6,10 @@
         </a>
         
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/about-us">About Us</a>
+        <a class="nav-link" href="/about-us" data-i18n="header-about-us">About Us</a>
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="header-ourbeneficiaries">
                 Our Beneficiaries
             </a>
             <div class="dropdown-menu">
@@ -19,24 +19,20 @@
             </div>
         </li>
 
-        <a href="/donate-now" class="nav-link">Donate Now</a>
+        <a href="/donate-now" class="nav-link" data-i18n="header-donate-now">Donate Now</a>
 
         <li class="nav-item dropdown">
-            <img src="images/EN.png" alt="EN" id= "EN">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="images/EN.png" alt="EN" id="lang-icon">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="lang-toggle">
                 EN
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">TAGALOG</a>
+                <a class="dropdown-item" data-lang="en">ENGLISH</a>
+                <a class="dropdown-item" data-lang="tagalog">TAGALOG</a>
             </div>
         </li>
     </div>
 </nav>
-
-<!--Admin Login Button-->
-<div class="card card-lm" style="width: 20rem; position: absolute; top: 6%; left: 90%; border: transparent; background-color: transparent; transform: translate(-50%, -50%);">
-    <a href="/login" class="btn btn-success">Admin Login</a>
-</div>
 
 <!--CAROUSEL-->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -70,8 +66,8 @@
 
     <div class="carousel-caption">
         <h2>Community Hope <br> Alternative  Inc. - <br>Taguig</h2>
-        <p>We are a non-profit organization that aids and assists Filipino communities in poverty. Our goal is to provide Filipinos with different opportunities that can help alleviate their living conditions.</p>
-        <a href="/about-us" class="btn btn-success">
+        <p data-i18n="main-carousel-desc">We are a non-profit organization that aids and assists Filipino communities in poverty. Our goal is to provide Filipinos with different opportunities that can help alleviate their living conditions.</p>
+        <a href="/about-us" class="btn btn-success" data-i18n="main-carousel-learnmore">
             Learn More
         </a>
     
@@ -97,19 +93,19 @@
 
 <div class="container-mission-vision">
     <div class="mission">
-        <h2>Our Mission</h2>
-        <p>To empower communities and develop wholistic minded leaders through programs that will help the poor overcome poverty and develop people’s values, skills and leadership potentials.   </p>
+        <h2 data-i18n="main-our-mission-title">Our Mission</h2>
+        <p data-i18n="main-our-mission-desc">To empower communities and develop holistic minded leaders through programs that will help the poor overcome poverty and develop people’s values, skills and leadership potentials.   </p>
     </div>
 
     <div class="vision">
-        <h2>Our Vision</h2>
-        <p>Communities of people living purposeful and productive lives with integrity, and genuinely caring for others and their environment.</p>
+        <h2 data-i18n="main-our-vision-title">Our Vision</h2>
+        <p data-i18n="main-our-vision-desc">Communities of people living purposeful and productive lives with integrity, and genuinely caring for others and their environment.</p>
     </div>
 </div>
 
 
 <!--Our Beneficiaries Section-->
-<div class="our-beneficiaries-text">
+<div class="our-beneficiaries-text" data-i18n="main-our-beneficiaries-title">
     Our Beneficiaries
 </div>
 
@@ -117,33 +113,33 @@
     <div class="card card-bgl" style="width: 20rem;">
         <div class="image-container">
             <img src="images/main_bgl.jpeg" class="card-img-top" alt="Main Page - Batang Gift of Love">
-            <a href="/batang-gift-of-love" class="btn">Learn More</a>
+            <a href="/batang-gift-of-love" class="btn" data-i18n="main-our-beneficiaries-learnmore">Learn More</a>
         </div>
         <div class="card-body">
             <h5 class="card-title">Batang Gift of Love</h5>
-            <p class="card-text">We envision Batang Gift of Love to be role models of their communities. We hope that all children will have the capacity to finish their education and achieve financial stability in the future.</p>
+            <p class="card-text" data-i18n="main-our-beneficiaries-bgl">We envision Batang Gift of Love to be role models of their communities. We hope that all children will have the capacity to finish their education and achieve financial stability in the future.</p>
         </div>
     </div>
 
     <div class="card card-lm" style="width: 20rem;">
         <div class="image-container">
             <img src="images/main_lm.jpeg" class="card-img-top" alt="Main Page - Likhang Maharlika">
-            <a href="/likhang-maharlika" class="btn">Learn More</a>
+            <a href="/likhang-maharlika" class="btn" data-i18n="main-our-beneficiaries-learnmore">Learn More</a>
         </div>
         <div class="card-body">
             <h5 class="card-title">Likhang Maharlika</h5>
-            <p class="card-text">We make handcrafted products, such as paper quilling products, recycled wallets, and other sustainable products. Through the creation of these products, we aim to preserve the essence or culture.</p>
+            <p class="card-text" data-i18n="main-our-beneficiaries-lm">We make handcrafted products, such as paper quilling products, recycled wallets, and other sustainable products. Through the creation of these products, we aim to preserve the essence or culture.</p>
         </div>
     </div>
 
     <div class="card card-gg" style="width: 20rem;">
         <div class="image-container"> 
             <img src="images/main_gg.jpeg" class="card-img-top" alt="Main Page - Gift Global">
-            <a href="/gift-global" class="btn">Learn More</a>
+            <a href="/gift-global" class="btn" data-i18n="main-our-beneficiaries-learnmore">Learn More</a>
         </div> 
         <div class="card-body">
             <h5 class="card-title">Gift Global</h5>
-            <p class="card-text">We are dedicated in uplifting the lives of vulnerable children by supporting their physical, education, and spiritual needs through our various programs.</p>
+            <p class="card-text" data-i18n="main-our-beneficiaries-gg">We are dedicated in uplifting the lives of vulnerable children by supporting their physical, education, and spiritual needs through our various programs.</p>
         </div>
     </div>
 </div>
@@ -152,9 +148,9 @@
     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61555040233066%26rdid%3DKTqpUCWmPG0SlmnN%26share_url%3Dhttps%253A%252F%252Fwww.facebook.com%252Fshare%252F16DkCEtRb1%252F%23&tabs=timeline&width=340&height=331&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="331" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
     <div class="main-fb-text">
-        <h1>Want to stay in touch with CHAI-Taguig?</h1>
-        <p>Follow our FB page to get the latest updates on our programs and community activities.</p>
-        <a href="https://www.facebook.com/share/16DkCEtRb1/"> <i class="bi bi-facebook"></i>Follow CHAI on FB</a>
+        <h1 data-i18n="main-fb-title">Want to stay in touch with CHAI-Taguig?</h1>
+        <p data-i18n="main-fb-desc">Follow our FB page to get the latest updates on our programs and community activities.</p>
+        <a href="https://www.facebook.com/share/16DkCEtRb1/" data-i18n="main-fb-btn"> <i class="bi bi-facebook"></i>Follow CHAI on FB</a>
     </div>
 
 </div>
@@ -167,8 +163,8 @@
 <div class="footer">
     <div class="footer-left">
         <p>Taguig Community Hope <br> Alternative Incorporated</p>
-        <a href="/about-us"> About Us</a>
-        <a href="#"> Back to Top</a>
+        <a href="/about-us" data-i18n="footer-about-us"> About Us</a>
+        <a href="#" data-i18n="footer-back-to-top"> Back to Top</a>
     </div>
 
     <img src="images/chai_footerlogo.png" alt="CHAI-Taguig Footer Logo">
@@ -176,8 +172,13 @@
     <div class="footer-right">
         <div class="footer-fb">
             <i class="bi bi-facebook"></i>
-            <a href="https://www.facebook.com/share/16DkCEtRb1/">FOLLOW CHAI TAGUIG<br>ON FACEBOOK</a>
+            <a href="https://www.facebook.com/share/16DkCEtRb1/">
+                <span data-i18n="footer-fb-line1">FOLLOW CHAI TAGUIG</span><br>
+                <span data-i18n="footer-fb-line2">ON FACEBOOK</span>
+            </a>
         </div>
-        <a href="/donate-now" class="btn btn-success">DONATE NOW!</a>
+        <a href="/donate-now" class="btn btn-success" data-i18n="footer-donate-now">DONATE NOW!</a>
     </div>
 </div>
+
+<script src="/language.js"></script>

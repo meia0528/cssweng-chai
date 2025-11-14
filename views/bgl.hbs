@@ -6,11 +6,11 @@
         </a>
         
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/about-us">About Us</a>
+        <a class="nav-link" href="/about-us" data-i18n="header-about-us">About Us</a>
 
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="header-ourbeneficiaries">
                 Our Beneficiaries
             </a>
             <div class="dropdown-menu dropdown-bgl">
@@ -20,37 +20,62 @@
             </div>
         </li>
 
-        <a href="/donate-now" class="nav-link">Donate Now</a>
+        <a href="/donate-now" class="nav-link" data-i18n="header-donate-now">Donate Now</a>
 
-        <li class="nav-item dropdown ">
+        <li class="nav-item dropdown">
             <img src="images/EN.png" alt="EN" id= "EN">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 EN
             </a>
             <div class="dropdown-menu dropdown-bgl">
-                <a class="dropdown-item dropdown-item-bgl" href="#">TAGALOG</a>
+                <a class="dropdown-item dropdown-item-bgl" data-lang="en">ENGLISH</a>
+                <a class="dropdown-item dropdown-item-bgl" data-lang="tagalog">TAGALOG</a>
             </div>
         </li>
     </div>
 </nav>
 
+
 <!--Main & Description-->
 <div class="container-bgl-main">
     <h1>Batang Gift of Love</h1>
-    <p>Batang Gift of Love is a children and youth-centered organization dedicated to fostering unity and compassion among communities. We strive to bridge the existing gap between the rich and poor through our meaningful initiatives and programs. We aim to empower the youth to become instruments of kindness, hope, and positive change in society. <br> <br> Through Batang Gift of Love, we want to ensure that<strong><em> no child is left behind. </em></strong> </p>
+   <p>
+        <span data-i18n="bgl-main-desc-part1">
+            Batang Gift of Love is a children and youth-centered organization dedicated to fostering unity and compassion among communities. We strive to bridge the existing gap between the rich and poor through our meaningful initiatives and programs. We aim to empower the youth to become instruments of kindness, hope, and positive change in society. 
+        </span>
+        <br><br>
+        <span data-i18n="bgl-main-desc-part2">
+            Through Batang Gift of Love, we want to ensure that
+        </span>
+        <strong><em data-i18n="bgl-main-desc-part3"> no child is left behind. </em></strong>
+    </p>
+
     <div class="bgl-image-desc">
-        <img src="images/bgl_main_landing.png" alt ="Batang Gift of Love Main">
+        <div>
+            <img src="images/bgl_main_landing.jpeg" alt="BGL Image">
+        </div>
+        <div class="bgl-image-desc-text">
+            <h3>Bridging the Gap... Breaking the Wall</h3>
+            <p data-i18n="bgl-image-desc-part1">Bridging the gap between rich and poor means ensuring that no one is left behind while others move ahead.</p>
+            <br>
+            <p data-i18n="bgl-image-desc-part2">Breaking the wall between Muslims and non-Muslims means opening hearts and minds through dialogue and shared experiences.</p>
+        </div>
     </div>
+
 </div>
 
 <!--History of BGL-->
 <div class="container-history-bgl">
-    <h1>Our History</h1>
+    <h1 data-i18n="bgl-history-title">Our History</h1>
 </div>
 
 <!--Upcoming Events-->
 <div class="container-upcoming-bgl">
-    <h1>Upcoming<br>Events</h1>
+    <h1>
+        <span data-i18n="upcoming-events-line1">Upcoming</span><br>
+        <span data-i18n="upcoming-events-line2">Events</span>
+    </h1>
+
     <div class="container-upcoming-main-bgl">
         <div class="upcoming-scroll-bgl">
         {{#if upcomingEvents.length}}
@@ -75,7 +100,7 @@
 
 <!--Our Past Events-->
 <div class="container-events-bgl">
-    <h1>Our Past Events</h1>
+    <h1 data-i18n="bgl-past-events">Our Past Events</h1>
     <div class="container-events-main-bgl">
         {{#each pastEvents}}
         <div class="card card-bgl-events" id = "past-events">
@@ -97,8 +122,8 @@
 
 <!--Officers--> 
 <div class="container-officers-bgl">
-    <h1>Meet Our Team Leaders</h1>
-    <h5><em>We are a dedicated team of individuals working together to bring hope, love, and <br>opportunity to every child in Batang Gift of Love.</em></h5>
+    <h1 data-i18n="bgl-officers-title">Meet Our Team Leaders</h1>
+    <h5 data-i18n="bgl-officers-desc"><em>We are a dedicated team of individuals working together to bring hope, love, and <br>opportunity to every child in Batang Gift of Love.</em></h5>
     
     <div class="bgl-officers-all">
         <div class="bgl-officer-first">
@@ -146,16 +171,16 @@
 
 <!--Facebook-BGL-->
 <div class="container-fb-bgl">
-    <h3>Stay Updated with Batang Gift of Love!</h3>
-    <a href="https://www.facebook.com/profile.php?id=100089994174755&rdid=73OiJ1PbMNGnPq2x&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16krfXhaQ8%2F#"> <i class="bi bi-facebook"></i> Follow us on Facebook!</a>
+    <h3 data-i18n="bgl-fb-title">Stay Updated with Batang Gift of Love!</h3>
+    <a href="https://www.facebook.com/profile.php?id=100089994174755&rdid=73OiJ1PbMNGnPq2x&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16krfXhaQ8%2F#"> <i class="bi bi-facebook"></i> <span data-i18n="bgl-fb-btn">Follow us on Facebook!</span</a>
 </div>
 
 <!--Footer-->
 <div class="footer">
     <div class="footer-left">
         <p>Taguig Community Hope <br> Alternative Incorporated</p>
-        <a href="/about-us"> About Us</a>
-        <a href="#"> Back to Top</a>
+        <a href="/about-us" data-i18n="footer-about-us"> About Us</a>
+        <a href="#" data-i18n="footer-back-to-top"> Back to Top</a>
     </div>
 
     <img src="images/chai_footerlogo.png" alt="CHAI-Taguig Footer Logo">
@@ -163,11 +188,16 @@
     <div class="footer-right">
         <div class="footer-fb">
             <i class="bi bi-facebook"></i>
-            <a href="https://www.facebook.com/share/16DkCEtRb1/">FOLLOW CHAI TAGUIG<br>ON FACEBOOK</a>
+            <a href="https://www.facebook.com/share/16DkCEtRb1/">
+                <span data-i18n="footer-fb-line1">FOLLOW CHAI TAGUIG</span><br>
+                <span data-i18n="footer-fb-line2">ON FACEBOOK</span>
+            </a>
         </div>
-        <a href="/donate-now" class="btn btn-success">DONATE NOW!</a>
+        <a href="/donate-now" class="btn btn-success" data-i18n="footer-donate-now">DONATE NOW!</a>
     </div>
 </div>
+
+<script src="/language.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
