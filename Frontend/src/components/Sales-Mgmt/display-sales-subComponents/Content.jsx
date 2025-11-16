@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import useFetchSales from '../../../hooks/Sales-Mgmt/useFetchSales.js';
-import EditSaleModal from '../EditSaleModal.jsx';
 
 const currency = (n) => `₱ ${Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
 
@@ -184,15 +183,6 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
           </div>
         </div>
       </main>
-
-      {editing ? (
-        <EditSaleModal
-          sale={editing}
-          onClose={() => setEditing(null)}
-          onSaved={() => reload()}
-          token={token}
-        />
-      ) : null}
 
       {pendingDelete ? (
         <div style={overlayStyle} role="dialog" aria-modal="true" aria-label="Confirm delete sale">
