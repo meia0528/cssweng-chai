@@ -3,7 +3,7 @@ import '../../../assets/css/Product-Mgmt/displayProducts/product-filtering.css';
 const Filtering = ({ sortOption, displayDropDownList, handleDropDownSelect, isOpen, dropdownRef, statusFilters, handleSelectedStatusFilter }) => {
   const sortOptionList = ['Newest First', 'Oldest First', 'Total: High to Low', 'Total: Low to High'];
 
-  const statusOptions = ['Completed', 'Pending', 'Refunded'];
+  const statusOptions = ['Completed', 'Pending', 'Refunded', 'Cancelled'];
 
   return (
     <nav>

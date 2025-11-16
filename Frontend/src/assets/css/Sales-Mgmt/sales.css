@@ -1,0 +1,92 @@
+/* Keeps sales content clear of the fixed Sidebar */
+/* Outer wrapper (mirrors .display-body from product-display.css) */
+.sales-body {
+  background-color: white;
+  padding-left: 340px; /* align with sidebar width + gutter */
+  padding-top: 10px;
+  margin-top: 8px;
+}
+
+.sales-main-area {
+  margin-left: 274px;
+  margin-right: 10px;
+}
+
+.sales-main-area table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.sales-main-area th,
+.sales-main-area td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sales-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.sales-edit-btn img {
+  width: 14px;
+  height: 14px;
+}
+.sales-edit-btn:hover {
+  background: #f5f5f5;
+}
+
+.sales-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.sales-delete-btn img {
+  width: 14px;
+  height: 14px;
+}
+.sales-delete-btn:hover {
+  background: #f5f5f5;
+  border-color: #bcbcbc;
+}
+
+/* Toast notification styling - coherent with site cards */
+.sales-toast {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: #ffffff;
+  color: #212529;
+  border: 1px solid #d0d0d0;
+  border-left: 5px solid #28a745; /* success accent */
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+}
+
+@media (max-width: 770px) {
+  .sales-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .sales-main-area {
+    display: none;  
+  }
+}

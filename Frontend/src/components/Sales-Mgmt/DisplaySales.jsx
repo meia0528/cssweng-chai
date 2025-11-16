@@ -1,4 +1,4 @@
-import '../../assets/css/Product-Mgmt/displayProducts/product-display.css'
+import '../../assets/css/Sales-Mgmt/sales.css'
 import displaySalesHook from '../../hooks/Sales-Mgmt/displaySalesHook.js';
 import Filtering from './display-sales-subComponents/Filtering.jsx';
 import Content from './display-sales-subComponents/Content.jsx';

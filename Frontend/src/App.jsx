@@ -14,6 +14,7 @@ import Register from "./components/Login-Register/Register.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DisplaySales from "./components/Sales-Mgmt/DisplaySales.jsx";
+import CreateSale from "./components/Sales-Mgmt/CreateSale.jsx";
 
 
 const SidebarLayout = ({ children }) => {
@@ -203,7 +204,7 @@ const AppRoutes = () => {
             />
 
             {/* sales create page */}
-            {/* <Route
+            <Route
                 path="/admin/sales-mgmt/create"
                 element={
                     <ProtectedRoute>
@@ -212,7 +213,7 @@ const AppRoutes = () => {
                         </SidebarLayout>
                     </ProtectedRoute>
                 }
-            /> */}
+            />
 
         </Routes>
     );
