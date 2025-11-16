@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -11,31 +12,45 @@ const fs = require('fs');
 const Officer = require('./models/officer');
 const Event = require('./models/events');
 const Product = require('./models/products');
-const Admin = require('./models/admin');
 const Donate = require('./models/donate');
 
 // Don't forget to terminal project folder and install packages.
-// Input: npm install express express-handlebars mongoose express-session bcrypt body-parser
+// Input: npm install express express-handlebars mongoose express-session bcrypt body-parser dotenv
 
 const app = express();
 const port = 3000;
 
 const dbUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/CHAI';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 mongoose.connect(dbUrl, {
 	 useNewUrlParser: true,
 	 useUnifiedTopology: true
 }).then(() => console.log('Connected to MongoDB'))
 
+// ---HASH---
+let ADMIN_PASSWORD_HASHED = null;
+bcrypt.hash(ADMIN_PASSWORD, 10, (err, hash) => {
+  if (err){
+    console.error("Error hashing password");
+  }
+
+  ADMIN_PASSWORD_HASHED = hash;
+})
+
 // ----MIDDLEWARE----
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(session({
-   secret: 'supersecretkey',
+   secret: SESSION_SECRET,
    resave: false,
    saveUninitialized: false
 }));
+
 app.use((req, res, next) => {
    res.locals.user = req.session.user;
    next();
@@ -114,23 +129,6 @@ app.get('/gift-global', async(req, res) => {
   }
 });
 
-// ----REGISTRATION----
-app.get('/register', (req, res) => {
-  res.render('register', { Title: '(ADMIN) Register' });
-});
-
-app.post('/register', async(req, res) => {
-  const { username, password } = req.body;
-  const exists = await Admin.findOne({ username });
-  if (exists) return res.render('register', { error: 'Username already exists!' });
-   
-  const hashed = await bcrypt.hash(password, 10);
-  const newAdmin = new Admin({ username, password: hashed });
-
-  await newAdmin.save();
-  res.redirect('/login');
-});
-
 // ----LOGIN----
 app.get('/login', (req, res) => {
   res.render('login', { Title: '(ADMIN) Login'});
@@ -138,16 +136,22 @@ app.get('/login', (req, res) => {
 
 app.post('/login', async(req, res) => {
   const { username, password } = req.body;
+  const passwordCorrect = await bcrypt.compare(password, ADMIN_PASSWORD_HASHED)
 
-  const admin = await Admin.findOne({ username });
-  if (!admin) return res.render('login', {error: 'User not found.'});
+  if (username !== ADMIN_USERNAME){
+    return res.render('login', { error: 'Invalid username or password' });
+  }
 
-  if (!admin.password) return res.render('login', { error: 'No password set for this user.' });
+  if(!ADMIN_PASSWORD_HASHED){
+    return res.render('login', { error: 'Error in loading' });
+  }
 
-  const passwordMatch = await bcrypt.compare(password, admin.password);
-  if (!passwordMatch) return res.render('login', {error: 'Invalid password.'});
+  if(!passwordCorrect){
+    return res.render('login', { error: 'Invalid username or password' });
+  }
 
-  req.session.user = { id: admin._id, username: admin.username };
+  
+  req.session.user = { username: ADMIN_USERNAME };
   res.redirect('/centralhub');
 });
 
