@@ -168,6 +168,11 @@ body{
     margin-top: 10px;
 }
 
+.carousel-caption .btn-success:hover{
+    background-color: #254b34;
+    border-color: #254b34;
+}
+
 .logo-mission-vision{
     display: flex;
     justify-content: center;
@@ -331,12 +336,30 @@ body{
     background-color: #44865E;
 }
 
+.card-bgl .btn:hover{
+    background-color: #284f37;
+    border-color: gray;
+    color: gray;
+}
+
 .card-lm .btn{
     background-color: #67B170;
 }
 
+.card-lm .btn:hover{
+    background-color: #365c3a;
+    border-color: gray;
+    color: gray;
+}
+
 .card-gg .btn{
     background-color: #948C6A;
+}
+
+.card-gg .btn:hover{
+    background-color: #514d3a;
+    border-color: gray;
+    color: gray;
 }
 
 .card-lm{
@@ -1395,6 +1418,10 @@ body{
     border: none;
     font-weight: bold;
     width: 1080px;
+}
+
+#viewMoreBtn:hover{
+    background-color: #afafaf;
 }
 
 .centralhub-body{
