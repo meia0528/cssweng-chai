@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const productRouter = require('./routes/product-router.js');
 const authRouter = require('./routes/auth-router.js');
 const memberRouter = require('./routes/member-router.js');
+const salesRouter = require('./routes/sales-router.js');
 const connectDB = require('./db-connect/db.js');
 
 const app = express();
@@ -36,6 +37,7 @@ app.use("/uploads", express.static("uploads"));
 app.use('/product-mgmt', productRouter);
 app.use('/auth', authRouter);
 app.use('/members', memberRouter);
+app.use('/sales', salesRouter);
 
 // Start server
 const startServer = async () => {

@@ -36,8 +36,6 @@ const CreateSale = () => {
   const validate = () => {
     const newErrors = {};
     if (!form.customerName.trim()) newErrors.customerName = 'Customer name is required';
-    if (form.total === '' || Number.isNaN(Number(form.total))) newErrors.total = 'Total is required';
-    else if (Number(form.total) < 0) newErrors.total = 'Total must be ≥ 0';
     if (!form.productId) newErrors.productId = 'Product selection is required';
     if (form.quantity === '' || Number.isNaN(Number(form.quantity)) || Number(form.quantity) < 1) newErrors.quantity = 'Quantity must be ≥ 1';
     return newErrors;
@@ -59,7 +57,6 @@ const CreateSale = () => {
     try {
       const payload = {
         customerName: form.customerName.trim(),
-        total: Number(form.total),
         status: form.status,
         productId: form.productId,
         quantity: Number(form.quantity),
@@ -96,6 +93,11 @@ const CreateSale = () => {
 
     fetchProducts();
   }, []);
+
+  // compute total automatically from selected product price and quantity
+  const selectedProduct = products.find((p) => (p._id || p.id) === form.productId);
+  const unitPrice = Number(selectedProduct?.price ?? 0);
+  const computedTotal = (Number(form.quantity) || 0) * unitPrice;
 
   return (
     <main className="create-sale-body">
@@ -142,13 +144,10 @@ const CreateSale = () => {
                 type="number"
                 step="0.01"
                 min="0"
-                className={`sale-input ${errors.total ? 'error' : ''}`}
-                value={form.total}
-                onChange={(e) => setField('total', e.target.value)}
-                placeholder="0.00"
-                required
+                className={`sale-input`}
+                value={computedTotal.toFixed(2)}
+                readOnly
               />
-              {errors.total && <div className="sale-error-text">{errors.total}</div>}
             </div>
 
             <div className="sale-field-group" style={{ flex: 1 }}>
@@ -183,7 +182,7 @@ const CreateSale = () => {
             <label className="sale-label" htmlFor="saleDate">Date (optional)</label>
             <input
               id="saleDate"
-              type="datetime-local"
+              type="date"
               className="sale-date"
               value={form.saleDate}
               onChange={(e) => setField('saleDate', e.target.value)}

@@ -13,7 +13,10 @@ const useFetchSales = (page, search, sortOption, statusFilters) => {
         params.status = statusFilters.map((s) => s.name).join(',');
       }
 
-      const res = await axios.get('http://localhost:5000/sales', { params });
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+      const res = await axios.get('http://localhost:5000/sales', { params, headers });
 
       if (res && res.data) {
         setSales(res.data.sales || res.data.items || []);
@@ -23,6 +26,7 @@ const useFetchSales = (page, search, sortOption, statusFilters) => {
         setTotalPages(0);
       }
     } catch (err) {
+      console.error('Failed to fetch sales:', err?.response?.status, err?.message || err);
       setSales([]);
       setTotalPages(0);
     }
