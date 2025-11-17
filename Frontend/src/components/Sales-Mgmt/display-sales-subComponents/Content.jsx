@@ -129,7 +129,7 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
                         {s.status || '—'}
                       </span>
                     </td>
-                    <td>{s.createdAt ? new Date(s.createdAt).toLocaleString() : ''}</td>
+                    <td>{s.createdAt ? new Date(s.createdAt).toLocaleDateString() : ''}</td>
                     <td style={{ textAlign: 'center' }}>
                       <button
                         type="button"

@@ -71,7 +71,17 @@ const CreateSale = () => {
       }, 1200);
     } catch (err) {
       console.error(err);
-      setAlert({ message: 'Failed to create sale', type: 'error' });
+      // Show backend error if available
+      let backendMsg = err?.response?.data?.message;
+      if (backendMsg) {
+        setAlert({ message: backendMsg, type: 'error' });
+        // If insufficient stock, also highlight quantity field
+        if (backendMsg.toLowerCase().includes('stock')) {
+          setErrors((prev) => ({ ...prev, quantity: backendMsg }));
+        }
+      } else {
+        setAlert({ message: 'Failed to create sale', type: 'error' });
+      }
     } finally {
       setSubmitting(false);
     }
@@ -138,7 +148,7 @@ const CreateSale = () => {
 
           <div className="sale-field-group-inline">
             <div className="sale-field-group" style={{ flex: 1 }}>
-              <label className="sale-label" htmlFor="total">Total</label>
+              <label className="sale-label" htmlFor="total">Total (PHP)</label>
               <input
                 id="total"
                 type="number"
