@@ -34,10 +34,13 @@ const confirmModalStyle = {
   padding: 20,
 };
 
+const STATUS_OPTIONS = ['Pending', 'Completed', 'Refunded', 'Cancelled'];
+
 const Content = ({ search, setSearch, sortOption, statusFilters }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [toast, setToast] = useState(null);
   const [pendingDelete, setPendingDelete] = useState(null);
+  const [updatingStatus, setUpdatingStatus] = useState(null);
   const { sales, totalPages, reload } = useFetchSales(currentPage, search, sortOption, statusFilters);
   const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
 
@@ -67,6 +70,36 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
   };
 
   const cancelDelete = () => setPendingDelete(null);
+
+  const updateSaleStatus = async (saleId, newStatus) => {
+    if (updatingStatus) return;
+    setUpdatingStatus(saleId);
+    try {
+      const response = await fetch(`http://localhost:5000/sales/${saleId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setToast('Status updated successfully');
+        reload();
+      } else {
+        console.error('Failed to update status:', data);
+        setToast(data?.message || 'Failed to update status');
+      }
+    } catch (err) {
+      console.error('Error updating sale status:', err);
+      setToast('Error updating status');
+    } finally {
+      setUpdatingStatus(null);
+    }
+  };
 
   // Reset page to 1 when search, sort, or status filters change
   useEffect(() => {
@@ -109,8 +142,8 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
                   <th style={{ width: '16%' }}>Product</th>
                   <th style={{ width: '8%' }}>Quantity</th>
                   <th style={{ width: '10%' }}>Total</th>
-                  <th style={{ width: '10%' }}>Status</th>
-                  <th style={{ width: '12%' }}>Date</th>
+                  <th style={{ width: '12%' }}>Status</th>
+                  <th style={{ width: '11%' }}>Date</th>
                   <th style={{ width: '6%' }}>Delete</th>
                 </tr>
               </thead>
@@ -123,16 +156,28 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
                     <td>{s.quantity ?? 1}</td>
                     <td>{currency(s.total)}</td>
                     <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
-                      <span
+                      <select
+                        value={s.status || 'Pending'}
+                        onChange={(e) => updateSaleStatus(s._id, e.target.value)}
+                        disabled={updatingStatus === s._id}
                         style={{
                           ...badgeStyle(s.status),
                           padding: '2px 10px',
                           borderRadius: 12,
                           fontSize: 12,
+                          border: 'none',
+                          cursor: updatingStatus === s._id ? 'not-allowed' : 'pointer',
+                          fontWeight: 500,
+                          minWidth: '90px',
+                          textAlign: 'center',
                         }}
                       >
-                        {s.status || '—'}
-                      </span>
+                        {STATUS_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt}>
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
                     </td>
                     <td>{s.createdAt ? new Date(s.createdAt).toLocaleDateString() : ''}</td>
                     <td style={{ textAlign: 'center' }}>

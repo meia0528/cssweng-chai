@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 // Enable CORS for React app
 app.use(cors({
     origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
 }));
 
 // anything inside the uploads folder can be accessed through a public URL; useful for frontend task

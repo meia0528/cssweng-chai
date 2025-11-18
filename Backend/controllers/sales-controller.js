@@ -134,4 +134,38 @@ const deleteSale = async (req, res) => {
   }
 };
 
-module.exports = { listSales, createSale, deleteSale };
+const updateSaleStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    console.log('updateSaleStatus called:', { id, status, admin: req.admin });
+
+    if (!status) {
+      return res.status(400).json({ message: 'status is required' });
+    }
+
+    const validStatuses = ['Pending', 'Completed', 'Refunded', 'Cancelled'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ message: 'Invalid status value' });
+    }
+
+    const updated = await Sale.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ message: 'Sale not found' });
+    }
+
+    console.log('Sale status updated:', updated);
+    res.json(updated);
+  } catch (err) {
+    console.error('Error updating sale status:', err);
+    res.status(500).json({ message: 'Server error updating sale status' });
+  }
+};
+
+module.exports = { listSales, createSale, deleteSale, updateSaleStatus };
