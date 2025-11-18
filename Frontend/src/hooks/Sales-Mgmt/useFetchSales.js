@@ -6,9 +6,25 @@ const useFetchSales = (page, search, sortOption, statusFilters) => {
   const [totalPages, setTotalPages] = useState(0);
   const [reloadFlag, setReloadFlag] = useState(0);
 
+  // Map sort label to backend format
+  const mapSortOption = (label) => {
+    switch (label) {
+      case 'Newest First':
+        return 'createdAt:desc';
+      case 'Oldest First':
+        return 'createdAt:asc';
+      case 'Total: High to Low':
+        return 'total:desc';
+      case 'Total: Low to High':
+        return 'total:asc';
+      default:
+        return 'createdAt:desc';
+    }
+  };
+
   const fetchSales = useCallback(async () => {
     try {
-      const params = { page, search, sort: sortOption };
+      const params = { page, search, sort: mapSortOption(sortOption) };
       if (statusFilters && statusFilters.length > 0) {
         params.status = statusFilters.map((s) => s.name).join(',');
       }

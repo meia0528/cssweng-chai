@@ -33,11 +33,15 @@ const listSales = async (req, res) => {
     const { p, l } = parsePagination(page, limit);
 
     const query = {};
-    if (search) {
-      const rx = { $regex: search, $options: 'i' };
-      // search in customerName, productName, or _id
-      query.$or = [{ customerName: rx }, { productName: rx }, { _id: rx }];
+    
+    // build search query
+    if (search && String(search).trim()) {
+      const rx = { $regex: String(search).trim(), $options: 'i' };
+      // search in orderId, customerName, or productName
+      query.$or = [{ orderId: rx }, { customerName: rx }, { productName: rx }];
     }
+    
+    // build status query
     if (status) {
       const statusList = String(status).split(',').map((s) => s.trim()).filter(Boolean);
       if (statusList.length === 1) query.status = statusList[0];

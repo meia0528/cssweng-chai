@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useFetchSales from '../../../hooks/Sales-Mgmt/useFetchSales.js';
 
 const currency = (n) => `₱ ${Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
@@ -68,7 +68,12 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
 
   const cancelDelete = () => setPendingDelete(null);
 
-  useState(() => {
+  // Reset page to 1 when search, sort, or status filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, sortOption, statusFilters]);
+
+  useEffect(() => {
     if (!toast) return;
     const t = setTimeout(() => setToast(null), 2500);
     return () => clearTimeout(t);
@@ -88,7 +93,7 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
               <input
                 className="search-bar"
                 type="text"
-                placeholder="Search order id, customer, or email"
+                placeholder="Search order id, customer name, or product"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -100,11 +105,12 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
               <thead style={{ background: '#f7f7f7' }}>
                 <tr>
                   <th style={{ width: '14%' }}>Order ID</th>
-                  <th style={{ width: '22%' }}>Customer</th>
-                  <th style={{ width: '18%' }}>Product</th>
-                  <th style={{ width: '10%' }}>Quantity</th>
-                  <th style={{ width: '12%' }}>Status</th>
-                  <th style={{ width: '18%' }}>Date</th>
+                  <th style={{ width: '20%' }}>Customer</th>
+                  <th style={{ width: '16%' }}>Product</th>
+                  <th style={{ width: '8%' }}>Quantity</th>
+                  <th style={{ width: '10%' }}>Total</th>
+                  <th style={{ width: '10%' }}>Status</th>
+                  <th style={{ width: '12%' }}>Date</th>
                   <th style={{ width: '6%' }}>Delete</th>
                 </tr>
               </thead>
@@ -115,6 +121,7 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
                     <td style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.customerName || s.customer?.name || ''}</td>
                     <td style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.productName || s.product?.name || ''}</td>
                     <td>{s.quantity ?? 1}</td>
+                    <td>{currency(s.total)}</td>
                     <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                       <span
                         style={{
@@ -144,7 +151,7 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
 
                 {sales.length === 0 && (
                   <tr>
-                    <td colSpan={7} style={{ textAlign: 'center' }}>
+                    <td colSpan={8} style={{ textAlign: 'center' }}>
                       No sales found
                     </td>
                   </tr>
