@@ -36,7 +36,6 @@ const confirmModalStyle = {
 
 const Content = ({ search, setSearch, sortOption, statusFilters }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [editing, setEditing] = useState(null);
   const [toast, setToast] = useState(null);
   const [pendingDelete, setPendingDelete] = useState(null);
   const { sales, totalPages, reload } = useFetchSales(currentPage, search, sortOption, statusFilters);
@@ -106,7 +105,6 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
                   <th style={{ width: '10%' }}>Quantity</th>
                   <th style={{ width: '12%' }}>Status</th>
                   <th style={{ width: '18%' }}>Date</th>
-                  <th style={{ width: '6%' }}>Edit</th>
                   <th style={{ width: '6%' }}>Delete</th>
                 </tr>
               </thead>
@@ -133,17 +131,6 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
                     <td style={{ textAlign: 'center' }}>
                       <button
                         type="button"
-                        className="sales-edit-btn"
-                        aria-label={`Edit sale ${s._id || s.id}`}
-                        title="Edit sale"
-                        onClick={() => setEditing(s)}
-                      >
-                        <img src="/img/Membership-Mgmt/edit.png" alt="Edit" />
-                      </button>
-                    </td>
-                    <td style={{ textAlign: 'center' }}>
-                      <button
-                        type="button"
                         className="sales-delete-btn"
                         aria-label={`Delete sale ${s._id || s.id}`}
                         title="Delete sale"
@@ -157,7 +144,7 @@ const Content = ({ search, setSearch, sortOption, statusFilters }) => {
 
                 {sales.length === 0 && (
                   <tr>
-                    <td colSpan={8} style={{ textAlign: 'center' }}>
+                    <td colSpan={7} style={{ textAlign: 'center' }}>
                       No sales found
                     </td>
                   </tr>
