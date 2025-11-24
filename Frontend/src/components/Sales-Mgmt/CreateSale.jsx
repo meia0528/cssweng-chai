@@ -32,10 +32,13 @@ const CreateSale = () => {
     setForm((prev) => ({ ...prev, [field]: value }));
     setErrors((prev) => ({ ...prev, [field]: '' }));
   };
+  const NAME_REGEX = /^[A-Za-z\s\-.'`]+$/;
 
   const validate = () => {
     const newErrors = {};
-    if (!form.customerName.trim()) newErrors.customerName = 'Customer name is required';
+    const nameTrim = String(form.customerName || '').trim();
+    if (!nameTrim) newErrors.customerName = 'Customer name is required';
+    else if (!NAME_REGEX.test(nameTrim)) newErrors.customerName = 'Customer name contains invalid characters (numbers are not allowed)';
     if (!form.productId) newErrors.productId = 'Product selection is required';
     if (form.quantity === '' || Number.isNaN(Number(form.quantity)) || Number(form.quantity) < 1) newErrors.quantity = 'Quantity must be ≥ 1';
     return newErrors;

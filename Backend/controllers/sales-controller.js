@@ -76,6 +76,12 @@ const createSale = async (req, res) => {
     if (!customerName || String(customerName).trim() === '') {
       return res.status(400).json({ message: 'customerName is required' });
     }
+    // validate customer name characters
+    const nameTrim = String(customerName || '').trim();
+      const nameRegex = /^[A-Za-z\s\-.'`]+$/;
+    if (!nameRegex.test(nameTrim)) {
+        return res.status(400).json({ message: 'customerName contains invalid characters (numbers are not allowed)' });
+    }
     if (!productId) return res.status(400).json({ message: 'productId is required' });
 
     const qty = Number(quantity) || 1;
