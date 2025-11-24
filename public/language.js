@@ -34,7 +34,7 @@ function translate(lang)
         document.querySelectorAll("[data-i18n]").forEach(elem =>{
             const key = elem.getAttribute("data-i18n");
             if(data[key]){
-                elem.textContent = data[key];
+                elem.innerHTML = data[key];
             }
         });
 

@@ -1126,7 +1126,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 50px 80px 100px 80px;
+    padding: 50px 80px 100px 80px;
+    background-color: white;
 }
 
 .container-bgl-main h1{
@@ -1172,12 +1173,41 @@ body{
 
 
 .container-history-bgl{
-    height: 600px;
-    background-color: white;
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    max-width: 1650px;
+
+    padding: 0 150px;
+}
+
+.container-history-bgl h1{
+    margin: 60px 0 40px 0;
+}
+
+.bgl-history-content-gift, .bgl-history-content-pic{
     display: flex;
     align-items: center; 
     justify-content: center;
+    margin: 35px 0;
+}
+
+.bgl-history-content-gift img, .bgl-history-content-pic img{
+    height: 230px;
+    margin-right: 80px;
+}
+
+.container-history-bgl p{
+    color: #133A18;
+    font-size: large;
+    text-align: justify;
+}
+
+.bgl-history-content-part3{
+    background-color: #d3d6d4;
+    padding: 30px 30px;
 }
 
 .container-history-bgl h1, .container-events-bgl h1, .container-officers-bgl h1, .container-upcoming-bgl h1, .container-officers-chai h1{
