@@ -19,6 +19,10 @@ languages.forEach(item => {
         langToggle.textContent = "TAG";
         document.getElementById("lang-icon").src = "images/TAG.png";
     }
+
+    localStorage.setItem('selectedLang', selectedLang);
+    translate(selectedLang);
+    
     });
 })
 
@@ -33,18 +37,24 @@ function translate(lang)
                 elem.textContent = data[key];
             }
         });
-    });
 
-    currentLanguage = lang;
+        currentLanguage = lang;
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () =>{
-    translate(currentLanguage);
 
-    document.querySelectorAll(".dropdown-item[data-lang]").forEach(item =>{
-        item.addEventListener("click", () =>{
-            const lang = item.getAttribute("data-lang");
-            translate(lang);
-        });
-    });
+    const savedLang = localStorage.getItem('selectedLang');
+    const initialLang = savedLang || currentLanguage;
+
+    translate(initialLang);
+
+    if (initialLang === "tagalog"){
+        langToggle.textContent = "TAG";
+        document.getElementById("lang-icon").src = "images/TAG.png";
+    }
+    else {
+        langToggle.textContent = "EN";
+        document.getElementById("lang-icon").src = "images/EN.png"; 
+    }
 });
