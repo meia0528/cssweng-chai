@@ -5,7 +5,7 @@
     <div class="admindonate-edit">
       <h1><i class="bi bi-pencil-square"></i>Edit Contact Details</h1>
 
-      <form action="/admin/donate-edit" method="POST" class="admin-form">
+      <form action="/admin/donate-edit" method="POST" class="admin-form"  onsubmit="return validateEntry()">
         <div class="form-group admindonate-edit-form">
           <label for="name">Contact Name</label>
           <input type="text" id="name" name="name" value="{{donateInfo.name}}" required>
@@ -31,4 +31,23 @@
     alert('Contact details have been updated successfully!');
     window.location.href = '/centralhub';
    }
+
+   function validateEntry()
+   {
+    const contactName = document.getElementById('name').value;
+    const contactNo = document.getElementById('contactNo').value;
+
+    if (/[^a-zA-Z\s]/.test(contactName)) {
+      alert('Contact name can only contain letters and spaces.');
+      return false;
+    }
+
+    if(/[^0-9]/.test(contactNo)){
+      alert("Contact number should only contain digits.");
+      return false;
+    }
+
+    return true;
+   }
+
 </script>

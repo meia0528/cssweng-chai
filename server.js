@@ -183,6 +183,7 @@ app.get('/admin/donate-edit', requireLogin, async(req, res) =>{
 app.post('/admin/donate-edit', requireLogin, async(req, res) =>{
   try{
     const { name, contactNo } = req.body;
+
     const prevInfo = await Donate.findOne().lean();
     if (prevInfo){
       await Donate.updateOne({}, { name, contactNo });
