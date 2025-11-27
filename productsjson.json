@@ -5,7 +5,7 @@
   "price": "70.00",
   "quantity": "0",
   "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
+  "image": "/images/lm_pamalang.png"
 },
 {
   "_id": "2",
@@ -14,7 +14,7 @@
   "price": "850.00",
   "quantity": "0",
   "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
+  "image": "/images/lm_terno.png"
 },
 {
   "_id": "3",
@@ -23,7 +23,7 @@
   "price": "450.00",
   "quantity": "0",
   "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
+  "image": "/images/lm_saruwal.png"
 },
 {
   "_id": "4",
@@ -32,7 +32,7 @@
   "price": "800.00",
   "quantity": "0",
   "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
+  "image": "/images/lm_loose_pants.png"
 },
 {
   "_id": "5",
@@ -41,7 +41,7 @@
   "price": "100.00",
   "quantity": "0",
   "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
+  "image": "/images/lm_tokong_malong.png"
 },
 {
   "_id": "6",
@@ -50,15 +50,6 @@
   "price": "350.00",
   "quantity": "0",
   "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
-},
-{
-  "_id": "7",
-  "title": "‌Abaca Bag",
-  "description": " ",
-  "price": "200.00",
-  "quantity": "0",
-  "type": "Cosmetic",
-  "image": "/images/temp_prod.jpeg"
+  "image": "/images/lm_mukna_dress.png"
 }
 ]
