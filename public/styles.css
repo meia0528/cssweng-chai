@@ -45,6 +45,10 @@ body{
     white-space: nowrap;
 }
 
+.nav-link-postMgmt{
+    margin-right: 30px;
+}
+
 .dropdown-menu{
     width: 220px;
     border-color: #164886;
